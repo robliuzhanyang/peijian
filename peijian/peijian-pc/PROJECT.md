@@ -111,7 +111,7 @@ modules/billing/
 
 | 页面文件 | 路由 | 功能 | API 对接 |
 | --- | --- | --- | --- |
-| views/diy.vue | `/diy` | 一站式选配：选整机形态 + 8 步选配（机柜 / 铝件 / 光学 / 激光器 / 打标卡 / 电脑 / 扩展件）+ 联动计价，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
+| views/diy.vue | `/diy` | 一站式选配：选整机形态 + 8 步选配（机柜 / 铝件 / 激光器 / 打标卡 / 振镜 / 场镜 / 电脑套装 / 扩展配件）+ 联动计价，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
 | views/diy-confirm.vue | `/diy-confirm` | 配置确认：主体 / 附件两层明细与小计，按钮 返回修改 / 查看报价单 / 加入购物车 | 无（Vuex） |
 | views/quote.vue | `/quote` | 正式报价单：双方抬头、八列明细表、合计大写、不含印章的落款区（报价人下方为报价日期），按钮 导出图片 / 导出 PDF / 修改组合 | 无（本地 quoteImage 导出） |
 | views/package-detail.vue | `/package-detail` | 套装配置清单：型号 / SKU / 数量与套装价侧栏，按钮 查看细节 / 生成报价单 | 无（Vuex） |
