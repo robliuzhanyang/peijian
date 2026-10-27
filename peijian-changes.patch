@@ -1,0 +1,1741 @@
+--- a/peijian-h5/PROJECT.md
++++ b/peijian-h5/PROJECT.md
+@@ -111,9 +111,9 @@
+ 
+ | 页面文件 | 路由 | 功能 | API 对接 |
+ | --- | --- | --- | --- |
+-| views/diy.vue | `/diy` | 一站式选配：8 步选型 + 联动计价，商城商品选择 / 详情以内置底部抽屉实现，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
++| views/diy.vue | `/diy` | 一站式选配：8 步选型（机柜 / 铝件5件套 / 激光器 / 打标卡 / 振镜 / 场镜 / 电脑套装 / 扩展配件）+ 联动计价，商城商品选择 / 详情以内置底部抽屉实现，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
+ | views/diy-confirm.vue | `/diy-confirm` | 配置确认：主体 / 附件两层明细与小计，按钮 加购 / 报价单 / 立即购买 | 无（Vuex） |
+-| views/quote.vue | `/quote` | 正式报价单：双方抬头、明细表、合计大写、盖章区，按钮 导出图片 / 导出 PDF | 无（本地 quoteImage 导出） |
++| views/quote.vue | `/quote` | 正式报价单：双方抬头、明细表、合计大写、不含印章的落款区（报价人下方为报价日期），按钮 导出图片 / 导出 PDF | 无（本地 quoteImage 导出） |
+ | views/package-detail.vue | `/package-detail` | 套装配置清单：逐行型号、SKU、数量，按钮 查看细节 / 生成报价单 | 无（Vuex） |
+ | views/package.vue | `/package` | 历史兼容页：created 自动 replace 跳转 `/diy?entry=package` | 无（路由跳转） |
+ 
+--- a/peijian-h5/src/modules/product/views/home.vue
++++ b/peijian-h5/src/modules/product/views/home.vue
+@@ -88,7 +88,7 @@
+           <div class="stockline">
+             <span class="green"
+               >现货 {{ p.stock }}{{ p.cat === "laser" ? " 台" : " 件" }}</span
+-            ><span class="muted">得 {{ p.points }} 积分</span>
++            >
+           </div>
+           <button
+             v-if="p.buyable"
+--- a/peijian-h5/src/modules/selection/domain/oneStopCatalog.js
++++ b/peijian-h5/src/modules/selection/domain/oneStopCatalog.js
+@@ -559,12 +559,12 @@
+   ],
+   // 每一步都是可选模块：可跳过、可取消已选项，由用户按实际需要勾选
+   steps: [
+-    { key: "kit", name: "铝件5件套", required: false, skippable: true },
+     { key: "cabinet", name: "机柜", required: false, skippable: true },
+-    { key: "galvo", name: "振镜", required: false, skippable: true },
+-    { key: "fieldLens", name: "场镜", required: false, skippable: true },
++    { key: "kit", name: "铝件5件套", required: false, skippable: true },
+     { key: "laser", name: "激光器", required: false, skippable: true },
+     { key: "controller", name: "打标卡", required: false, skippable: true },
++    { key: "galvo", name: "振镜", required: false, skippable: true },
++    { key: "fieldLens", name: "场镜", required: false, skippable: true },
+     { key: "computer", name: "电脑套装", required: false, skippable: true },
+     { key: "extensions", name: "扩展配件", required: false, skippable: true },
+   ],
+--- a/peijian-h5/src/modules/selection/domain/oneStopMixin.js
++++ b/peijian-h5/src/modules/selection/domain/oneStopMixin.js
+@@ -209,10 +209,10 @@
+       const ids = [
+         this.selection.cabinetId,
+         ...Object.values(this.selection.kitParts || {}),
+-        this.selection.galvo,
+-        this.videoGalvo ? null : this.selection.fieldLens,
+         this.selection.laser,
+         this.selection.controller,
++        this.selection.galvo,
++        this.videoGalvo ? null : this.selection.fieldLens,
+         this.selection.computer,
+         ...(this.selection.extensions || []),
+       ];
+@@ -248,6 +248,24 @@
+         },
+         ...this.kitRows,
+         {
++          key: "laser",
++          group: "核心配件",
++          label: "激光器",
++          slot: "laser",
++          product: this.product(this.selection.laser),
++          includedText: "未选择（可选）",
++          editable: true,
++        },
++        {
++          key: "controller",
++          group: "核心配件",
++          label: "打标卡",
++          slot: "controller",
++          product: this.product(this.selection.controller),
++          includedText: "未选择（可选）",
++          editable: true,
++        },
++        {
+           key: "galvo",
+           group: "核心配件",
+           label: "振镜",
+@@ -277,24 +295,6 @@
+               editable: true,
+             },
+         {
+-          key: "laser",
+-          group: "核心配件",
+-          label: "激光器",
+-          slot: "laser",
+-          product: this.product(this.selection.laser),
+-          includedText: "未选择（可选）",
+-          editable: true,
+-        },
+-        {
+-          key: "controller",
+-          group: "核心配件",
+-          label: "打标卡",
+-          slot: "controller",
+-          product: this.product(this.selection.controller),
+-          includedText: "未选择（可选）",
+-          editable: true,
+-        },
+-        {
+           key: "computer",
+           group: "核心配件",
+           label: "电脑套装",
+@@ -436,7 +436,7 @@
+         cabinet:
+           "更换机柜会带出对应的铝件 5 件套默认值，已手动调整过的铝件会保留。",
+         kit: "铝件 5 件套已按当前机柜带出，可展开逐件微调；手动调整的部件在更换机柜时保留。",
+-        galvo: "视频振镜已配套场镜，选择后第 4 步无需再选场镜。",
++        galvo: "视频振镜已配套场镜，选择后第 6 步无需再选场镜。",
+         fieldLens: this.videoGalvo
+           ? "当前视频振镜已包含场镜，本步骤已自动完成。"
+           : "仅展示与当前振镜匹配的场镜。",
+@@ -470,7 +470,7 @@
+       const defaults = this.catalog.defaults[this.orientationId];
+       const prevParts = { ...this.selection.kitParts };
+       const kitParts = { ...kit.parts };
+-      // 铝件步骤在前：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
++      // 机柜在前、铝件随后：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
+       if (keepCustom) {
+         Object.keys(this.kitCustom).forEach((slot) => {
+           if (this.kitCustom[slot] && prevParts[slot])
+--- a/peijian-h5/src/modules/selection/domain/quoteDoc.js
++++ b/peijian-h5/src/modules/selection/domain/quoteDoc.js
+@@ -21,32 +21,12 @@
+   address: "江西省吉安市永新县工业开发区",
+ }
+ 
+-// 报价有效期（天）
+-export const QUOTE_VALID_DAYS = 30
+-
+-// 交货周期（默认口径，后续可从订单/合同接口读取）
+-export const QUOTE_DELIVERY = "合同签订后 15 个工作日内"
+-
+-// 日期格式化为 YYYY-MM-DD
+-export function formatDate(date) {
+-  const d = date instanceof Date ? date : new Date(date)
+-  const pad = (n) => String(n).padStart(2, "0")
+-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+-}
+-
+ // 日期格式化为 YYYY年M月D日（正式单据写法）
+ export function formatCnDate(date) {
+   const d = date instanceof Date ? date : new Date(date)
+   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+ }
+ 
+-// 在指定日期上加天数
+-export function addDays(date, days) {
+-  const d = new Date(date)
+-  d.setDate(d.getDate() + days)
+-  return d
+-}
+-
+ // 报价单号：XJJS-YYMMDD + B + 两位流水（例：XJJS-261022B01）
+ export function buildQuoteNo(date) {
+   const d = date instanceof Date ? date : new Date(date)
+--- a/peijian-h5/src/modules/selection/domain/quoteImage.js
++++ b/peijian-h5/src/modules/selection/domain/quoteImage.js
+@@ -1,10 +1,10 @@
+ /**
+  * 报价单图片导出：用 Canvas 2D 逐块绘制正式报价单
+- * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与盖章区）
++ * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与落款区）
+  *
+  * 入参 model 由 pages/quote.vue 的 exportModel() 组装，字段均为已格式化文本：
+  *   seller / customerName / customerContact / customerPhone
+- *   quoteNo / quoteDateCn / delivery
++ *   quoteNo / quoteDateCn
+  *   rows[{index,name,model,qty,unit,priceText,totalText,remark}] / blankRows
+  *   totalText / totalWords / notes[]
+  */
+@@ -71,59 +71,6 @@
+   ctx.strokeRect(x, y, w, h)
+ }
+ 
+-// 五角星
+-function drawStar(ctx, cx, cy, outer, inner) {
+-  ctx.beginPath()
+-  for (let i = 0; i < 10; i++) {
+-    const radius = i % 2 === 0 ? outer : inner
+-    const angle = -Math.PI / 2 + (Math.PI / 5) * i
+-    const x = cx + Math.cos(angle) * radius
+-    const y = cy + Math.sin(angle) * radius
+-    if (i === 0) ctx.moveTo(x, y)
+-    else ctx.lineTo(x, y)
+-  }
+-  ctx.closePath()
+-  ctx.fill()
+-}
+-
+-// 红色圆形印章：公司名环绕 + 五角星 + 章别
+-function drawSeal(ctx, cx, cy, r, name) {
+-  ctx.save()
+-  ctx.globalAlpha = 0.9
+-  ctx.strokeStyle = "#c8332b"
+-  ctx.fillStyle = "#c8332b"
+-  ctx.lineWidth = 3.2
+-  ctx.beginPath()
+-  ctx.arc(cx, cy, r, 0, Math.PI * 2)
+-  ctx.stroke()
+-  ctx.lineWidth = 1
+-  ctx.beginPath()
+-  ctx.arc(cx, cy, r - 6, 0, Math.PI * 2)
+-  ctx.stroke()
+-
+-  drawStar(ctx, cx, cy - r * 0.18, r * 0.24, r * 0.1)
+-
+-  const chars = [...name]
+-  const radius = r - 14
+-  const span = Math.PI * 1.18
+-  const start = -Math.PI / 2 - span / 2
+-  ctx.font = `700 ${Math.round(r * 0.25)}px ${FONT}`
+-  ctx.textAlign = "center"
+-  ctx.textBaseline = "middle"
+-  chars.forEach((ch, i) => {
+-    const angle = start + (span * (i + 0.5)) / chars.length
+-    ctx.save()
+-    ctx.translate(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius)
+-    ctx.rotate(angle + Math.PI / 2)
+-    ctx.fillText(ch, 0, 0)
+-    ctx.restore()
+-  })
+-
+-  ctx.font = `700 ${Math.round(r * 0.26)}px ${FONT}`
+-  ctx.fillText("报价专用章", cx, cy + r * 0.55)
+-  ctx.restore()
+-}
+-
+ // 按百分比计算各列左边界与最后一列右边界
+ function buildCols() {
+   const xs = []
+@@ -150,14 +97,14 @@
+   const topStart = MARGIN + 24
+   const metaTop = topStart + 74 + 62
+   const metaLineH = 38
+-  const metaHeight = metaLineH * 4 + 18
++  const metaHeight = metaLineH * 3 + 18
+   const tableTop = metaTop + metaHeight
+   const tableRows = rows.length + blanks + 1 // +1 为合计行
+   const tableHeight = HEAD_H + tableRows * ROW_H
+   const notesTop = tableTop + tableHeight
+   const notesHeight = Math.max(150, 44 + notes.length * 28 + 46)
+   const signTop = notesTop + notesHeight
+-  const paperBottom = signTop + 236
++  const paperBottom = signTop + 152
+   const height = paperBottom + MARGIN
+ 
+   const scale = 2
+@@ -193,7 +140,6 @@
+     ["发 件 人：", `${seller.sender || "—"}/${seller.phone || "—"}`],
+     ["公司地址：", seller.address || "—"],
+     ["报价单号：", `${model.quoteNo || ""}/${model.quoteDateCn || ""}`],
+-    ["交货周期：", model.delivery || "—"],
+   ]
+   const halfX = LEFT + Math.round(INNER * 0.5)
+   metaLeft.forEach((item, i) => {
+@@ -270,16 +216,18 @@
+     })
+   })
+ 
+-  // ===== 落款与盖章 =====
++  // ===== 落款（不含印章） =====
+   const signY = signTop + 58
+-  text(ctx, `报价人：${seller.sender || ""}`, LEFT, signY, {
++  text(ctx, `报价人：${seller.name || ""}`, LEFT, signY, {
+     font: `20px ${FONT}`,
+   })
++  text(ctx, `日期：${model.quoteDateCn || ""}`, LEFT, signY + 36, {
++    font: `17px ${FONT}`,
++  })
+   text(ctx, "客户确认（盖章）：", halfX, signY, { font: `20px ${FONT}` })
+   text(ctx, "日期：　　　年　　月　　日", halfX, signY + 36, {
+     font: `17px ${FONT}`,
+   })
+-  drawSeal(ctx, LEFT + 86, signY + 108, 58, seller.name || "")
+ 
+   // ===== 下载 =====
+   canvas.toBlob((blob) => {
+--- a/peijian-h5/src/modules/selection/views/quote.vue
++++ b/peijian-h5/src/modules/selection/views/quote.vue
+@@ -2,11 +2,12 @@
+   页面：正式采购报价单（H5）
+   路由：/quote ｜ 分组：选型与采购
+   作用：与 PC 端同一口径、同一版式的正式报价单：
+-        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号、交货周期）、
++        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号）、
+         八列带框明细表（序号 / 产品名称 / 规格型号 / 数量 / 单位 / 单价 / 总价 / 备注）、
+-        合计大写、报价说明、报价人与客户确认盖章区。
+-        支持导出 PDF（浏览器打印）与导出图片（Canvas 绘制，同版式含电子章）。
+-  数据：state.selectedScheme + state.selected；
++        合计大写、报价说明、报价人与客户确认落款区（报价人下方为报价日期）；
++        单据下方提供业务员二维码与联系电话。
++        支持导出 PDF（浏览器打印）与导出图片（Canvas 绘制，同版式，不含印章）。
++  数据：state.quoteItems（购物车勾选生成）或 state.selectedScheme + state.selected；
+         客户名称 / 联系人 / 电话取 getters.currentCompany
+ -->
+ <template>
+@@ -46,7 +47,6 @@
+             <p><em>发 件 人：</em><b>{{ seller.sender }}/{{ seller.phone }}</b></p>
+             <p><em>公司地址：</em><b>{{ seller.address }}</b></p>
+             <p><em>报价单号：</em><b>{{ quoteNo }}/{{ quoteDateCn }}</b></p>
+-            <p><em>交货周期：</em><b>{{ delivery }}</b></p>
+           </div>
+         </div>
+       </div>
+@@ -115,38 +115,43 @@
+ 
+         <div class="mq-sign">
+           <div class="mq-sign-col">
+-            <p>报价人：{{ seller.sender }}</p>
++            <p>报价人：{{ seller.name }}</p>
++            <p class="mq-sign-date">日期：{{ quoteDateCn }}</p>
+           </div>
+           <div class="mq-sign-col">
+             <p>客户确认（盖章）：</p>
+             <p class="mq-sign-date">日期：　　年　　月　　日</p>
+           </div>
+         </div>
+-
+-        <!-- 电子章压在报价人落款上 -->
+-        <CompanySeal :size="82" class="mq-seal" />
+       </div>
+     </section>
++
++    <!-- 联系业务员：二维码 + 电话，仅屏幕展示 -->
++    <aside class="mq-contact">
++      <QrCode :seed="7" :size="88" label="业务员微信二维码" />
++      <div class="mq-contact-copy">
++        <strong>{{ seller.sender }}</strong>
++        <a class="mq-phone" :href="'tel:' + seller.phone">{{ seller.phone }}</a>
++        <span>微信扫码或来电沟通报价细节</span>
++      </div>
++    </aside>
+   </div>
+ </template>
+ 
+ <script>
+ // 领域工具：金额分转元、空字段占位
+ import { money, fieldValue } from "@/domain/productFields";
+-// 报价单口径：报价方抬头、日期、单号、交货周期、金额大写
++// 报价单口径：报价方抬头、日期、单号、金额大写
+ import {
+   QUOTE_SELLER,
+-  QUOTE_VALID_DAYS,
+-  QUOTE_DELIVERY,
+-  formatDate,
+   formatCnDate,
+-  addDays,
+   buildQuoteNo,
+   amountInWords,
+ } from "@/modules/selection/domain/quoteDoc";
+ // 图片导出：Canvas 绘制同版式报价单
+ import { exportQuoteImage } from "@/modules/selection/domain/quoteImage";
+-import CompanySeal from "@/modules/selection/components/CompanySeal.vue";
++// 业务员二维码：单据下方联系卡片
++import QrCode from "@/components/QrCode.vue";
+ // 方案方向定义（direction id 转中文名）
+ import catalog from "@/mock/catalog.json";
+ 
+@@ -154,19 +159,15 @@
+ const MIN_ROWS = 6;
+ 
+ export default {
+-  components: { CompanySeal },
++  components: { QrCode },
+   data() {
+     const now = new Date();
+     return {
+       seller: QUOTE_SELLER,
+       quoteNo: buildQuoteNo(now),
+       quoteDateCn: formatCnDate(now),
+-      // 交货周期（后续可由订单/合同接口覆盖）
+-      delivery: QUOTE_DELIVERY,
++      // 报价说明：税费、质保与效力（不含报价周期信息）
+       notes: [
+-        `本报价单自 ${formatCnDate(now)} 起 ${QUOTE_VALID_DAYS} 天内有效（有效期至 ${formatDate(
+-          addDays(now, QUOTE_VALID_DAYS)
+-        )}），逾期需重新确认。`,
+         "报价含 13% 增值税专用发票，运费与上门安装调试费用另计。",
+         "整机质保 12 个月，易损件与耗材按实际使用情况更换。",
+         "本报价为参考报价，最终以双方签订的合同为准。",
+@@ -174,6 +175,10 @@
+     };
+   },
+   computed: {
++    // 购物车勾选生成报价单时的行项快照
++    cartRows() {
++      return this.$store.state.quoteItems || [];
++    },
+     scheme() {
+       return this.$store.state.selectedScheme;
+     },
+@@ -200,8 +205,10 @@
+       );
+       return d ? d.name : this.scheme.direction;
+     },
+-    // 表格行归一化：组合模式取 parts，自定义模式映射为 {id, qty:1}
++    // 表格行归一化：购物车勾选 > 组合 parts > 自定义选配
+     rows() {
++      if (this.$route.query.from === "cart" && this.cartRows.length)
++        return this.cartRows;
+       if (this.scheme) return this.scheme.parts;
+       return this.selected.map((id) => ({ id, qty: 1 }));
+     },
+@@ -221,12 +228,16 @@
+     total() {
+       if (this.scheme && this.scheme.oneStop)
+         return this.scheme.packagePriceFen;
+-      if (this.rows.some((r) => this.product(r.id).priceFen == null))
+-        return null;
+-      return this.rows.reduce(
+-        (n, r) => n + this.product(r.id).priceFen * (r.qty || 1),
+-        0
+-      );
++      let sum = 0;
++      for (const row of this.rows) {
++        const price =
++          row.unitPriceFen != null
++            ? row.unitPriceFen
++            : this.product(row.id).priceFen;
++        if (price == null) return null;
++        sum += price * (row.qty || 1);
++      }
++      return sum;
+     },
+     totalWords() {
+       return amountInWords(this.total);
+@@ -247,15 +258,15 @@
+     },
+     // 单行明细：名称 / 型号 / 数量 / 单位 / 单价 / 总价 / 备注
+     formatRow(p) {
+-      const item = this.product(p.id);
++      const item = p.id ? this.product(p.id) : {};
+       const qty = p.qty || 1;
+-      const price = item.priceFen;
++      // 购物车快照自带成交价与名称时优先使用
++      const price = p.unitPriceFen != null ? p.unitPriceFen : item.priceFen;
+       return {
+-        name: item.name || "—",
+-        model: fieldValue(item.model),
++        name: p.name || item.name || "—",
++        model: fieldValue(p.model !== undefined ? p.model : item.model),
+         qty,
+-        // 单位：商品表暂未维护，默认「台」，后端补 unit 字段后自动生效
+-        unit: item.unit || "台",
++        unit: p.unit || item.unit || "台",
+         priceText: money(price),
+         totalText: price == null ? "待报价" : money(price * qty),
+         // 备注：一站式方案里带出部品所属模块，自定义选配留空
+@@ -271,7 +282,6 @@
+         customerPhone: this.customerPhone,
+         quoteNo: this.quoteNo,
+         quoteDateCn: this.quoteDateCn,
+-        delivery: this.delivery,
+         rows: this.rows.map((row, i) =>
+           Object.assign({ index: i + 1 }, this.formatRow(row))
+         ),
+@@ -408,7 +418,7 @@
+ /* ===== 报价说明 + 落款 ===== */
+ .mq-extra {
+   position: relative;
+-  min-height: 192px;
++  min-height: 150px;
+   padding: 7px 10px 10px;
+ }
+ .mq-extra-title {
+@@ -427,6 +437,7 @@
+   bottom: 22px;
+   left: 10px;
+   display: flex;
++  gap: 14px;
+   align-items: flex-start;
+   font-size: 9px;
+ }
+@@ -441,17 +452,10 @@
+   margin: 0;
+ }
+ .mq-sign-date {
+-  margin-top: 6px !important;
++  margin-top: 9px !important;
+   color: #333;
+   font-size: 8.5px;
+ }
+-/* 电子章压在报价人落款上 */
+-.mq-seal {
+-  position: absolute;
+-  bottom: 4px;
+-  left: 16px;
+-  opacity: 0.86;
+-}
+ 
+ /* 空态 */
+ .mq-empty {
+@@ -460,6 +464,42 @@
+   font-size: 11px;
+ }
+ 
++/* ===== 联系业务员：二维码 + 电话（打印/导出时隐藏） ===== */
++.mq-contact {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  margin-top: 10px;
++  padding: 12px;
++  border: 1px solid var(--line);
++  border-radius: 9px;
++  background: #fff;
++}
++.mq-contact .qr-code {
++  flex: 0 0 auto;
++  border: 1px solid #eef2f7;
++  border-radius: 6px;
++}
++.mq-contact-copy {
++  display: flex;
++  flex-direction: column;
++  gap: 3px;
++  color: var(--muted);
++  font-size: 11px;
++  line-height: 1.5;
++}
++.mq-contact-copy strong {
++  color: #1f2937;
++  font-size: 12px;
++}
++.mq-phone {
++  color: var(--blue);
++  font-size: 15px;
++  font-weight: 700;
++  letter-spacing: 0.4px;
++  text-decoration: none;
++}
++
+ /* 打印 / 另存为 PDF：只保留报价单纸张 */
+ @media print {
+   @page {
+@@ -476,6 +516,9 @@
+   .m-quote-tools {
+     display: none !important;
+   }
++  .mq-contact {
++    display: none !important;
++  }
+   .main {
+     padding: 0 !important;
+     width: auto !important;
+@@ -501,7 +544,7 @@
+     padding: 6px 3px;
+   }
+   .mq-extra {
+-    min-height: 200px;
++    min-height: 160px;
+   }
+   .mq-extra-title {
+     font-size: 11px;
+@@ -515,9 +558,5 @@
+   .mq-sign-date {
+     font-size: 10.5px;
+   }
+-  .mq-seal {
+-    width: 104px;
+-    height: 104px;
+-  }
+ }
+ </style>
+--- a/peijian-h5/src/modules/trade/views/cart.vue
++++ b/peijian-h5/src/modules/trade/views/cart.vue
+@@ -2,8 +2,8 @@
+   页面：购物车（H5）
+   路由：/cart ｜ 分组：交易与履约
+   作用：展示购物车行项（含一站式选购整套方案），方案行可展开配置、查看报价单或回到一站式选购修改，
+-        支持数量加减与移除，最后跳转确认订单页
+-  数据：读取 Vuex state.cart；金额/件数取 getters；变更走 updateQty / removeCart / setCheckout
++        支持勾选、全选、数量加减与移除，底部可按勾选行生成报价单或跳转确认订单页
++  数据：读取 Vuex state.cart；勾选合计在页面内计算；变更走 updateQty / removeCart / setCheckout / setQuoteItems
+ -->
+ <template>
+   <div>
+@@ -17,6 +17,13 @@
+       <!-- 一站式选购方案：整套作为一条记录 -->
+       <div v-for="line in schemeLines" :key="line.id" class="m-cart-scheme">
+         <div class="mcs-head">
++          <label class="cart-check">
++            <input
++              type="checkbox"
++              :checked="isChecked(line)"
++              @change="toggle(line)"
++            />
++          </label>
+           <img :src="asset(line.image)" :alt="line.name" />
+           <div class="mcs-info">
+             <span class="badge blue">一站式选购</span>
+@@ -48,6 +55,13 @@
+ 
+       <!-- 普通商品行：左图 + 中间信息 + 右侧数量与移除 -->
+       <div v-for="line in productLines" :key="line.id" class="m-cart-item">
++        <label class="cart-check">
++          <input
++            type="checkbox"
++            :checked="isChecked(line)"
++            @change="toggle(line)"
++          />
++        </label>
+         <img :src="asset(line.image)" :alt="line.name" />
+         <div class="mci-info">
+           <h3>{{ line.name }}</h3>
+@@ -66,9 +80,7 @@
+               @change="setQty(line, $event)"
+             /><button class="btn sm" @click="qty(line, 1)">+</button>
+           </div>
+-          <button class="link" @click="$store.commit('removeCart', line.id)">
+-            移除
+-          </button>
++          <button class="link" @click="remove(line)">移除</button>
+         </div>
+       </div>
+ 
+@@ -80,10 +92,30 @@
+       </div>
+     </section>
+ 
+-    <!-- 结算栏：仅在有商品时出现，点击后把购物车快照写入 checkoutItems -->
+-    <div v-if="cart.length" class="card action-row">
+-      <span>共 {{ cartCount }} 件</span><strong class="price">{{ money(cartTotal) }}</strong
+-      ><button class="btn primary" @click="checkout">去结算</button>
++    <!-- 结算栏：全选 + 勾选行合计，可生成报价单或仅结算勾选行 -->
++    <div v-if="cart.length" class="card action-row cart-bar">
++      <label class="check-all">
++        <input type="checkbox" :checked="allChecked" @change="toggleAll" />
++        <span>全选</span>
++      </label>
++      <span class="tiny cart-bar-count">已选 {{ checkedCount }} 件</span>
++      <strong class="price">{{ money(checkedTotal) }}</strong>
++      <button
++        class="btn sm"
++        type="button"
++        :disabled="!checkedLines.length"
++        @click="makeQuote"
++      >
++        生成报价单
++      </button>
++      <button
++        class="btn primary sm"
++        type="button"
++        :disabled="!checkedLines.length"
++        @click="checkout"
++      >
++        去结算
++      </button>
+     </div>
+   </div>
+ </template>
+@@ -94,8 +126,8 @@
+ 
+ export default {
+   data() {
+-    // 展开查看配置的方案行 id（同一时间只展开一条）
+-    return { expandedId: '' }
++    // expandedId：展开查看配置的方案行 id；unchecked：未勾选的行 id（默认全选）
++    return { expandedId: '', unchecked: [] }
+   },
+   computed: {
+     // 购物车行项列表（含数量与成交单价快照）
+@@ -110,19 +142,44 @@
+     productLines() {
+       return this.cart.filter((l) => l.kind !== 'scheme')
+     },
+-    // 合计金额（分）
+-    cartTotal() {
+-      return this.$store.getters.cartTotal
+-    },
+-    // 合计件数
+-    cartCount() {
+-      return this.$store.getters.cartCount
++    // 已勾选行：结算与报价都只针对这些行
++    checkedLines() {
++      return this.cart.filter((l) => !this.unchecked.includes(l.id))
++    },
++    // 是否全选（购物车为空时不算全选）
++    allChecked() {
++      return this.cart.length > 0 && this.unchecked.length === 0
++    },
++    // 勾选行合计金额（分）
++    checkedTotal() {
++      return this.checkedLines.reduce(
++        (n, l) => n + l.unitPriceFen * l.quantity,
++        0
++      )
++    },
++    // 勾选行合计件数
++    checkedCount() {
++      return this.checkedLines.reduce((n, l) => n + l.quantity, 0)
+     },
+   },
+   methods: {
+     money,
+     asset,
+     fieldValue,
++    // 行是否勾选
++    isChecked(line) {
++      return !this.unchecked.includes(line.id)
++    },
++    // 切换单行勾选
++    toggle(line) {
++      const i = this.unchecked.indexOf(line.id)
++      if (i >= 0) this.unchecked.splice(i, 1)
++      else this.unchecked.push(line.id)
++    },
++    // 全选 / 取消全选
++    toggleAll() {
++      this.unchecked = this.allChecked ? this.cart.map((l) => l.id) : []
++    },
+     // 数量步进：加/减一个单位，mutation 内部保证最小为 1
+     qty(l, d) {
+       this.$store.commit('updateQty', { id: l.id, quantity: l.quantity + d })
+@@ -138,6 +195,7 @@
+     // 移除方案行
+     remove(line) {
+       if (this.expandedId === line.id) this.expandedId = ''
++      this.unchecked = this.unchecked.filter((id) => id !== line.id)
+       this.$store.commit('removeCart', line.id)
+     },
+     // 按商品 id 取名称（方案快照里只存 id）
+@@ -168,9 +226,29 @@
+       )
+       this.$router.push({ path: '/diy', query: { edit: '1' } })
+     },
+-    // 去结算：复制一份行项快照到 state.checkoutItems，再进入确认订单页
++    // 生成报价单：把勾选行写入报价快照后进入报价页（数量按购物车口径）
++    makeQuote() {
++      if (!this.checkedLines.length) return
++      this.$store.commit(
++        'setQuoteItems',
++        this.checkedLines.map((l) => ({
++          key: l.id,
++          id: l.productId || l.id,
++          name: l.name,
++          model: l.model,
++          qty: l.quantity,
++          unitPriceFen: l.unitPriceFen,
++          unit: l.kind === 'scheme' ? '套' : '台',
++          module: l.kind === 'scheme' ? '一站式方案' : '',
++        }))
++      )
++      this.$store.commit('setSelectedScheme', null)
++      this.$router.push({ path: '/quote', query: { from: 'cart' } })
++    },
++    // 去结算：只把勾选行快照写入 checkoutItems，再进入确认订单页
+     checkout() {
+-      this.$store.commit('setCheckout', this.cart.slice())
++      if (!this.checkedLines.length) return
++      this.$store.commit('setCheckout', this.checkedLines.slice())
+       this.$router.push('/checkout')
+     },
+   },
+@@ -188,7 +266,7 @@
+ }
+ .mcs-head {
+   display: grid;
+-  grid-template-columns: 56px minmax(0, 1fr) auto;
++  grid-template-columns: 16px 56px minmax(0, 1fr) auto;
+   gap: 9px;
+   align-items: center;
+ }
+@@ -267,7 +345,7 @@
+ /* 普通商品行：左图 + 中间信息 + 右侧数量与移除 */
+ .m-cart-item {
+   display: grid;
+-  grid-template-columns: 58px minmax(0, 1fr) auto;
++  grid-template-columns: 16px 58px minmax(0, 1fr) auto;
+   gap: 10px;
+   align-items: start;
+   padding: 12px 0;
+@@ -322,4 +400,45 @@
+   color: #8b98a9;
+   font-size: 10px;
+ }
++/* 勾选区：方案行与普通商品行共用 */
++.cart-check {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  padding-top: 2px;
++  cursor: pointer;
++}
++.cart-check input,
++.check-all input {
++  width: 15px;
++  height: 15px;
++  margin: 0;
++  accent-color: var(--blue);
++  cursor: pointer;
++}
++/* 结算栏：全选靠左，金额与按钮靠右 */
++.cart-bar {
++  gap: 8px;
++}
++.cart-bar .check-all {
++  display: inline-flex;
++  align-items: center;
++  gap: 4px;
++  margin-right: auto;
++  color: #475569;
++  font-size: 11px;
++  cursor: pointer;
++}
++.cart-bar-count {
++  color: var(--muted);
++  font-size: 10px;
++}
++.cart-bar .price {
++  font-size: 15px;
++}
++.cart-bar .btn {
++  padding: 6px 10px;
++  font-size: 11px;
++  white-space: nowrap;
++}
+ </style>
+--- a/peijian-h5/src/store/index.js
++++ b/peijian-h5/src/store/index.js
+@@ -155,6 +155,7 @@
+   search: "", // 搜索关键词（预留）
+   selected: initial.selected || [], // 模块化选配选中的商品 id（持久化）
+   selectedScheme: initial.selectedScheme || null, // 当前选定的成套方案对象
++  quoteItems: [], // 购物车生成报价单时的行项快照（不持久化）
+   checkoutItems: [], // 进入结算时的行项快照（不持久化）
+   lastOrder: null, // 最近一次下单结果
+   notice: "", // 全局轻提示文案（App.vue 监听并 3 秒后清空）
+@@ -318,6 +319,10 @@
+       s.selectedScheme = v;
+       persist(s);
+     },
++    // 购物车勾选生成报价单：写入行项快照，报价页按快照出单
++    setQuoteItems(s, v) {
++      s.quoteItems = v || [];
++    },
+     // —— 收货地址 CRUD ——
+     addAddress(s, v) {
+       const id = "a" + Date.now();
+--- a/peijian-pc/PROJECT.md
++++ b/peijian-pc/PROJECT.md
+@@ -111,9 +111,9 @@
+ 
+ | 页面文件 | 路由 | 功能 | API 对接 |
+ | --- | --- | --- | --- |
+-| views/diy.vue | `/diy` | 一站式选配：选整机形态 + 8 步选配（机柜 / 铝件 / 光学 / 激光器 / 打标卡 / 电脑 / 扩展件）+ 联动计价，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
++| views/diy.vue | `/diy` | 一站式选配：选整机形态 + 8 步选配（机柜 / 铝件 / 激光器 / 打标卡 / 振镜 / 场镜 / 电脑套装 / 扩展配件）+ 联动计价，按钮 加入购物车 / 生成报价单 / 立即购买 | oneStopApi.catalog、saveDraft（经 oneStopMixin） |
+ | views/diy-confirm.vue | `/diy-confirm` | 配置确认：主体 / 附件两层明细与小计，按钮 返回修改 / 查看报价单 / 加入购物车 | 无（Vuex） |
+-| views/quote.vue | `/quote` | 正式报价单：双方抬头、八列明细表、合计大写、盖章区，按钮 导出图片 / 导出 PDF / 修改组合 | 无（本地 quoteImage 导出） |
++| views/quote.vue | `/quote` | 正式报价单：双方抬头、八列明细表、合计大写、不含印章的落款区（报价人下方为报价日期），按钮 导出图片 / 导出 PDF / 修改组合 | 无（本地 quoteImage 导出） |
+ | views/package-detail.vue | `/package-detail` | 套装配置清单：型号 / SKU / 数量与套装价侧栏，按钮 查看细节 / 生成报价单 | 无（Vuex） |
+ | views/package.vue | `/package` | 历史兼容页：created 自动 replace 跳转 `/diy?entry=package` | 无（路由跳转） |
+ 
+--- a/peijian-pc/src/components/ProductCard.vue
++++ b/peijian-pc/src/components/ProductCard.vue
+@@ -34,16 +34,13 @@
+         money(product.priceFen)
+       }}</strong
+       ><span v-else class="badge blue">待报价</span>
+-      <!-- 库存与积分：数据完整时展示现货与可得积分 -->
++      <!-- 库存：数据完整时展示现货 -->
+       <div class="stockline">
+-        <template v-if="product.buyable && product.stock != null">
+-          <span class="green"
+-            >现货 {{ product.stock }}{{ product.cat === 'laser' ? ' 台' : ' 件'
+-            }}</span
+-          >
+-          <span class="muted">得 {{ product.points }} 积分</span>
+-        </template>
+-        <span v-else class="muted">库存与积分待客户提供</span>
++        <span v-if="product.buyable && product.stock != null" class="green"
++          >现货 {{ product.stock }}{{ product.cat === 'laser' ? ' 台' : ' 件'
++          }}</span
++        >
++        <span v-else class="muted">库存待客户提供</span>
+       </div>
+       <!-- 可售：加入购物车 / 直接购买；资料类商品引导到详情页询价 -->
+       <div v-if="product.buyable" class="pc-actions">
+--- a/peijian-pc/src/modules/selection/domain/oneStopCatalog.js
++++ b/peijian-pc/src/modules/selection/domain/oneStopCatalog.js
+@@ -578,12 +578,12 @@
+   ],
+   // 每一步都是可选模块：可跳过、可取消已选项，由用户按实际需要勾选
+   steps: [
+-    { key: "kit", name: "铝件5件套", required: false, skippable: true },
+     { key: "cabinet", name: "机柜", required: false, skippable: true },
+-    { key: "galvo", name: "振镜", required: false, skippable: true },
+-    { key: "fieldLens", name: "场镜", required: false, skippable: true },
++    { key: "kit", name: "铝件5件套", required: false, skippable: true },
+     { key: "laser", name: "激光器", required: false, skippable: true },
+     { key: "controller", name: "打标卡", required: false, skippable: true },
++    { key: "galvo", name: "振镜", required: false, skippable: true },
++    { key: "fieldLens", name: "场镜", required: false, skippable: true },
+     { key: "computer", name: "电脑套装", required: false, skippable: true },
+     { key: "extensions", name: "扩展配件", required: false, skippable: true },
+   ],
+--- a/peijian-pc/src/modules/selection/domain/oneStopMixin.js
++++ b/peijian-pc/src/modules/selection/domain/oneStopMixin.js
+@@ -200,10 +200,10 @@
+       const ids = [
+         this.selection.cabinetId,
+         ...Object.values(this.selection.kitParts || {}),
+-        this.selection.galvo,
+-        this.videoGalvo ? null : this.selection.fieldLens,
+         this.selection.laser,
+         this.selection.controller,
++        this.selection.galvo,
++        this.videoGalvo ? null : this.selection.fieldLens,
+         this.selection.computer,
+         ...(this.selection.extensions || []),
+       ];
+@@ -239,6 +239,24 @@
+         },
+         ...this.kitRows,
+         {
++          key: "laser",
++          group: "核心配件",
++          label: "激光器",
++          slot: "laser",
++          product: this.product(this.selection.laser),
++          includedText: "未选择（可选）",
++          editable: true,
++        },
++        {
++          key: "controller",
++          group: "核心配件",
++          label: "打标卡",
++          slot: "controller",
++          product: this.product(this.selection.controller),
++          includedText: "未选择（可选）",
++          editable: true,
++        },
++        {
+           key: "galvo",
+           group: "核心配件",
+           label: "振镜",
+@@ -268,24 +286,6 @@
+               editable: true,
+             },
+         {
+-          key: "laser",
+-          group: "核心配件",
+-          label: "激光器",
+-          slot: "laser",
+-          product: this.product(this.selection.laser),
+-          includedText: "未选择（可选）",
+-          editable: true,
+-        },
+-        {
+-          key: "controller",
+-          group: "核心配件",
+-          label: "打标卡",
+-          slot: "controller",
+-          product: this.product(this.selection.controller),
+-          includedText: "未选择（可选）",
+-          editable: true,
+-        },
+-        {
+           key: "computer",
+           group: "核心配件",
+           label: "电脑套装",
+@@ -342,7 +342,7 @@
+         cabinet:
+           "更换机柜会带出对应的铝件 5 件套默认值，已手动调整过的铝件会保留。",
+         kit: "铝件 5 件套已按当前机柜带出，可展开逐件微调；手动调整的部件在更换机柜时保留。",
+-        galvo: "视频振镜已配套场镜，选择后第 4 步无需再选场镜。",
++        galvo: "视频振镜已配套场镜，选择后第 6 步无需再选场镜。",
+         fieldLens: this.videoGalvo
+           ? "当前视频振镜已包含场镜，本步骤已自动完成。"
+           : "仅展示与当前振镜匹配的场镜。",
+@@ -514,7 +514,7 @@
+       const defaults = this.catalog.defaults[this.orientationId];
+       const prevParts = { ...this.selection.kitParts };
+       const kitParts = { ...kit.parts };
+-      // 铝件步骤在前：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
++      // 机柜在前、铝件随后：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
+       if (keepCustom) {
+         Object.keys(this.kitCustom).forEach((slot) => {
+           if (this.kitCustom[slot] && prevParts[slot])
+--- a/peijian-pc/src/modules/selection/domain/quoteDoc.js
++++ b/peijian-pc/src/modules/selection/domain/quoteDoc.js
+@@ -21,32 +21,12 @@
+   address: "江西省吉安市永新县工业开发区",
+ }
+ 
+-// 报价有效期（天）
+-export const QUOTE_VALID_DAYS = 30
+-
+-// 交货周期（默认口径，后续可从订单/合同接口读取）
+-export const QUOTE_DELIVERY = "合同签订后 15 个工作日内"
+-
+-// 日期格式化为 YYYY-MM-DD
+-export function formatDate(date) {
+-  const d = date instanceof Date ? date : new Date(date)
+-  const pad = (n) => String(n).padStart(2, "0")
+-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+-}
+-
+ // 日期格式化为 YYYY年M月D日（正式单据写法）
+ export function formatCnDate(date) {
+   const d = date instanceof Date ? date : new Date(date)
+   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+ }
+ 
+-// 在指定日期上加天数
+-export function addDays(date, days) {
+-  const d = new Date(date)
+-  d.setDate(d.getDate() + days)
+-  return d
+-}
+-
+ // 报价单号：XJJS-YYMMDD + B + 两位流水（例：XJJS-261022B01）
+ export function buildQuoteNo(date) {
+   const d = date instanceof Date ? date : new Date(date)
+--- a/peijian-pc/src/modules/selection/domain/quoteImage.js
++++ b/peijian-pc/src/modules/selection/domain/quoteImage.js
+@@ -1,10 +1,10 @@
+ /**
+  * 报价单图片导出：用 Canvas 2D 逐块绘制正式报价单
+- * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与盖章区）
++ * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与落款区）
+  *
+  * 入参 model 由 pages/quote.vue 的 exportModel() 组装，字段均为已格式化文本：
+  *   seller / customerName / customerContact / customerPhone
+- *   quoteNo / quoteDateCn / delivery
++ *   quoteNo / quoteDateCn
+  *   rows[{index,name,model,qty,unit,priceText,totalText,remark}] / blankRows
+  *   totalText / totalWords / notes[]
+  */
+@@ -71,59 +71,6 @@
+   ctx.strokeRect(x, y, w, h)
+ }
+ 
+-// 五角星
+-function drawStar(ctx, cx, cy, outer, inner) {
+-  ctx.beginPath()
+-  for (let i = 0; i < 10; i++) {
+-    const radius = i % 2 === 0 ? outer : inner
+-    const angle = -Math.PI / 2 + (Math.PI / 5) * i
+-    const x = cx + Math.cos(angle) * radius
+-    const y = cy + Math.sin(angle) * radius
+-    if (i === 0) ctx.moveTo(x, y)
+-    else ctx.lineTo(x, y)
+-  }
+-  ctx.closePath()
+-  ctx.fill()
+-}
+-
+-// 红色圆形印章：公司名环绕 + 五角星 + 章别
+-function drawSeal(ctx, cx, cy, r, name) {
+-  ctx.save()
+-  ctx.globalAlpha = 0.9
+-  ctx.strokeStyle = "#c8332b"
+-  ctx.fillStyle = "#c8332b"
+-  ctx.lineWidth = 3.2
+-  ctx.beginPath()
+-  ctx.arc(cx, cy, r, 0, Math.PI * 2)
+-  ctx.stroke()
+-  ctx.lineWidth = 1
+-  ctx.beginPath()
+-  ctx.arc(cx, cy, r - 6, 0, Math.PI * 2)
+-  ctx.stroke()
+-
+-  drawStar(ctx, cx, cy - r * 0.18, r * 0.24, r * 0.1)
+-
+-  const chars = [...name]
+-  const radius = r - 14
+-  const span = Math.PI * 1.18
+-  const start = -Math.PI / 2 - span / 2
+-  ctx.font = `700 ${Math.round(r * 0.25)}px ${FONT}`
+-  ctx.textAlign = "center"
+-  ctx.textBaseline = "middle"
+-  chars.forEach((ch, i) => {
+-    const angle = start + (span * (i + 0.5)) / chars.length
+-    ctx.save()
+-    ctx.translate(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius)
+-    ctx.rotate(angle + Math.PI / 2)
+-    ctx.fillText(ch, 0, 0)
+-    ctx.restore()
+-  })
+-
+-  ctx.font = `700 ${Math.round(r * 0.26)}px ${FONT}`
+-  ctx.fillText("报价专用章", cx, cy + r * 0.55)
+-  ctx.restore()
+-}
+-
+ // 按百分比计算各列左边界与最后一列右边界
+ function buildCols() {
+   const xs = []
+@@ -150,14 +97,14 @@
+   const topStart = MARGIN + 24
+   const metaTop = topStart + 74 + 62
+   const metaLineH = 38
+-  const metaHeight = metaLineH * 4 + 18
++  const metaHeight = metaLineH * 3 + 18
+   const tableTop = metaTop + metaHeight
+   const tableRows = rows.length + blanks + 1 // +1 为合计行
+   const tableHeight = HEAD_H + tableRows * ROW_H
+   const notesTop = tableTop + tableHeight
+   const notesHeight = Math.max(150, 44 + notes.length * 28 + 46)
+   const signTop = notesTop + notesHeight
+-  const paperBottom = signTop + 236
++  const paperBottom = signTop + 152
+   const height = paperBottom + MARGIN
+ 
+   const scale = 2
+@@ -193,7 +140,6 @@
+     ["发 件 人：", `${seller.sender || "—"}/${seller.phone || "—"}`],
+     ["公司地址：", seller.address || "—"],
+     ["报价单号：", `${model.quoteNo || ""}/${model.quoteDateCn || ""}`],
+-    ["交货周期：", model.delivery || "—"],
+   ]
+   const halfX = LEFT + Math.round(INNER * 0.5)
+   metaLeft.forEach((item, i) => {
+@@ -270,16 +216,18 @@
+     })
+   })
+ 
+-  // ===== 落款与盖章 =====
++  // ===== 落款（不含印章） =====
+   const signY = signTop + 58
+-  text(ctx, `报价人：${seller.sender || ""}`, LEFT, signY, {
++  text(ctx, `报价人：${seller.name || ""}`, LEFT, signY, {
+     font: `20px ${FONT}`,
+   })
++  text(ctx, `日期：${model.quoteDateCn || ""}`, LEFT, signY + 36, {
++    font: `17px ${FONT}`,
++  })
+   text(ctx, "客户确认（盖章）：", halfX, signY, { font: `20px ${FONT}` })
+   text(ctx, "日期：　　　年　　月　　日", halfX, signY + 36, {
+     font: `17px ${FONT}`,
+   })
+-  drawSeal(ctx, LEFT + 86, signY + 108, 58, seller.name || "")
+ 
+   // ===== 下载 =====
+   canvas.toBlob((blob) => {
+--- a/peijian-pc/src/modules/selection/views/quote.vue
++++ b/peijian-pc/src/modules/selection/views/quote.vue
+@@ -2,11 +2,12 @@
+   页面：正式采购报价单（quote.vue）
+   路由：/quote ｜ 分组：选型与采购
+   作用：把所选配置生成正式报价单，版式对齐线下纸质报价单：
+-        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号、交货周期）、
++        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号）、
+         八列带框明细表（序号 / 产品名称 / 规格型号 / 数量 / 单位 / 单价 / 总价 / 备注）、
+-        合计大写、报价说明、报价人与客户确认盖章区。
+-        支持导出 PDF（浏览器打印）与导出 PNG 图片（Canvas 绘制，同版式含电子章）。
+-  数据：Vuex state.selectedScheme（组合对象或 null）+ state.selected（商品 id 数组）；
++        合计大写、报价说明、报价人与客户确认落款区（报价人下方为报价日期）；
++        右侧提供业务员二维码与联系电话。
++        支持导出 PDF（浏览器打印）与导出 PNG 图片（Canvas 绘制，同版式，不含印章）。
++  数据：Vuex state.quoteItems（购物车勾选生成）或 state.selectedScheme + state.selected；
+         客户名称 / 联系人 / 电话取当前企业（getters.currentCompany）
+ -->
+ <template>
+@@ -50,7 +51,6 @@
+             </p>
+             <p><em>公司地址：</em><b>{{ seller.address }}</b></p>
+             <p><em>报价单号：</em><b>{{ quoteNo }}/{{ quoteDateCn }}</b></p>
+-            <p><em>交货周期：</em><b>{{ delivery }}</b></p>
+           </div>
+         </div>
+       </div>
+@@ -119,38 +119,43 @@
+ 
+         <div class="qd-sign">
+           <div class="qd-sign-col">
+-            <p>报价人：{{ seller.sender }}</p>
++            <p>报价人：{{ seller.name }}</p>
++            <p class="qd-sign-date">日期：{{ quoteDateCn }}</p>
+           </div>
+           <div class="qd-sign-col">
+             <p>客户确认（盖章）：</p>
+             <p class="qd-sign-date">日期：　　　年　　月　　日</p>
+           </div>
+         </div>
+-
+-        <!-- 电子章压在报价人落款上 -->
+-        <CompanySeal :size="132" class="qd-seal" />
+       </div>
+     </section>
++
++    <!-- 联系业务员：仅屏幕展示，不进入打印稿与导出图片 -->
++    <aside class="quote-contact">
++      <p class="qc-title">联系业务员</p>
++      <QrCode :seed="7" :size="132" label="业务员微信二维码" />
++      <p class="qc-tip">微信扫码，沟通报价细节</p>
++      <p class="qc-name">{{ seller.sender }}</p>
++      <a class="qc-phone" :href="'tel:' + seller.phone">{{ seller.phone }}</a>
++      <p class="qc-tip">点击号码可直接拨打</p>
++    </aside>
+   </div>
+ </template>
+ 
+ <script>
+ // 领域工具：金额分转元、空字段占位
+ import { money, fieldValue } from "@/domain/productFields";
+-// 报价单口径：报价方抬头、日期、单号、交货周期、金额大写
++// 报价单口径：报价方抬头、日期、单号、金额大写
+ import {
+   QUOTE_SELLER,
+-  QUOTE_VALID_DAYS,
+-  QUOTE_DELIVERY,
+-  formatDate,
+   formatCnDate,
+-  addDays,
+   buildQuoteNo,
+   amountInWords,
+ } from "@/modules/selection/domain/quoteDoc";
+ // 图片导出：Canvas 绘制同版式报价单
+ import { exportQuoteImage } from "@/modules/selection/domain/quoteImage";
+-import CompanySeal from "@/modules/selection/components/CompanySeal.vue";
++// 业务员二维码：右侧联系卡片
++import QrCode from "@/components/QrCode.vue";
+ // 方案方向定义（用于把 direction id 转中文名）
+ import catalog from "@/mock/catalog.json";
+ 
+@@ -158,7 +163,7 @@
+ const MIN_ROWS = 8;
+ 
+ export default {
+-  components: { CompanySeal },
++  components: { QrCode },
+   data() {
+     const now = new Date();
+     return {
+@@ -167,13 +172,8 @@
+       // 单号与日期在进入页面时确定，导出图片 / 打印保持一致
+       quoteNo: buildQuoteNo(now),
+       quoteDateCn: formatCnDate(now),
+-      // 交货周期（后续可由订单/合同接口覆盖）
+-      delivery: QUOTE_DELIVERY,
+-      // 报价说明：有效期、税费、质保与效力
++      // 报价说明：税费、质保与效力（不含报价周期信息）
+       notes: [
+-        `本报价单自 ${formatCnDate(now)} 起 ${QUOTE_VALID_DAYS} 天内有效（有效期至 ${formatDate(
+-          addDays(now, QUOTE_VALID_DAYS)
+-        )}），逾期需重新确认。`,
+         "报价含 13% 增值税专用发票，运费与上门安装调试费用另计。",
+         "整机质保 12 个月，易损件与耗材按实际使用情况更换。",
+         "本报价为参考报价，最终以双方签订的合同为准。",
+@@ -181,6 +181,10 @@
+     };
+   },
+   computed: {
++    // 购物车勾选生成报价单时的行项快照
++    cartRows() {
++      return this.$store.state.quoteItems || [];
++    },
+     // 当前组合对象（组合选型模式有值；自定义选配为 null）
+     scheme() {
+       return this.$store.state.selectedScheme;
+@@ -211,8 +215,10 @@
+       );
+       return d ? d.name : this.scheme.direction;
+     },
+-    // 表格行归一化：组合模式取 parts，自定义模式映射为 {id, qty:1}
++    // 表格行归一化：购物车勾选 > 组合 parts > 自定义选配
+     rows() {
++      if (this.$route.query.from === "cart" && this.cartRows.length)
++        return this.cartRows;
+       if (this.scheme) return this.scheme.parts;
+       return this.selected.map((id) => ({ id, qty: 1 }));
+     },
+@@ -234,12 +240,16 @@
+     total() {
+       if (this.scheme && this.scheme.oneStop)
+         return this.scheme.packagePriceFen;
+-      if (this.rows.some((r) => this.product(r.id).priceFen == null))
+-        return null;
+-      return this.rows.reduce(
+-        (n, r) => n + this.product(r.id).priceFen * (r.qty || 1),
+-        0
+-      );
++      let sum = 0;
++      for (const row of this.rows) {
++        const price =
++          row.unitPriceFen != null
++            ? row.unitPriceFen
++            : this.product(row.id).priceFen;
++        if (price == null) return null;
++        sum += price * (row.qty || 1);
++      }
++      return sum;
+     },
+     // 合计金额大写
+     totalWords() {
+@@ -262,15 +272,16 @@
+     },
+     // 单行明细：名称 / 型号 / 数量 / 单位 / 单价 / 总价 / 备注
+     formatRow(p) {
+-      const item = this.product(p.id);
++      const item = p.id ? this.product(p.id) : {};
+       const qty = p.qty || 1;
+-      const price = item.priceFen;
++      // 购物车快照自带成交价与名称时优先使用，避免被商品目录价覆盖
++      const price = p.unitPriceFen != null ? p.unitPriceFen : item.priceFen;
+       return {
+-        name: item.name || "—",
+-        model: fieldValue(item.model),
++        name: p.name || item.name || "—",
++        model: fieldValue(p.model !== undefined ? p.model : item.model),
+         qty,
+-        // 单位：商品表暂未维护，默认「台」，后端补 unit 字段后自动生效
+-        unit: item.unit || "台",
++        // 单位：购物车快照优先，商品表未维护时默认「台」
++        unit: p.unit || item.unit || "台",
+         priceText: money(price),
+         totalText: price == null ? "待报价" : money(price * qty),
+         // 备注：一站式方案里带出部品所属模块，自定义选配留空
+@@ -286,7 +297,6 @@
+         customerPhone: this.customerPhone,
+         quoteNo: this.quoteNo,
+         quoteDateCn: this.quoteDateCn,
+-        delivery: this.delivery,
+         rows: this.rows.map((row, i) =>
+           Object.assign({ index: i + 1 }, this.formatRow(row))
+         ),
+@@ -351,8 +361,17 @@
+ 
+ <style>
+ .quote-page {
++  display: grid;
++  grid-template-columns: minmax(0, 860px) 220px;
++  justify-content: center;
++  gap: 18px;
++  align-items: start;
+   padding-bottom: 20px;
+ }
++/* 操作条：跨两栏 */
++.quote-bar {
++  grid-column: 1 / -1;
++}
+ /* 操作条：标题 + 导出按钮 */
+ .quote-bar {
+   display: flex;
+@@ -377,7 +396,7 @@
+ /* ===== 报价单纸张：黑框、宋体，贴近线下正式单据 ===== */
+ .quote-sheet {
+   max-width: 860px;
+-  margin: 0 auto;
++  margin: 0;
+   border: 1px solid #111;
+   background: #fff;
+   color: #111;
+@@ -466,10 +485,10 @@
+   font-weight: 700;
+ }
+ 
+-/* ===== 报价说明 + 落款：同一区块，底部留白供盖章 ===== */
++/* ===== 报价说明 + 落款：同一区块，底部留白供签署 ===== */
+ .qd-extra {
+   position: relative;
+-  min-height: 300px;
++  min-height: 220px;
+   padding: 12px 30px 26px;
+ }
+ .qd-extra-title {
+@@ -488,6 +507,7 @@
+   bottom: 40px;
+   left: 30px;
+   display: flex;
++  gap: 40px;
+   align-items: flex-start;
+   font-size: 14px;
+ }
+@@ -502,13 +522,7 @@
+   margin: 0;
+ }
+ .qd-sign-date {
+-  margin-top: 10px !important;
+-}
+-/* 电子章压在报价人落款上 */
+-.qd-seal {
+-  position: absolute;
+-  bottom: 4px;
+-  left: 34px;
++  margin-top: 14px !important;
+ }
+ 
+ /* 空态 */
+@@ -518,6 +532,72 @@
+   font-size: 14px;
+ }
+ 
++/* ===== 右侧联系卡片：二维码 + 业务员电话（打印/导出时隐藏） ===== */
++.quote-contact {
++  position: sticky;
++  top: 88px;
++  padding: 18px 14px;
++  border: 1px solid var(--line);
++  border-radius: 10px;
++  background: #fff;
++  text-align: center;
++  box-shadow: 0 6px 18px rgba(23, 54, 95, 0.06);
++}
++.qc-title {
++  margin: 0 0 12px;
++  font-size: 14px;
++  font-weight: 600;
++  color: #1f2937;
++}
++.quote-contact .qr-code {
++  margin: 0 auto;
++  border: 1px solid #eef2f7;
++  border-radius: 6px;
++}
++.qc-tip {
++  margin: 10px 0 0;
++  color: var(--muted);
++  font-size: 12px;
++  line-height: 1.6;
++}
++.qc-name {
++  margin: 10px 0 2px;
++  color: #334155;
++  font-size: 13px;
++}
++.qc-phone {
++  display: block;
++  color: var(--blue);
++  font-size: 17px;
++  font-weight: 700;
++  letter-spacing: 0.5px;
++  text-decoration: none;
++}
++.qc-phone:hover {
++  text-decoration: underline;
++}
++/* 窄屏：联系卡片移到单据下方，横向排列 */
++@media (max-width: 1200px) {
++  .quote-page {
++    grid-template-columns: minmax(0, 860px);
++  }
++  .quote-contact {
++    position: static;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    gap: 16px;
++    text-align: left;
++  }
++  .quote-contact .qc-title,
++  .quote-contact .qc-tip {
++    display: none;
++  }
++  .qc-name {
++    margin: 0;
++  }
++}
++
+ /* 打印 / 另存为 PDF：只保留报价单纸张 */
+ @media print {
+   @page {
+@@ -536,6 +616,12 @@
+   .quote-bar {
+     display: none !important;
+   }
++  .quote-contact {
++    display: none !important;
++  }
++  .quote-page {
++    display: block !important;
++  }
+   .main {
+     display: block !important;
+     width: auto !important;
+@@ -577,9 +663,5 @@
+     bottom: 26px;
+     left: 18px;
+   }
+-  .qd-seal {
+-    bottom: 0;
+-    left: 22px;
+-  }
+ }
+ </style>
+--- a/peijian-pc/src/modules/trade/views/cart.vue
++++ b/peijian-pc/src/modules/trade/views/cart.vue
+@@ -1,9 +1,10 @@
+ <!--
+   页面：购物车（cart.vue）
+   路由：/cart ｜ 分组：交易与履约
+-  作用：展示购物车行项（含一站式选购整套方案），支持数量加减、移除商品，
+-        方案行可展开配置明细、查看报价单或回到一站式选购修改，最后跳转确认订单页
+-  数据：读取 Vuex state.cart；金额/件数取 getters；变更走 updateQty / removeCart / setCheckout
++  作用：展示购物车行项（含一站式选购整套方案），支持勾选、全选、数量加减与移除商品，
++        方案行可展开配置明细、查看报价单或回到一站式选购修改；
++        底部可按勾选行生成报价单或跳转确认订单页
++  数据：读取 Vuex state.cart；勾选合计在页面内计算；变更走 updateQty / removeCart / setCheckout / setQuoteItems
+ -->
+ <template>
+   <div>
+@@ -17,6 +18,13 @@
+       <!-- 一站式选购方案：整套作为一条记录，可展开配置与查看报价单 -->
+       <div v-for="line in schemeLines" :key="line.id" class="cart-scheme">
+         <div class="cs-main">
++          <label class="cart-check">
++            <input
++              type="checkbox"
++              :checked="isChecked(line)"
++              @change="toggle(line)"
++            />
++          </label>
+           <img :src="asset(line.image)" :alt="line.name" />
+           <div class="cs-info">
+             <div class="cs-title">
+@@ -57,6 +65,13 @@
+ 
+       <!-- 购物车行项：图片、型号/SKU、单价、数量步进器、移除入口 -->
+       <div v-for="line in productLines" :key="line.id" class="line-product">
++        <label class="cart-check">
++          <input
++            type="checkbox"
++            :checked="isChecked(line)"
++            @change="toggle(line)"
++          />
++        </label>
+         <img :src="asset(line.image)" :alt="line.name" />
+         <div>
+           <h3>{{ line.name }}</h3>
+@@ -73,7 +88,7 @@
+               @change="setQty(line, $event)"
+             /><button class="btn sm" @click="qty(line, 1)">+</button>
+           </div>
+-          <button class="link" @click="$store.commit('removeCart', line.id)">移除</button>
++          <button class="link" @click="remove(line)">移除</button>
+         </div>
+       </div>
+ 
+@@ -85,10 +100,30 @@
+       </div>
+     </section>
+ 
+-    <!-- 结算栏：仅在有商品时出现，点击后把购物车快照写入 checkoutItems -->
+-    <div v-if="cart.length" class="card action-row">
+-      <span>共 {{ cartCount }} 件</span><strong class="price">{{ money(cartTotal) }}</strong
+-      ><button class="btn primary" @click="checkout">去结算</button>
++    <!-- 结算栏：全选 + 勾选行合计，可生成报价单或仅结算勾选行 -->
++    <div v-if="cart.length" class="card action-row cart-bar">
++      <label class="check-all">
++        <input type="checkbox" :checked="allChecked" @change="toggleAll" />
++        <span>全选</span>
++      </label>
++      <span class="tiny cart-bar-count">已选 {{ checkedCount }} 件</span>
++      <strong class="price">{{ money(checkedTotal) }}</strong>
++      <button
++        class="btn"
++        type="button"
++        :disabled="!checkedLines.length"
++        @click="makeQuote"
++      >
++        生成报价单
++      </button>
++      <button
++        class="btn primary"
++        type="button"
++        :disabled="!checkedLines.length"
++        @click="checkout"
++      >
++        去结算
++      </button>
+     </div>
+   </div>
+ </template>
+@@ -99,8 +134,8 @@
+ 
+ export default {
+   data() {
+-    // 展开查看配置的方案行 id（同一时间只展开一条）
+-    return { expandedId: '' }
++    // expandedId：展开查看配置的方案行 id；unchecked：未勾选的行 id（默认全选）
++    return { expandedId: '', unchecked: [] }
+   },
+   computed: {
+     // 购物车行项列表（含数量与成交单价快照）
+@@ -115,19 +150,44 @@
+     productLines() {
+       return this.cart.filter((l) => l.kind !== 'scheme')
+     },
+-    // 合计金额（分）
+-    cartTotal() {
+-      return this.$store.getters.cartTotal
+-    },
+-    // 合计件数
+-    cartCount() {
+-      return this.$store.getters.cartCount
++    // 已勾选行：结算与报价都只针对这些行
++    checkedLines() {
++      return this.cart.filter((l) => !this.unchecked.includes(l.id))
++    },
++    // 是否全选（购物车为空时不算全选）
++    allChecked() {
++      return this.cart.length > 0 && this.unchecked.length === 0
++    },
++    // 勾选行合计金额（分）
++    checkedTotal() {
++      return this.checkedLines.reduce(
++        (n, l) => n + l.unitPriceFen * l.quantity,
++        0
++      )
++    },
++    // 勾选行合计件数
++    checkedCount() {
++      return this.checkedLines.reduce((n, l) => n + l.quantity, 0)
+     },
+   },
+   methods: {
+     money,
+     asset,
+     fieldValue,
++    // 行是否勾选
++    isChecked(line) {
++      return !this.unchecked.includes(line.id)
++    },
++    // 切换单行勾选
++    toggle(line) {
++      const i = this.unchecked.indexOf(line.id)
++      if (i >= 0) this.unchecked.splice(i, 1)
++      else this.unchecked.push(line.id)
++    },
++    // 全选 / 取消全选
++    toggleAll() {
++      this.unchecked = this.allChecked ? this.cart.map((l) => l.id) : []
++    },
+     // 数量步进：加/减一个单位，mutation 内部保证最小为 1
+     qty(l, d) {
+       this.$store.commit('updateQty', { id: l.id, quantity: l.quantity + d })
+@@ -143,6 +203,7 @@
+     // 移除方案行
+     remove(line) {
+       if (this.expandedId === line.id) this.expandedId = ''
++      this.unchecked = this.unchecked.filter((id) => id !== line.id)
+       this.$store.commit('removeCart', line.id)
+     },
+     // 按商品 id 取名称（方案快照里只存 id）
+@@ -173,9 +234,29 @@
+       )
+       this.$router.push({ path: '/diy', query: { edit: '1' } })
+     },
+-    // 去结算：复制一份行项快照到 state.checkoutItems，再进入确认订单页
++    // 生成报价单：把勾选行写入报价快照后进入报价页（数量按购物车口径）
++    makeQuote() {
++      if (!this.checkedLines.length) return
++      this.$store.commit(
++        'setQuoteItems',
++        this.checkedLines.map((l) => ({
++          key: l.id,
++          id: l.productId || l.id,
++          name: l.name,
++          model: l.model,
++          qty: l.quantity,
++          unitPriceFen: l.unitPriceFen,
++          unit: l.kind === 'scheme' ? '套' : '台',
++          module: l.kind === 'scheme' ? '一站式方案' : '',
++        }))
++      )
++      this.$store.commit('setSelectedScheme', null)
++      this.$router.push({ path: '/quote', query: { from: 'cart' } })
++    },
++    // 去结算：只把勾选行快照写入 checkoutItems，再进入确认订单页
+     checkout() {
+-      this.$store.commit('setCheckout', this.cart.slice())
++      if (!this.checkedLines.length) return
++      this.$store.commit('setCheckout', this.checkedLines.slice())
+       this.$router.push('/checkout')
+     },
+   },
+@@ -193,7 +274,7 @@
+ }
+ .cs-main {
+   display: grid;
+-  grid-template-columns: 76px minmax(0, 1fr) auto;
++  grid-template-columns: 20px 76px minmax(0, 1fr) auto;
+   gap: 14px;
+   align-items: center;
+ }
+@@ -259,4 +340,36 @@
+ .cs-parts-note {
+   margin: 8px 0 10px;
+ }
++/* 勾选区：方案行与普通商品行共用 */
++.cart-check {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  cursor: pointer;
++}
++.cart-check input,
++.check-all input {
++  width: 16px;
++  height: 16px;
++  margin: 0;
++  accent-color: var(--blue);
++  cursor: pointer;
++}
++/* 普通商品行多一列勾选框 */
++.line-product {
++  grid-template-columns: 20px 70px minmax(0, 1fr) auto;
++}
++/* 结算栏：全选靠左，其余靠右 */
++.cart-bar .check-all {
++  display: inline-flex;
++  align-items: center;
++  gap: 6px;
++  margin-right: auto;
++  color: #475569;
++  font-size: 13px;
++  cursor: pointer;
++}
++.cart-bar-count {
++  color: var(--muted);
++}
+ </style>
+--- a/peijian-pc/src/store/index.js
++++ b/peijian-pc/src/store/index.js
+@@ -156,6 +156,7 @@
+   search: "", // 搜索关键词（预留）
+   selected: initial.selected || [], // 模块化选配选中的商品 id（持久化）
+   selectedScheme: initial.selectedScheme || null, // 当前选定的成套方案对象
++  quoteItems: [], // 购物车生成报价单时的行项快照（不持久化）
+   checkoutItems: [], // 进入结算时的行项快照（不持久化）
+   lastOrder: null, // 最近一次下单结果
+   notice: "", // 全局轻提示文案（App.vue 监听并 3 秒后清空）
+@@ -319,6 +320,10 @@
+       s.selectedScheme = v;
+       persist(s);
+     },
++    // 购物车勾选生成报价单：写入行项快照，报价页按快照出单
++    setQuoteItems(s, v) {
++      s.quoteItems = v || [];
++    },
+     // —— 收货地址 CRUD ——
+     addAddress(s, v) {
+       const id = "a" + Date.now();
