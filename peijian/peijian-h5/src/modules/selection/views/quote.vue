@@ -2,11 +2,11 @@
   页面：正式采购报价单（H5）
   路由：/quote ｜ 分组：选型与采购
   作用：与 PC 端同一口径、同一版式的正式报价单：
-        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号、交货周期）、
+        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号）、
         八列带框明细表（序号 / 产品名称 / 规格型号 / 数量 / 单位 / 单价 / 总价 / 备注）、
-        合计大写、报价说明、报价人与客户确认盖章区。
+        合计大写、报价说明、报价人与客户确认盖章区；单据下方提供业务员二维码与联系电话。
         支持导出 PDF（浏览器打印）与导出图片（Canvas 绘制，同版式含电子章）。
-  数据：state.selectedScheme + state.selected；
+  数据：state.quoteItems（购物车勾选生成）或 state.selectedScheme + state.selected；
         客户名称 / 联系人 / 电话取 getters.currentCompany
 -->
 <template>
@@ -46,7 +46,6 @@
             <p><em>发 件 人：</em><b>{{ seller.sender }}/{{ seller.phone }}</b></p>
             <p><em>公司地址：</em><b>{{ seller.address }}</b></p>
             <p><em>报价单号：</em><b>{{ quoteNo }}/{{ quoteDateCn }}</b></p>
-            <p><em>交货周期：</em><b>{{ delivery }}</b></p>
           </div>
         </div>
       </div>
@@ -127,26 +126,34 @@
         <CompanySeal :size="82" class="mq-seal" />
       </div>
     </section>
+
+    <!-- 联系业务员：二维码 + 电话，仅屏幕展示 -->
+    <aside class="mq-contact">
+      <QrCode :seed="7" :size="88" label="业务员微信二维码" />
+      <div class="mq-contact-copy">
+        <strong>{{ seller.sender }}</strong>
+        <a class="mq-phone" :href="'tel:' + seller.phone">{{ seller.phone }}</a>
+        <span>微信扫码或来电沟通报价细节</span>
+      </div>
+    </aside>
   </div>
 </template>
 
 <script>
 // 领域工具：金额分转元、空字段占位
 import { money, fieldValue } from "@/domain/productFields";
-// 报价单口径：报价方抬头、日期、单号、交货周期、金额大写
+// 报价单口径：报价方抬头、日期、单号、金额大写
 import {
   QUOTE_SELLER,
-  QUOTE_VALID_DAYS,
-  QUOTE_DELIVERY,
-  formatDate,
   formatCnDate,
-  addDays,
   buildQuoteNo,
   amountInWords,
 } from "@/modules/selection/domain/quoteDoc";
 // 图片导出：Canvas 绘制同版式报价单
 import { exportQuoteImage } from "@/modules/selection/domain/quoteImage";
 import CompanySeal from "@/modules/selection/components/CompanySeal.vue";
+// 业务员二维码：单据下方联系卡片
+import QrCode from "@/components/QrCode.vue";
 // 方案方向定义（direction id 转中文名）
 import catalog from "@/mock/catalog.json";
 
@@ -154,19 +161,15 @@ import catalog from "@/mock/catalog.json";
 const MIN_ROWS = 6;
 
 export default {
-  components: { CompanySeal },
+  components: { CompanySeal, QrCode },
   data() {
     const now = new Date();
     return {
       seller: QUOTE_SELLER,
       quoteNo: buildQuoteNo(now),
       quoteDateCn: formatCnDate(now),
-      // 交货周期（后续可由订单/合同接口覆盖）
-      delivery: QUOTE_DELIVERY,
+      // 报价说明：税费、质保与效力（不含报价周期信息）
       notes: [
-        `本报价单自 ${formatCnDate(now)} 起 ${QUOTE_VALID_DAYS} 天内有效（有效期至 ${formatDate(
-          addDays(now, QUOTE_VALID_DAYS)
-        )}），逾期需重新确认。`,
         "报价含 13% 增值税专用发票，运费与上门安装调试费用另计。",
         "整机质保 12 个月，易损件与耗材按实际使用情况更换。",
         "本报价为参考报价，最终以双方签订的合同为准。",
@@ -174,6 +177,10 @@ export default {
     };
   },
   computed: {
+    // 购物车勾选生成报价单时的行项快照
+    cartRows() {
+      return this.$store.state.quoteItems || [];
+    },
     scheme() {
       return this.$store.state.selectedScheme;
     },
@@ -200,8 +207,10 @@ export default {
       );
       return d ? d.name : this.scheme.direction;
     },
-    // 表格行归一化：组合模式取 parts，自定义模式映射为 {id, qty:1}
+    // 表格行归一化：购物车勾选 > 组合 parts > 自定义选配
     rows() {
+      if (this.$route.query.from === "cart" && this.cartRows.length)
+        return this.cartRows;
       if (this.scheme) return this.scheme.parts;
       return this.selected.map((id) => ({ id, qty: 1 }));
     },
@@ -221,12 +230,16 @@ export default {
     total() {
       if (this.scheme && this.scheme.oneStop)
         return this.scheme.packagePriceFen;
-      if (this.rows.some((r) => this.product(r.id).priceFen == null))
-        return null;
-      return this.rows.reduce(
-        (n, r) => n + this.product(r.id).priceFen * (r.qty || 1),
-        0
-      );
+      let sum = 0;
+      for (const row of this.rows) {
+        const price =
+          row.unitPriceFen != null
+            ? row.unitPriceFen
+            : this.product(row.id).priceFen;
+        if (price == null) return null;
+        sum += price * (row.qty || 1);
+      }
+      return sum;
     },
     totalWords() {
       return amountInWords(this.total);
@@ -247,15 +260,15 @@ export default {
     },
     // 单行明细：名称 / 型号 / 数量 / 单位 / 单价 / 总价 / 备注
     formatRow(p) {
-      const item = this.product(p.id);
+      const item = p.id ? this.product(p.id) : {};
       const qty = p.qty || 1;
-      const price = item.priceFen;
+      // 购物车快照自带成交价与名称时优先使用
+      const price = p.unitPriceFen != null ? p.unitPriceFen : item.priceFen;
       return {
-        name: item.name || "—",
-        model: fieldValue(item.model),
+        name: p.name || item.name || "—",
+        model: fieldValue(p.model !== undefined ? p.model : item.model),
         qty,
-        // 单位：商品表暂未维护，默认「台」，后端补 unit 字段后自动生效
-        unit: item.unit || "台",
+        unit: p.unit || item.unit || "台",
         priceText: money(price),
         totalText: price == null ? "待报价" : money(price * qty),
         // 备注：一站式方案里带出部品所属模块，自定义选配留空
@@ -271,7 +284,6 @@ export default {
         customerPhone: this.customerPhone,
         quoteNo: this.quoteNo,
         quoteDateCn: this.quoteDateCn,
-        delivery: this.delivery,
         rows: this.rows.map((row, i) =>
           Object.assign({ index: i + 1 }, this.formatRow(row))
         ),
@@ -460,6 +472,42 @@ export default {
   font-size: 11px;
 }
 
+/* ===== 联系业务员：二维码 + 电话（打印/导出时隐藏） ===== */
+.mq-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+}
+.mq-contact .qr-code {
+  flex: 0 0 auto;
+  border: 1px solid #eef2f7;
+  border-radius: 6px;
+}
+.mq-contact-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.mq-contact-copy strong {
+  color: #1f2937;
+  font-size: 12px;
+}
+.mq-phone {
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+}
+
 /* 打印 / 另存为 PDF：只保留报价单纸张 */
 @media print {
   @page {
@@ -474,6 +522,9 @@ export default {
   .app > .float-quick,
   .app > .toast,
   .m-quote-tools {
+    display: none !important;
+  }
+  .mq-contact {
     display: none !important;
   }
   .main {

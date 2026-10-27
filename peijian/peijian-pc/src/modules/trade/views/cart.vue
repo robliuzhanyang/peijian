@@ -1,9 +1,10 @@
 <!--
   页面：购物车（cart.vue）
   路由：/cart ｜ 分组：交易与履约
-  作用：展示购物车行项（含一站式选购整套方案），支持数量加减、移除商品，
-        方案行可展开配置明细、查看报价单或回到一站式选购修改，最后跳转确认订单页
-  数据：读取 Vuex state.cart；金额/件数取 getters；变更走 updateQty / removeCart / setCheckout
+  作用：展示购物车行项（含一站式选购整套方案），支持勾选、全选、数量加减与移除商品，
+        方案行可展开配置明细、查看报价单或回到一站式选购修改；
+        底部可按勾选行生成报价单或跳转确认订单页
+  数据：读取 Vuex state.cart；勾选合计在页面内计算；变更走 updateQty / removeCart / setCheckout / setQuoteItems
 -->
 <template>
   <div>
@@ -17,6 +18,13 @@
       <!-- 一站式选购方案：整套作为一条记录，可展开配置与查看报价单 -->
       <div v-for="line in schemeLines" :key="line.id" class="cart-scheme">
         <div class="cs-main">
+          <label class="cart-check">
+            <input
+              type="checkbox"
+              :checked="isChecked(line)"
+              @change="toggle(line)"
+            />
+          </label>
           <img :src="asset(line.image)" :alt="line.name" />
           <div class="cs-info">
             <div class="cs-title">
@@ -57,6 +65,13 @@
 
       <!-- 购物车行项：图片、型号/SKU、单价、数量步进器、移除入口 -->
       <div v-for="line in productLines" :key="line.id" class="line-product">
+        <label class="cart-check">
+          <input
+            type="checkbox"
+            :checked="isChecked(line)"
+            @change="toggle(line)"
+          />
+        </label>
         <img :src="asset(line.image)" :alt="line.name" />
         <div>
           <h3>{{ line.name }}</h3>
@@ -73,7 +88,7 @@
               @change="setQty(line, $event)"
             /><button class="btn sm" @click="qty(line, 1)">+</button>
           </div>
-          <button class="link" @click="$store.commit('removeCart', line.id)">移除</button>
+          <button class="link" @click="remove(line)">移除</button>
         </div>
       </div>
 
@@ -85,10 +100,30 @@
       </div>
     </section>
 
-    <!-- 结算栏：仅在有商品时出现，点击后把购物车快照写入 checkoutItems -->
-    <div v-if="cart.length" class="card action-row">
-      <span>共 {{ cartCount }} 件</span><strong class="price">{{ money(cartTotal) }}</strong
-      ><button class="btn primary" @click="checkout">去结算</button>
+    <!-- 结算栏：全选 + 勾选行合计，可生成报价单或仅结算勾选行 -->
+    <div v-if="cart.length" class="card action-row cart-bar">
+      <label class="check-all">
+        <input type="checkbox" :checked="allChecked" @change="toggleAll" />
+        <span>全选</span>
+      </label>
+      <span class="tiny cart-bar-count">已选 {{ checkedCount }} 件</span>
+      <strong class="price">{{ money(checkedTotal) }}</strong>
+      <button
+        class="btn"
+        type="button"
+        :disabled="!checkedLines.length"
+        @click="makeQuote"
+      >
+        生成报价单
+      </button>
+      <button
+        class="btn primary"
+        type="button"
+        :disabled="!checkedLines.length"
+        @click="checkout"
+      >
+        去结算
+      </button>
     </div>
   </div>
 </template>
@@ -99,8 +134,8 @@ import { money, asset, fieldValue } from '@/domain/productFields'
 
 export default {
   data() {
-    // 展开查看配置的方案行 id（同一时间只展开一条）
-    return { expandedId: '' }
+    // expandedId：展开查看配置的方案行 id；unchecked：未勾选的行 id（默认全选）
+    return { expandedId: '', unchecked: [] }
   },
   computed: {
     // 购物车行项列表（含数量与成交单价快照）
@@ -115,19 +150,44 @@ export default {
     productLines() {
       return this.cart.filter((l) => l.kind !== 'scheme')
     },
-    // 合计金额（分）
-    cartTotal() {
-      return this.$store.getters.cartTotal
+    // 已勾选行：结算与报价都只针对这些行
+    checkedLines() {
+      return this.cart.filter((l) => !this.unchecked.includes(l.id))
     },
-    // 合计件数
-    cartCount() {
-      return this.$store.getters.cartCount
+    // 是否全选（购物车为空时不算全选）
+    allChecked() {
+      return this.cart.length > 0 && this.unchecked.length === 0
+    },
+    // 勾选行合计金额（分）
+    checkedTotal() {
+      return this.checkedLines.reduce(
+        (n, l) => n + l.unitPriceFen * l.quantity,
+        0
+      )
+    },
+    // 勾选行合计件数
+    checkedCount() {
+      return this.checkedLines.reduce((n, l) => n + l.quantity, 0)
     },
   },
   methods: {
     money,
     asset,
     fieldValue,
+    // 行是否勾选
+    isChecked(line) {
+      return !this.unchecked.includes(line.id)
+    },
+    // 切换单行勾选
+    toggle(line) {
+      const i = this.unchecked.indexOf(line.id)
+      if (i >= 0) this.unchecked.splice(i, 1)
+      else this.unchecked.push(line.id)
+    },
+    // 全选 / 取消全选
+    toggleAll() {
+      this.unchecked = this.allChecked ? this.cart.map((l) => l.id) : []
+    },
     // 数量步进：加/减一个单位，mutation 内部保证最小为 1
     qty(l, d) {
       this.$store.commit('updateQty', { id: l.id, quantity: l.quantity + d })
@@ -143,6 +203,7 @@ export default {
     // 移除方案行
     remove(line) {
       if (this.expandedId === line.id) this.expandedId = ''
+      this.unchecked = this.unchecked.filter((id) => id !== line.id)
       this.$store.commit('removeCart', line.id)
     },
     // 按商品 id 取名称（方案快照里只存 id）
@@ -173,9 +234,29 @@ export default {
       )
       this.$router.push({ path: '/diy', query: { edit: '1' } })
     },
-    // 去结算：复制一份行项快照到 state.checkoutItems，再进入确认订单页
+    // 生成报价单：把勾选行写入报价快照后进入报价页（数量按购物车口径）
+    makeQuote() {
+      if (!this.checkedLines.length) return
+      this.$store.commit(
+        'setQuoteItems',
+        this.checkedLines.map((l) => ({
+          key: l.id,
+          id: l.productId || l.id,
+          name: l.name,
+          model: l.model,
+          qty: l.quantity,
+          unitPriceFen: l.unitPriceFen,
+          unit: l.kind === 'scheme' ? '套' : '台',
+          module: l.kind === 'scheme' ? '一站式方案' : '',
+        }))
+      )
+      this.$store.commit('setSelectedScheme', null)
+      this.$router.push({ path: '/quote', query: { from: 'cart' } })
+    },
+    // 去结算：只把勾选行快照写入 checkoutItems，再进入确认订单页
     checkout() {
-      this.$store.commit('setCheckout', this.cart.slice())
+      if (!this.checkedLines.length) return
+      this.$store.commit('setCheckout', this.checkedLines.slice())
       this.$router.push('/checkout')
     },
   },
@@ -193,7 +274,7 @@ export default {
 }
 .cs-main {
   display: grid;
-  grid-template-columns: 76px minmax(0, 1fr) auto;
+  grid-template-columns: 20px 76px minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
 }
@@ -258,5 +339,37 @@ export default {
 }
 .cs-parts-note {
   margin: 8px 0 10px;
+}
+/* 勾选区：方案行与普通商品行共用 */
+.cart-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cart-check input,
+.check-all input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+/* 普通商品行多一列勾选框 */
+.line-product {
+  grid-template-columns: 20px 70px minmax(0, 1fr) auto;
+}
+/* 结算栏：全选靠左，其余靠右 */
+.cart-bar .check-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+  color: #475569;
+  font-size: 13px;
+  cursor: pointer;
+}
+.cart-bar-count {
+  color: var(--muted);
 }
 </style>

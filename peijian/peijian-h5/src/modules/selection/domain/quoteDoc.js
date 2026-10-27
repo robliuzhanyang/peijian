@@ -21,30 +21,10 @@ export const QUOTE_SELLER = {
   address: "江西省吉安市永新县工业开发区",
 }
 
-// 报价有效期（天）
-export const QUOTE_VALID_DAYS = 30
-
-// 交货周期（默认口径，后续可从订单/合同接口读取）
-export const QUOTE_DELIVERY = "合同签订后 15 个工作日内"
-
-// 日期格式化为 YYYY-MM-DD
-export function formatDate(date) {
-  const d = date instanceof Date ? date : new Date(date)
-  const pad = (n) => String(n).padStart(2, "0")
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
-}
-
 // 日期格式化为 YYYY年M月D日（正式单据写法）
 export function formatCnDate(date) {
   const d = date instanceof Date ? date : new Date(date)
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
-}
-
-// 在指定日期上加天数
-export function addDays(date, days) {
-  const d = new Date(date)
-  d.setDate(d.getDate() + days)
-  return d
 }
 
 // 报价单号：XJJS-YYMMDD + B + 两位流水（例：XJJS-261022B01）

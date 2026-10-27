@@ -88,7 +88,7 @@
           <div class="stockline">
             <span class="green"
               >现货 {{ p.stock }}{{ p.cat === "laser" ? " 台" : " 件" }}</span
-            ><span class="muted">得 {{ p.points }} 积分</span>
+            >
           </div>
           <button
             v-if="p.buyable"

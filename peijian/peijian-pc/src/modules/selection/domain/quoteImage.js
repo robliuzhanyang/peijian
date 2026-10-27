@@ -4,7 +4,7 @@
  *
  * 入参 model 由 pages/quote.vue 的 exportModel() 组装，字段均为已格式化文本：
  *   seller / customerName / customerContact / customerPhone
- *   quoteNo / quoteDateCn / delivery
+ *   quoteNo / quoteDateCn
  *   rows[{index,name,model,qty,unit,priceText,totalText,remark}] / blankRows
  *   totalText / totalWords / notes[]
  */
@@ -150,7 +150,7 @@ export function exportQuoteImage(model) {
   const topStart = MARGIN + 24
   const metaTop = topStart + 74 + 62
   const metaLineH = 38
-  const metaHeight = metaLineH * 4 + 18
+  const metaHeight = metaLineH * 3 + 18
   const tableTop = metaTop + metaHeight
   const tableRows = rows.length + blanks + 1 // +1 为合计行
   const tableHeight = HEAD_H + tableRows * ROW_H
@@ -193,7 +193,6 @@ export function exportQuoteImage(model) {
     ["发 件 人：", `${seller.sender || "—"}/${seller.phone || "—"}`],
     ["公司地址：", seller.address || "—"],
     ["报价单号：", `${model.quoteNo || ""}/${model.quoteDateCn || ""}`],
-    ["交货周期：", model.delivery || "—"],
   ]
   const halfX = LEFT + Math.round(INNER * 0.5)
   metaLeft.forEach((item, i) => {

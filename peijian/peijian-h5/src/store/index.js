@@ -155,6 +155,7 @@ const state = {
   search: "", // 搜索关键词（预留）
   selected: initial.selected || [], // 模块化选配选中的商品 id（持久化）
   selectedScheme: initial.selectedScheme || null, // 当前选定的成套方案对象
+  quoteItems: [], // 购物车生成报价单时的行项快照（不持久化）
   checkoutItems: [], // 进入结算时的行项快照（不持久化）
   lastOrder: null, // 最近一次下单结果
   notice: "", // 全局轻提示文案（App.vue 监听并 3 秒后清空）
@@ -317,6 +318,10 @@ export default new Vuex.Store({
     setSelectedScheme(s, v) {
       s.selectedScheme = v;
       persist(s);
+    },
+    // 购物车勾选生成报价单：写入行项快照，报价页按快照出单
+    setQuoteItems(s, v) {
+      s.quoteItems = v || [];
     },
     // —— 收货地址 CRUD ——
     addAddress(s, v) {

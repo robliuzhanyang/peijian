@@ -2,11 +2,11 @@
   页面：正式采购报价单（quote.vue）
   路由：/quote ｜ 分组：选型与采购
   作用：把所选配置生成正式报价单，版式对齐线下纸质报价单：
-        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号、交货周期）、
+        居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号）、
         八列带框明细表（序号 / 产品名称 / 规格型号 / 数量 / 单位 / 单价 / 总价 / 备注）、
-        合计大写、报价说明、报价人与客户确认盖章区。
+        合计大写、报价说明、报价人与客户确认盖章区；右侧提供业务员二维码与联系电话。
         支持导出 PDF（浏览器打印）与导出 PNG 图片（Canvas 绘制，同版式含电子章）。
-  数据：Vuex state.selectedScheme（组合对象或 null）+ state.selected（商品 id 数组）；
+  数据：Vuex state.quoteItems（购物车勾选生成）或 state.selectedScheme + state.selected；
         客户名称 / 联系人 / 电话取当前企业（getters.currentCompany）
 -->
 <template>
@@ -50,7 +50,6 @@
             </p>
             <p><em>公司地址：</em><b>{{ seller.address }}</b></p>
             <p><em>报价单号：</em><b>{{ quoteNo }}/{{ quoteDateCn }}</b></p>
-            <p><em>交货周期：</em><b>{{ delivery }}</b></p>
           </div>
         </div>
       </div>
@@ -131,26 +130,34 @@
         <CompanySeal :size="132" class="qd-seal" />
       </div>
     </section>
+
+    <!-- 联系业务员：仅屏幕展示，不进入打印稿与导出图片 -->
+    <aside class="quote-contact">
+      <p class="qc-title">联系业务员</p>
+      <QrCode :seed="7" :size="132" label="业务员微信二维码" />
+      <p class="qc-tip">微信扫码，沟通报价细节</p>
+      <p class="qc-name">{{ seller.sender }}</p>
+      <a class="qc-phone" :href="'tel:' + seller.phone">{{ seller.phone }}</a>
+      <p class="qc-tip">点击号码可直接拨打</p>
+    </aside>
   </div>
 </template>
 
 <script>
 // 领域工具：金额分转元、空字段占位
 import { money, fieldValue } from "@/domain/productFields";
-// 报价单口径：报价方抬头、日期、单号、交货周期、金额大写
+// 报价单口径：报价方抬头、日期、单号、金额大写
 import {
   QUOTE_SELLER,
-  QUOTE_VALID_DAYS,
-  QUOTE_DELIVERY,
-  formatDate,
   formatCnDate,
-  addDays,
   buildQuoteNo,
   amountInWords,
 } from "@/modules/selection/domain/quoteDoc";
 // 图片导出：Canvas 绘制同版式报价单
 import { exportQuoteImage } from "@/modules/selection/domain/quoteImage";
 import CompanySeal from "@/modules/selection/components/CompanySeal.vue";
+// 业务员二维码：右侧联系卡片
+import QrCode from "@/components/QrCode.vue";
 // 方案方向定义（用于把 direction id 转中文名）
 import catalog from "@/mock/catalog.json";
 
@@ -158,7 +165,7 @@ import catalog from "@/mock/catalog.json";
 const MIN_ROWS = 8;
 
 export default {
-  components: { CompanySeal },
+  components: { CompanySeal, QrCode },
   data() {
     const now = new Date();
     return {
@@ -167,13 +174,8 @@ export default {
       // 单号与日期在进入页面时确定，导出图片 / 打印保持一致
       quoteNo: buildQuoteNo(now),
       quoteDateCn: formatCnDate(now),
-      // 交货周期（后续可由订单/合同接口覆盖）
-      delivery: QUOTE_DELIVERY,
-      // 报价说明：有效期、税费、质保与效力
+      // 报价说明：税费、质保与效力（不含报价周期信息）
       notes: [
-        `本报价单自 ${formatCnDate(now)} 起 ${QUOTE_VALID_DAYS} 天内有效（有效期至 ${formatDate(
-          addDays(now, QUOTE_VALID_DAYS)
-        )}），逾期需重新确认。`,
         "报价含 13% 增值税专用发票，运费与上门安装调试费用另计。",
         "整机质保 12 个月，易损件与耗材按实际使用情况更换。",
         "本报价为参考报价，最终以双方签订的合同为准。",
@@ -181,6 +183,10 @@ export default {
     };
   },
   computed: {
+    // 购物车勾选生成报价单时的行项快照
+    cartRows() {
+      return this.$store.state.quoteItems || [];
+    },
     // 当前组合对象（组合选型模式有值；自定义选配为 null）
     scheme() {
       return this.$store.state.selectedScheme;
@@ -211,8 +217,10 @@ export default {
       );
       return d ? d.name : this.scheme.direction;
     },
-    // 表格行归一化：组合模式取 parts，自定义模式映射为 {id, qty:1}
+    // 表格行归一化：购物车勾选 > 组合 parts > 自定义选配
     rows() {
+      if (this.$route.query.from === "cart" && this.cartRows.length)
+        return this.cartRows;
       if (this.scheme) return this.scheme.parts;
       return this.selected.map((id) => ({ id, qty: 1 }));
     },
@@ -234,12 +242,16 @@ export default {
     total() {
       if (this.scheme && this.scheme.oneStop)
         return this.scheme.packagePriceFen;
-      if (this.rows.some((r) => this.product(r.id).priceFen == null))
-        return null;
-      return this.rows.reduce(
-        (n, r) => n + this.product(r.id).priceFen * (r.qty || 1),
-        0
-      );
+      let sum = 0;
+      for (const row of this.rows) {
+        const price =
+          row.unitPriceFen != null
+            ? row.unitPriceFen
+            : this.product(row.id).priceFen;
+        if (price == null) return null;
+        sum += price * (row.qty || 1);
+      }
+      return sum;
     },
     // 合计金额大写
     totalWords() {
@@ -262,15 +274,16 @@ export default {
     },
     // 单行明细：名称 / 型号 / 数量 / 单位 / 单价 / 总价 / 备注
     formatRow(p) {
-      const item = this.product(p.id);
+      const item = p.id ? this.product(p.id) : {};
       const qty = p.qty || 1;
-      const price = item.priceFen;
+      // 购物车快照自带成交价与名称时优先使用，避免被商品目录价覆盖
+      const price = p.unitPriceFen != null ? p.unitPriceFen : item.priceFen;
       return {
-        name: item.name || "—",
-        model: fieldValue(item.model),
+        name: p.name || item.name || "—",
+        model: fieldValue(p.model !== undefined ? p.model : item.model),
         qty,
-        // 单位：商品表暂未维护，默认「台」，后端补 unit 字段后自动生效
-        unit: item.unit || "台",
+        // 单位：购物车快照优先，商品表未维护时默认「台」
+        unit: p.unit || item.unit || "台",
         priceText: money(price),
         totalText: price == null ? "待报价" : money(price * qty),
         // 备注：一站式方案里带出部品所属模块，自定义选配留空
@@ -286,7 +299,6 @@ export default {
         customerPhone: this.customerPhone,
         quoteNo: this.quoteNo,
         quoteDateCn: this.quoteDateCn,
-        delivery: this.delivery,
         rows: this.rows.map((row, i) =>
           Object.assign({ index: i + 1 }, this.formatRow(row))
         ),
@@ -351,7 +363,16 @@ export default {
 
 <style>
 .quote-page {
+  display: grid;
+  grid-template-columns: minmax(0, 860px) 220px;
+  justify-content: center;
+  gap: 18px;
+  align-items: start;
   padding-bottom: 20px;
+}
+/* 操作条：跨两栏 */
+.quote-bar {
+  grid-column: 1 / -1;
 }
 /* 操作条：标题 + 导出按钮 */
 .quote-bar {
@@ -377,7 +398,7 @@ export default {
 /* ===== 报价单纸张：黑框、宋体，贴近线下正式单据 ===== */
 .quote-sheet {
   max-width: 860px;
-  margin: 0 auto;
+  margin: 0;
   border: 1px solid #111;
   background: #fff;
   color: #111;
@@ -518,6 +539,72 @@ export default {
   font-size: 14px;
 }
 
+/* ===== 右侧联系卡片：二维码 + 业务员电话（打印/导出时隐藏） ===== */
+.quote-contact {
+  position: sticky;
+  top: 88px;
+  padding: 18px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(23, 54, 95, 0.06);
+}
+.qc-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.quote-contact .qr-code {
+  margin: 0 auto;
+  border: 1px solid #eef2f7;
+  border-radius: 6px;
+}
+.qc-tip {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.qc-name {
+  margin: 10px 0 2px;
+  color: #334155;
+  font-size: 13px;
+}
+.qc-phone {
+  display: block;
+  color: var(--blue);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+.qc-phone:hover {
+  text-decoration: underline;
+}
+/* 窄屏：联系卡片移到单据下方，横向排列 */
+@media (max-width: 1200px) {
+  .quote-page {
+    grid-template-columns: minmax(0, 860px);
+  }
+  .quote-contact {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: left;
+  }
+  .quote-contact .qc-title,
+  .quote-contact .qc-tip {
+    display: none;
+  }
+  .qc-name {
+    margin: 0;
+  }
+}
+
 /* 打印 / 另存为 PDF：只保留报价单纸张 */
 @media print {
   @page {
@@ -535,6 +622,12 @@ export default {
   .app > .float-quick,
   .quote-bar {
     display: none !important;
+  }
+  .quote-contact {
+    display: none !important;
+  }
+  .quote-page {
+    display: block !important;
   }
   .main {
     display: block !important;

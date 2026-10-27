@@ -34,16 +34,13 @@
         money(product.priceFen)
       }}</strong
       ><span v-else class="badge blue">待报价</span>
-      <!-- 库存与积分：数据完整时展示现货与可得积分 -->
+      <!-- 库存：数据完整时展示现货 -->
       <div class="stockline">
-        <template v-if="product.buyable && product.stock != null">
-          <span class="green"
-            >现货 {{ product.stock }}{{ product.cat === 'laser' ? ' 台' : ' 件'
-            }}</span
-          >
-          <span class="muted">得 {{ product.points }} 积分</span>
-        </template>
-        <span v-else class="muted">库存与积分待客户提供</span>
+        <span v-if="product.buyable && product.stock != null" class="green"
+          >现货 {{ product.stock }}{{ product.cat === 'laser' ? ' 台' : ' 件'
+          }}</span
+        >
+        <span v-else class="muted">库存待客户提供</span>
       </div>
       <!-- 可售：加入购物车 / 直接购买；资料类商品引导到详情页询价 -->
       <div v-if="product.buyable" class="pc-actions">
