@@ -209,10 +209,10 @@ export default {
       const ids = [
         this.selection.cabinetId,
         ...Object.values(this.selection.kitParts || {}),
-        this.selection.galvo,
-        this.videoGalvo ? null : this.selection.fieldLens,
         this.selection.laser,
         this.selection.controller,
+        this.selection.galvo,
+        this.videoGalvo ? null : this.selection.fieldLens,
         this.selection.computer,
         ...(this.selection.extensions || []),
       ];
@@ -248,6 +248,24 @@ export default {
         },
         ...this.kitRows,
         {
+          key: "laser",
+          group: "核心配件",
+          label: "激光器",
+          slot: "laser",
+          product: this.product(this.selection.laser),
+          includedText: "未选择（可选）",
+          editable: true,
+        },
+        {
+          key: "controller",
+          group: "核心配件",
+          label: "打标卡",
+          slot: "controller",
+          product: this.product(this.selection.controller),
+          includedText: "未选择（可选）",
+          editable: true,
+        },
+        {
           key: "galvo",
           group: "核心配件",
           label: "振镜",
@@ -276,24 +294,6 @@ export default {
               includedText: "未选择（可选）",
               editable: true,
             },
-        {
-          key: "laser",
-          group: "核心配件",
-          label: "激光器",
-          slot: "laser",
-          product: this.product(this.selection.laser),
-          includedText: "未选择（可选）",
-          editable: true,
-        },
-        {
-          key: "controller",
-          group: "核心配件",
-          label: "打标卡",
-          slot: "controller",
-          product: this.product(this.selection.controller),
-          includedText: "未选择（可选）",
-          editable: true,
-        },
         {
           key: "computer",
           group: "核心配件",
@@ -436,7 +436,7 @@ export default {
         cabinet:
           "更换机柜会带出对应的铝件 5 件套默认值，已手动调整过的铝件会保留。",
         kit: "铝件 5 件套已按当前机柜带出，可展开逐件微调；手动调整的部件在更换机柜时保留。",
-        galvo: "视频振镜已配套场镜，选择后第 4 步无需再选场镜。",
+        galvo: "视频振镜已配套场镜，选择后第 6 步无需再选场镜。",
         fieldLens: this.videoGalvo
           ? "当前视频振镜已包含场镜，本步骤已自动完成。"
           : "仅展示与当前振镜匹配的场镜。",
@@ -470,7 +470,7 @@ export default {
       const defaults = this.catalog.defaults[this.orientationId];
       const prevParts = { ...this.selection.kitParts };
       const kitParts = { ...kit.parts };
-      // 铝件步骤在前：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
+      // 机柜在前、铝件随后：换机柜时保留用户手动调整过的部件，只补全未调整的槽位
       if (keepCustom) {
         Object.keys(this.kitCustom).forEach((slot) => {
           if (this.kitCustom[slot] && prevParts[slot])

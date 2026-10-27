@@ -559,12 +559,12 @@ const catalog = {
   ],
   // 每一步都是可选模块：可跳过、可取消已选项，由用户按实际需要勾选
   steps: [
-    { key: "kit", name: "铝件5件套", required: false, skippable: true },
     { key: "cabinet", name: "机柜", required: false, skippable: true },
-    { key: "galvo", name: "振镜", required: false, skippable: true },
-    { key: "fieldLens", name: "场镜", required: false, skippable: true },
+    { key: "kit", name: "铝件5件套", required: false, skippable: true },
     { key: "laser", name: "激光器", required: false, skippable: true },
     { key: "controller", name: "打标卡", required: false, skippable: true },
+    { key: "galvo", name: "振镜", required: false, skippable: true },
+    { key: "fieldLens", name: "场镜", required: false, skippable: true },
     { key: "computer", name: "电脑套装", required: false, skippable: true },
     { key: "extensions", name: "扩展配件", required: false, skippable: true },
   ],
