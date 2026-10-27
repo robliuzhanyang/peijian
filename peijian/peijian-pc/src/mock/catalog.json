@@ -1,0 +1,6946 @@
+{
+  "categories": [
+    {
+      "id": "laser",
+      "name": "激光器",
+      "icon": "zap",
+      "children": [
+        "光纤激光器",
+        "紫外激光器",
+        "蓝光激光器",
+        "CO₂激光管",
+        "双光源模组"
+      ]
+    },
+    {
+      "id": "optics",
+      "name": "光学系统",
+      "icon": "lens",
+      "children": [
+        "场镜",
+        "振镜 / 打标头",
+        "红光预览",
+        "视觉识别"
+      ]
+    },
+    {
+      "id": "mechanic",
+      "name": "机械结构",
+      "icon": "grid",
+      "children": [
+        "电动 / 手摇立柱",
+        "机架",
+        "旋转装置",
+        "XY 轴 / 传送带"
+      ]
+    },
+    {
+      "id": "power",
+      "name": "电气电源",
+      "icon": "power",
+      "children": [
+        "三合一电源",
+        "分体电源",
+        "控制板卡"
+      ]
+    },
+    {
+      "id": "extra",
+      "name": "整机选配件",
+      "icon": "box",
+      "children": [
+        "广告灯箱",
+        "显示屏",
+        "货道组件"
+      ]
+    },
+    {
+      "id": "care",
+      "name": "耗材与保养",
+      "icon": "tool",
+      "children": [
+        "保护镜片",
+        "清洁套装",
+        "易损件包"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "laser50",
+      "name": "光纤激光器 50W（创鑫）",
+      "code": "XJ-GX-50W-CX",
+      "brand": "创鑫",
+      "cat": "laser",
+      "image": "laser",
+      "gallery": ["laser", "head", "machine"],
+      "sub": "1064nm · 风冷 · 金属打标",
+      "type": "光纤",
+      "power": "50W",
+      "scene": "金属打标",
+      "machine": "桌面便携A款",
+      "priceFen": 480000,
+      "stock": 26,
+      "points": 48,
+      "hot": true,
+      "skus": [
+        {
+          "id": "L20",
+          "power": "20W",
+          "cool": "风冷",
+          "priceFen": 360000,
+          "stock": 38
+        },
+        {
+          "id": "L30",
+          "power": "30W",
+          "cool": "风冷",
+          "priceFen": 420000,
+          "stock": 32
+        },
+        {
+          "id": "L50",
+          "power": "50W",
+          "cool": "风冷",
+          "priceFen": 480000,
+          "stock": 26
+        },
+        {
+          "id": "L50W",
+          "power": "50W",
+          "cool": "水冷",
+          "priceFen": 528000,
+          "stock": 8
+        },
+        {
+          "id": "L100",
+          "power": "100W",
+          "cool": "风冷",
+          "priceFen": 780000,
+          "stock": 5
+        },
+        {
+          "id": "L200",
+          "power": "200W",
+          "cool": "水冷",
+          "priceFen": 1580000,
+          "stock": 0
+        }
+      ],
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-GX-50W-CX",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "uv5",
+      "name": "紫外激光器 5W（瑞丰恒）",
+      "code": "XJ-UV-5W-RFH",
+      "brand": "瑞丰恒",
+      "cat": "laser",
+      "image": "laser",
+      "sub": "355nm · 风冷 · 非金属精密打标",
+      "type": "紫外",
+      "power": "5W",
+      "scene": "非金属打标",
+      "machine": "工业柜式",
+      "priceFen": 1280000,
+      "stock": 8,
+      "points": 128,
+      "skus": [
+        {
+          "id": "UV3",
+          "power": "3W",
+          "cool": "风冷",
+          "priceFen": 960000,
+          "stock": 11
+        },
+        {
+          "id": "UV5",
+          "power": "5W",
+          "cool": "风冷",
+          "priceFen": 1280000,
+          "stock": 8
+        },
+        {
+          "id": "UV20",
+          "power": "20W",
+          "cool": "水冷",
+          "priceFen": 3800000,
+          "stock": 2
+        }
+      ],
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-UV-5W-RFH",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "lens110",
+      "name": "场镜 110 × 110mm",
+      "code": "XJ-LB-110",
+      "brand": "杰普特",
+      "cat": "optics",
+      "image": "lens",
+      "sub": "F-Theta · 0.005mm · 1064nm",
+      "type": "光纤",
+      "power": "通用",
+      "scene": "金属打标",
+      "machine": "桌面便携A款",
+      "priceFen": 85000,
+      "stock": 86,
+      "points": 8,
+      "hot": true,
+      "skus": [
+        {
+          "id": "F110",
+          "range": "110 × 110mm",
+          "priceFen": 85000,
+          "stock": 86
+        },
+        {
+          "id": "F150",
+          "range": "150 × 150mm",
+          "priceFen": 112000,
+          "stock": 54
+        },
+        {
+          "id": "F200",
+          "range": "200 × 200mm",
+          "priceFen": 168000,
+          "stock": 19
+        }
+      ],
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-LB-110",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "head",
+      "name": "振镜式打标头（光纤）",
+      "code": "XJ-ZJ-1064",
+      "brand": "杰普特",
+      "cat": "optics",
+      "image": "head",
+      "sub": "高速振镜 · 10000mm/s · 1064nm",
+      "type": "光纤",
+      "scene": "金属打标",
+      "machine": "桌面便携A款",
+      "priceFen": 260000,
+      "stock": 18,
+      "points": 26,
+      "hot": true,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-ZJ-1064",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "uvhead",
+      "name": "紫外振镜打标头",
+      "code": "XJ-ZJ-355",
+      "brand": "罗根",
+      "cat": "optics",
+      "image": "head",
+      "sub": "355nm · 紫外系列专用接口",
+      "type": "紫外",
+      "scene": "非金属打标",
+      "machine": "工业柜式",
+      "priceFen": 320000,
+      "stock": 9,
+      "points": 32,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-ZJ-355",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "power3",
+      "name": "三合一电源模块",
+      "code": "XJ-DY-3IN1",
+      "brand": "创鑫",
+      "cat": "power",
+      "image": "power",
+      "sub": "100–220V · 500W以下 · 集成供电",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 72000,
+      "stock": 45,
+      "points": 7,
+      "hot": true,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-DY-3IN1",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "columnE",
+      "name": "电动立柱（自动对焦）",
+      "code": "XJ-LZ-AF",
+      "brand": "创鑫",
+      "cat": "mechanic",
+      "image": "column",
+      "sub": "电动升降 · 自动对焦 · 适配视觉模组",
+      "type": "通用",
+      "scene": "精密视觉",
+      "machine": "桌面便携A款",
+      "priceFen": 198000,
+      "stock": 16,
+      "points": 19,
+      "hot": true,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-LZ-AF",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": true,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "vision",
+      "name": "视觉识别模组",
+      "code": "XJ-VS-01",
+      "brand": "梅曼",
+      "cat": "optics",
+      "image": "vision",
+      "sub": "需搭配电动立柱 · 位置识别",
+      "type": "通用",
+      "scene": "精密视觉",
+      "machine": "桌面便携A款",
+      "priceFen": 380000,
+      "stock": 7,
+      "points": 38,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-VS-01",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "columnM",
+      "name": "手摇立柱",
+      "code": "XJ-LZ-M",
+      "brand": "创鑫",
+      "cat": "mechanic",
+      "image": "column",
+      "sub": "手动升降 · 双红光对焦",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 86000,
+      "stock": 32,
+      "points": 8,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-LZ-M",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "powerS",
+      "name": "分体电源",
+      "code": "XJ-DY-SP",
+      "brand": "创鑫",
+      "cat": "power",
+      "image": "power",
+      "sub": "分体设计 · 工业级稳定供电",
+      "type": "通用",
+      "scene": "金属打标",
+      "machine": "工业柜式",
+      "priceFen": 64000,
+      "stock": 29,
+      "points": 6,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-DY-SP",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "rotary",
+      "name": "旋转装置",
+      "code": "XJ-RT-80",
+      "brand": "杰普特",
+      "cat": "mechanic",
+      "image": "rotary",
+      "sub": "圆柱工件 · 80mm夹持 · 通用接口",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 128000,
+      "stock": 21,
+      "points": 12,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-RT-80",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "xy",
+      "name": "精密 XY 轴工作台",
+      "code": "XJ-XY-150",
+      "brand": "杰普特",
+      "cat": "mechanic",
+      "image": "machine",
+      "sub": "150mm行程 · 多工位连续加工",
+      "type": "通用",
+      "scene": "金属打标",
+      "machine": "工业柜式",
+      "priceFen": 268000,
+      "stock": 6,
+      "points": 26,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-XY-150",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "belt",
+      "name": "产线传送带模组",
+      "code": "XJ-CV-01",
+      "brand": "罗根",
+      "cat": "mechanic",
+      "image": "machine",
+      "sub": "飞行式打标 · 专线运输到付",
+      "type": "通用",
+      "scene": "产线飞行",
+      "machine": "飞行式",
+      "priceFen": 460000,
+      "stock": 4,
+      "points": 46,
+      "large": true,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-CV-01",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "red",
+      "name": "红光预览光路模组",
+      "code": "XJ-RED-01",
+      "brand": "创鑫",
+      "cat": "optics",
+      "image": "head",
+      "sub": "红光预览 · 定位对焦",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 46000,
+      "stock": 58,
+      "points": 4,
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-RED-01",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "kit",
+      "name": "易损件 / 维护工具包",
+      "code": "XJ-KIT-01",
+      "brand": "创鑫",
+      "cat": "care",
+      "image": "kit",
+      "sub": "日常保养 · 常用备件 · 便携收纳",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 38000,
+      "stock": 42,
+      "points": 3,
+      "exchange": 1800,
+      "exchangeInfo": {
+        "marketPriceFen": 38000,
+        "monthLimit": 2,
+        "highlights": [
+          "常用易损件一套备齐",
+          "便携工具包收纳",
+          "适合产线日常保养"
+        ],
+        "introHtml": "<p>易损件 / 维护工具包面向光纤打标设备的日常保养场景，将高频更换的密封件、紧固件与常用维护工具整合在同一便携包内，减少单独采购与等待时间。</p><p>包内备件按通用机型尺寸选配，适合桌面便携机型及标准工位的定期点检与应急更换。</p>",
+        "notes": [
+          "兑换后 3 个工作日内随仓发货",
+          "积分在订单签收后扣减",
+          "每账号每月最多兑换 2 件",
+          "工具包规格以实物为准，备件可能因批次微调"
+        ]
+      },
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-KIT-01",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "clean",
+      "name": "光学镜片清洁套装",
+      "code": "XJ-CL-01",
+      "brand": "杰普特",
+      "cat": "care",
+      "image": "kit",
+      "sub": "无尘擦拭 · 镜片清洁 · 维护保养",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 18000,
+      "stock": 90,
+      "points": 1,
+      "exchange": 800,
+      "exchangeInfo": {
+        "marketPriceFen": 18000,
+        "monthLimit": 3,
+        "highlights": [
+          "无尘棉签 + 清洁液组合",
+          "独立真空包装",
+          "保护镜片 / 场镜通用"
+        ],
+        "introHtml": "<p>光学镜片清洁套装用于保护镜片、场镜及振镜窗口的日常清洁，可去除指纹、浮尘与轻微油污，降低因污染造成的光斑衰减与镜片烧毁风险。</p><p>套装包含无尘棉签、无尘布、专用清洁液与吹尘球，建议在每次更换镜片或每周点检时使用。</p>",
+        "notes": [
+          "清洁液为非危险品包装，可正常陆运",
+          "开封后请密封保存，避免挥发",
+          "每账号每月最多兑换 3 件",
+          "清洁操作请配合学习专区《保护镜片更换图文教程》"
+        ]
+      },
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-CL-01",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "glass",
+      "name": "保护镜片 30mm",
+      "code": "XJ-GL-30",
+      "brand": "梅曼",
+      "cat": "care",
+      "image": "lens",
+      "sub": "熔融石英 · 防尘保护 · 通用配件",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 12000,
+      "stock": 120,
+      "points": 1,
+      "exchange": 1200,
+      "exchangeInfo": {
+        "marketPriceFen": 12000,
+        "monthLimit": 4,
+        "highlights": [
+          "熔融石英基底",
+          "1064nm 增透镀膜",
+          "直径 30mm 通用规格"
+        ],
+        "introHtml": "<p>30mm 保护镜片采用熔融石英基底并镀 1064nm 增透膜，用于光纤打标头光路最前端，阻挡烟尘飞溅以保护内部场镜与振镜。</p><p>镜片双面抛光、边缘倒角，透光率高、抗损伤阈值稳定，属高频更换的易损件，建议按保养周期备货。</p>",
+        "notes": [
+          "单片独立无尘包装",
+          "安装时请勿接触光学面",
+          "每账号每月最多兑换 4 件",
+          "更换步骤见学习专区《保护镜片更换图文教程》"
+        ]
+      },
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-GL-30",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "screen",
+      "name": "工业触控显示屏",
+      "code": "XJ-DSP-10",
+      "brand": "罗根",
+      "cat": "extra",
+      "image": "vision",
+      "sub": "10.1英寸 · 工业触控 · 稳定交互",
+      "type": "通用",
+      "scene": "无人零售",
+      "machine": "B系列无人值守",
+      "priceFen": 188000,
+      "stock": 12,
+      "points": 18,
+      "exchange": 6000,
+      "exchangeInfo": {
+        "marketPriceFen": 188000,
+        "monthLimit": 1,
+        "highlights": [
+          "10.1 英寸电容触控屏",
+          "工业级宽温运行",
+          "嵌入式安装边框"
+        ],
+        "introHtml": "<p>工业触控显示屏面向无人值守终端与设备控制面板，10.1 英寸 IPS 面板支持电容多点触控，前面框符合嵌入式安装标准。</p><p>宽温元器件与防尘前面板可适应车间及自助终端的长时间连续运行，配合主控即可完成参数设置与交互操作。</p>",
+        "notes": [
+          "含安装固定件与接线端子",
+          "显示屏易碎，采用泡沫 + 纸箱包装",
+          "每账号每月最多兑换 1 件",
+          "接口定义请在兑换前与技术支持确认"
+        ]
+      },
+      "series": null,
+      "model": null,
+      "skuCode": "XJ-DSP-10",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "goggles",
+      "name": "激光防护眼镜（1064nm）",
+      "code": "XJ-SP-1064",
+      "brand": "创鑫",
+      "cat": "care",
+      "image": "laser",
+      "sub": "1064nm 专用 · OD7+ · 护目防护",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 9800,
+      "stock": 60,
+      "points": 1,
+      "exchange": 500,
+      "exchangeInfo": {
+        "marketPriceFen": 9800,
+        "monthLimit": 2,
+        "highlights": [
+          "针对 1064nm 光纤激光",
+          "光密度 OD7+",
+          "防飞溅包覆式镜框"
+        ],
+        "introHtml": "<p>激光防护眼镜针对 1064nm 光纤激光波长设计，光密度达到 OD7+，可在调试、对焦与清洁光路时保护双眼免受反射光与漫射光伤害。</p><p>包覆式镜框带侧翼防护，镜片防刮、可搭配普通近视眼镜使用，是设备调试与点检工位的必备防护用品。</p>",
+        "notes": [
+          "仅防护 1064nm 波段，不可用于其他波长",
+          "镜片刮花后请及时更换",
+          "每账号每月最多兑换 2 件",
+          "调试设备时请同时遵守车间激光安全规范"
+        ]
+      },
+      "series": null,
+      "model": "SP-1064-OD7",
+      "skuCode": "XJ-SP-1064",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "聚碳酸酯",
+        "weight": null,
+        "color": "黑色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "caliper",
+      "name": "精密游标卡尺套装",
+      "code": "XJ-TL-CL150",
+      "brand": "杰普特",
+      "cat": "care",
+      "image": "kit",
+      "sub": "0-150mm · 精度 0.02mm · 安装测量",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 26000,
+      "stock": 35,
+      "points": 2,
+      "exchange": 1500,
+      "exchangeInfo": {
+        "marketPriceFen": 26000,
+        "monthLimit": 1,
+        "highlights": [
+          "量程 0-150mm",
+          "测量精度 0.02mm",
+          "不锈钢尺身 + 收纳盒"
+        ],
+        "introHtml": "<p>精密游标卡尺套装用于立柱行程、夹具孔位、工件尺寸与安装间隙的现场测量，是选型核对与安装调试时的常用工具。</p><p>尺身采用不锈钢并经淬火处理，滑动顺畅、刻度清晰，配深度测量杆与收纳盒，兼顾内径、外径、深度与台阶测量。</p>",
+        "notes": [
+          "含校准合格证书",
+          "使用后请擦净归位以防锈蚀",
+          "每账号每月最多兑换 1 件",
+          "可配合学习专区安装图解核对孔位尺寸"
+        ]
+      },
+      "series": null,
+      "model": "CL-150/0.02",
+      "skuCode": "XJ-TL-CL150",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": 230,
+        "width": 75,
+        "height": 20,
+        "material": "不锈钢",
+        "weight": 0.3,
+        "color": "金属色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "塑盒",
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "target",
+      "name": "调光校准靶套装",
+      "code": "XJ-JC-1064",
+      "brand": "梅曼",
+      "cat": "care",
+      "image": "lens",
+      "sub": "光路校准 · 对焦调光 · 重复使用",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 15000,
+      "stock": 80,
+      "points": 1,
+      "exchange": 900,
+      "exchangeInfo": {
+        "marketPriceFen": 15000,
+        "monthLimit": 2,
+        "highlights": [
+          "光路同轴校准",
+          "显影光斑便于对焦",
+          "含多种尺寸靶片"
+        ],
+        "introHtml": "<p>调光校准靶套装用于光路同轴校准与焦点位置确认，将靶片置于场镜下方即可显影光斑位置，辅助判断光路是否居中、焦点是否准确。</p><p>套装内含不同尺寸的调光靶片与夹持座，可重复使用，是更换场镜、振镜后快速恢复光路精度的常用工具。</p>",
+        "notes": [
+          "校准须在低功率下进行",
+          "靶片显影面避免手触",
+          "每账号每月最多兑换 2 件",
+          "调光操作建议参考场镜选型与安装资料"
+        ]
+      },
+      "series": null,
+      "model": "JC-1064",
+      "skuCode": "XJ-JC-1064",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "铝合金 + 陶瓷靶片",
+        "weight": null,
+        "color": "银色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "nozzle",
+      "name": "气辅喷嘴套件",
+      "code": "XJ-PZ-08",
+      "brand": "罗根",
+      "cat": "care",
+      "image": "head",
+      "sub": "气辅加工 · 防飞溅 · 通用接口",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 42000,
+      "stock": 48,
+      "points": 4,
+      "exchange": 2200,
+      "exchangeInfo": {
+        "marketPriceFen": 42000,
+        "monthLimit": 2,
+        "highlights": [
+          "压缩空气气辅",
+          "减少烟尘附着",
+          "含多种口径喷嘴"
+        ],
+        "introHtml": "<p>气辅喷嘴套件用于在打标过程中引入压缩空气，吹除熔渣与烟尘并降低镜片污染，适用于深度雕刻与金属重加工场景。</p><p>套件含标准气嘴、转接接头与不同口径喷嘴，接口通用，可安装于打标头前端并配合车间气源使用。</p>",
+        "notes": [
+          "需配合干燥压缩空气",
+          "安装后请确认气路密封",
+          "每账号每月最多兑换 2 件",
+          "实际口径请按加工工艺选择"
+        ]
+      },
+      "series": null,
+      "model": "PZ-08",
+      "skuCode": "XJ-PZ-08",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "黄铜 / 铝合金",
+        "weight": null,
+        "color": "金色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "oring",
+      "name": "密封 O 型圈组合套装",
+      "code": "XJ-MF-OR",
+      "brand": "创鑫",
+      "cat": "care",
+      "image": "rotary",
+      "sub": "多规格混装 · 丁腈橡胶 · 密封维护",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 9600,
+      "stock": 150,
+      "points": 1,
+      "exchange": 600,
+      "exchangeInfo": {
+        "marketPriceFen": 9600,
+        "monthLimit": 4,
+        "highlights": [
+          "常用 8 种规格混装",
+          "丁腈橡胶耐油耐磨",
+          "分格收纳盒"
+        ],
+        "introHtml": "<p>密封 O 型圈组合套装汇总了设备维护中常用的 8 种规格密封圈，适用于气路接头、夹具与端盖处的密封更换。</p><p>采用耐油耐磨的丁腈橡胶材质，配分格收纳盒便于按尺寸取用，是处理漏气、渗油与日常点检时的常备耗材。</p>",
+        "notes": [
+          "套装规格以盒内清单为准",
+          "避免长时间阳光直射",
+          "每账号每月最多兑换 4 件",
+          "更换前请关闭气源并释放余压"
+        ]
+      },
+      "series": null,
+      "model": "OR-NBR-8S",
+      "skuCode": "XJ-MF-OR",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "丁腈橡胶",
+        "weight": null,
+        "color": "黑色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "塑盒",
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "finder",
+      "name": "红光调光指示器",
+      "code": "XJ-HW-650",
+      "brand": "杰普特",
+      "cat": "care",
+      "image": "vision",
+      "sub": "650nm 红光 · 光路指示 · 快速对中",
+      "type": "通用",
+      "scene": "通用打标",
+      "machine": "桌面便携A款",
+      "priceFen": 56000,
+      "stock": 25,
+      "points": 5,
+      "exchange": 2600,
+      "exchangeInfo": {
+        "marketPriceFen": 56000,
+        "monthLimit": 1,
+        "highlights": [
+          "650nm 可见红光",
+          "辅助光路对中",
+          "电池供电便携使用"
+        ],
+        "introHtml": "<p>红光调光指示器发射 650nm 可见红色光束，用于在不启动主激光的情况下指示光路走向、确认场镜中心与加工原点。</p><p>红光与主激光同轴输出时可实现快速对中，显著缩短换型与调试时间，适合多品种小批量工位频繁调光使用。</p>",
+        "notes": [
+          "请勿直视红光出射口",
+          "长期不用请取出电池",
+          "每账号每月最多兑换 1 件",
+          "对中精度仍需以正式打标试样确认"
+        ]
+      },
+      "series": null,
+      "model": "HW-650",
+      "skuCode": "XJ-HW-650",
+      "sourceType": "prototype",
+      "buyable": true,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "铝合金",
+        "weight": null,
+        "color": "银色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "columnStandard",
+      "name": "常规立柱",
+      "series": "立柱 130 系列",
+      "model": "LZ130-550U",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer/column-perspective.png",
+      "sub": "客户资料样本 · 产品参数待补充",
+      "sourceType": "customer",
+      "priceFen": 68000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": "customer/column-front.png",
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": "customer/column-perspective.png",
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "col130800U",
+      "name": "常规立柱",
+      "series": "立柱 130 系列",
+      "model": "LZ130-800U",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜梯形丝杆｜4 个 U 型轴承｜800mm",
+      "sourceType": "customer",
+      "priceFen": 98000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": 800,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": 800,
+        "isMotorized": true,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "col155550U",
+      "name": "U 型立柱",
+      "series": "立柱 155 系列",
+      "model": "LZ155-550U",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜梯形丝杆｜6 个 U 型轴承｜550mm",
+      "sourceType": "customer",
+      "priceFen": 128000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": 550,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": 550,
+        "isMotorized": true,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "col155550H",
+      "name": "H 型立柱",
+      "series": "立柱 155 系列",
+      "model": "LZ155-550H",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜2 组滑轨 4 滑块｜550mm",
+      "sourceType": "customer",
+      "priceFen": 148000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": 550,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": 550,
+        "isMotorized": true,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "colF1312",
+      "name": "飞行立柱（13-12U 款）",
+      "series": "立柱 130 系列",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 组合资料标注 13-12U｜完整型号待补充",
+      "sourceType": "customer",
+      "priceFen": 198000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "colF1512",
+      "name": "加强飞行立柱（15-12U 款）",
+      "series": "立柱 155 系列",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 加强版立柱，组合资料标注 15-12U｜完整型号待补充",
+      "sourceType": "customer",
+      "priceFen": 268000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "axisZYZ130500",
+      "name": "左右运动轴",
+      "series": "运动轴",
+      "model": "ZYZ130-500U",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 梯形丝杆｜6 个 U 型轴承｜行程 500mm",
+      "sourceType": "customer",
+      "priceFen": 380000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": true,
+        "travel": {
+          "min": null,
+          "max": 500,
+          "unit": "mm"
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": 500,
+          "unit": "mm"
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optFP370",
+      "name": "固定脖光纤光路",
+      "series": "光纤光路",
+      "model": "GL-FP370B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 37 光路｜深蓝 / 大红 / 深灰 / 银白可选",
+      "sourceType": "customer",
+      "priceFen": 420000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝 / 大红 / 深灰 / 银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optFR370",
+      "name": "旋转脖光纤光路",
+      "series": "光纤光路",
+      "model": "GL-FR370B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 37 光路｜深蓝 / 大红 / 深灰 / 银白可选",
+      "sourceType": "customer",
+      "priceFen": 460000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝 / 大红 / 深灰 / 银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optUP320",
+      "name": "固定脖紫外光路",
+      "series": "紫外光路",
+      "model": "GL-UP320B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 32 光路｜深蓝",
+      "sourceType": "customer",
+      "priceFen": 680000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optUR320",
+      "name": "旋转脖紫外光路",
+      "series": "紫外光路",
+      "model": "GL-UR320B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 32 光路｜深蓝",
+      "sourceType": "customer",
+      "priceFen": 720000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optCP450",
+      "name": "固定脖 CO₂ 光路",
+      "series": "CO₂ 光路",
+      "model": "GL-CP450B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 45 光路｜深蓝",
+      "sourceType": "customer",
+      "priceFen": 360000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "optCR450",
+      "name": "旋转脖 CO₂ 光路",
+      "series": "CO₂ 光路",
+      "model": "GL-CR450B",
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "optics",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 45 光路｜深蓝",
+      "sourceType": "customer",
+      "priceFen": 400000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "深蓝",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "plateUniversal",
+      "name": "通用治具板 + 定位条",
+      "series": "底板治具",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜型号待补充",
+      "sourceType": "customer",
+      "priceFen": 26000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "plateSquare",
+      "name": "四方板 + 定位条",
+      "series": "底板治具",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜型号待补充",
+      "sourceType": "customer",
+      "priceFen": 32000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "plateLarge",
+      "name": "大底板 + 定位条",
+      "series": "底板治具",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜型号待补充",
+      "sourceType": "customer",
+      "priceFen": 38000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "plateSplit",
+      "name": "分体大板 + 定位条",
+      "series": "底板治具",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白｜型号待补充",
+      "sourceType": "customer",
+      "priceFen": 42000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": "银白",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "caseAlu",
+      "name": "光纤铝机箱",
+      "series": "机箱",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 银白 + 蓝色｜型号待补充",
+      "sourceType": "customer",
+      "priceFen": 86000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "铝",
+        "weight": null,
+        "color": "银白 + 蓝色",
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "baseProfile",
+      "name": "型材底座",
+      "series": "机箱",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "mechanic",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 型号待补充",
+      "sourceType": "customer",
+      "priceFen": 54000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": "型材",
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "accPcStand",
+      "name": "电脑支架",
+      "series": "附件",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "extra",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 型号待补充",
+      "sourceType": "customer",
+      "priceFen": 12000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "accBellows",
+      "name": "波纹管",
+      "series": "附件",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "extra",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 型号待补充",
+      "sourceType": "customer",
+      "priceFen": 8500,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "accToolkit",
+      "name": "工具包",
+      "series": "附件",
+      "model": null,
+      "code": null,
+      "skuCode": null,
+      "brand": null,
+      "cat": "extra",
+      "image": "customer-placeholder.svg",
+      "sub": "客户资料 · 型号待补充",
+      "sourceType": "customer",
+      "priceFen": 16000,
+      "stock": null,
+      "points": null,
+      "buyable": false,
+      "views": {
+        "front": null,
+        "side": null,
+        "back": null,
+        "bottom": null,
+        "top": null
+      },
+      "perspective": null,
+      "physical": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "color": null,
+        "shaftLength": null,
+        "isMotorized": null,
+        "travel": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "engineering": {
+        "outlineImage": null,
+        "assemblyDimensions": [],
+        "movementBounds": {
+          "min": null,
+          "max": null,
+          "unit": null
+        }
+      },
+      "packaging": {
+        "length": null,
+        "width": null,
+        "height": null,
+        "material": null,
+        "weight": null,
+        "image": null
+      },
+      "downloads": {
+        "assembly3d": null,
+        "engineeringPdf": null,
+        "packagingDrawing": null
+      },
+      "applications": {
+        "assemblyImages": [],
+        "videos": []
+      }
+    }
+  ],
+  "packages": [
+    {
+      "id": "PK1",
+      "name": "桌面便携 A 款 · 标配版",
+      "machine": "桌面便携A款",
+      "scene": "通用打标",
+      "image": "machine",
+      "priceFen": 1580000,
+      "desc": "经典配置，适用于常规金属打标",
+      "items": [
+        [
+          "laser50",
+          "L20",
+          1
+        ],
+        [
+          "red",
+          null,
+          1
+        ],
+        [
+          "columnM",
+          null,
+          1
+        ],
+        [
+          "power3",
+          null,
+          1
+        ],
+        [
+          "kit",
+          null,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "PK2",
+      "name": "桌面便携 A 款 · plus 版",
+      "machine": "桌面便携A款",
+      "scene": "精密视觉",
+      "image": "machine",
+      "priceFen": 2160000,
+      "desc": "视觉定位与自动对焦，提高精密工件效率",
+      "items": [
+        [
+          "laser50",
+          "L20",
+          1
+        ],
+        [
+          "vision",
+          null,
+          1
+        ],
+        [
+          "columnE",
+          null,
+          1
+        ],
+        [
+          "power3",
+          null,
+          1
+        ],
+        [
+          "kit",
+          null,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "PK3",
+      "name": "工业柜式光纤打标套装",
+      "machine": "工业柜式",
+      "scene": "金属产线",
+      "image": "machine",
+      "priceFen": 3280000,
+      "large": true,
+      "desc": "光纤 50W + 工业机架，承接产线作业",
+      "items": [
+        [
+          "laser50",
+          "L50",
+          1
+        ],
+        [
+          "head",
+          null,
+          1
+        ],
+        [
+          "columnE",
+          null,
+          1
+        ],
+        [
+          "powerS",
+          null,
+          1
+        ],
+        [
+          "xy",
+          null,
+          1
+        ],
+        [
+          "kit",
+          null,
+          1
+        ]
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "name": "立柱",
+      "required": true,
+      "section": "core",
+      "ids": [
+        "columnStandard",
+        "col130800U",
+        "col155550U",
+        "col155550H",
+        "colF1312",
+        "colF1512"
+      ]
+    },
+    {
+      "name": "光路",
+      "required": true,
+      "section": "core",
+      "ids": [
+        "optFP370",
+        "optFR370",
+        "optUP320",
+        "optUR320",
+        "optCP450",
+        "optCR450"
+      ]
+    },
+    {
+      "name": "运动轴",
+      "required": false,
+      "section": "core",
+      "ids": [
+        "axisZYZ130500"
+      ]
+    },
+    {
+      "name": "底板治具",
+      "required": false,
+      "section": "core",
+      "ids": [
+        "plateUniversal",
+        "plateSquare",
+        "plateLarge",
+        "plateSplit"
+      ]
+    },
+    {
+      "name": "机箱 / 底座",
+      "required": false,
+      "section": "core",
+      "ids": [
+        "caseAlu",
+        "baseProfile"
+      ]
+    },
+    {
+      "name": "附件",
+      "required": false,
+      "section": "extras",
+      "ids": [
+        "accPcStand",
+        "accBellows",
+        "accToolkit"
+      ]
+    }
+  ],
+  "contents": [
+    {
+      "id": "A1",
+      "title": "从选型到装配：光纤打标机入门",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-10-08",
+      "read": 1286,
+      "image": "machine",
+      "tag": "12:36",
+      "desc": "认识激光器、光路、立柱和电源的协作关系。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "用 12 分钟建立整机认识：激光器提供光源，振镜与场镜完成扫描，立柱与旋转装置负责装夹，电源与控制系统统一调度。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "machine",
+            "duration": "12:36"
+          },
+          {
+            "type": "heading",
+            "text": "本期看点"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "激光器、光学系统、机械结构与电源的协作关系",
+              "选型时需要核对的功率、波长与加工范围",
+              "从开箱到首次打标的装配顺序"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>建议第一次接触光纤打标设备的客户先完整观看本视频，再进入下方「光纤打标机选型专题」按模块深入。视频中出现的立柱、场镜与电源均可在配件采购频道查到对应型号与工程图纸。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A2",
+      "title": "场镜怎么选？看清加工范围与波长",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-10-06",
+      "read": 864,
+      "image": "lens",
+      "tag": "6 分钟阅读",
+      "desc": "110×110 与 150×150 场镜的选型要点。",
+      "author": "鑫戩光学组",
+      "source": "原创",
+      "relatedProducts": [
+        "lens110"
+      ],
+      "body": {
+        "summary": "场镜决定有效打标范围与边缘清晰度，选型核心看三点：波长匹配、标称幅面与接口螺纹。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>场镜（F-theta 扫描透镜）位于振镜下方，作用是把振镜偏转的光束聚焦在一个平面上，并保证整个幅面内焦点位置一致。光纤打标普遍使用 1064nm 波长场镜，波长不匹配会导致聚焦模糊甚至镀膜损伤。</p>"
+          },
+          {
+            "type": "heading",
+            "text": "一、先确定加工幅面"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>常见标准幅面为 110×110mm 与 150×150mm，另有 200×200mm、300×300mm 等大幅面规格。幅面越大，同等振镜角度下边缘光斑越大、能量密度越低，因此应以「最常加工工件的最大尺寸 + 10% 余量」来选，而不是盲目追求大幅面。</p>"
+          },
+          {
+            "type": "image",
+            "src": "lens",
+            "caption": "场镜幅面与工作距离示意（以实物图纸为准）"
+          },
+          {
+            "type": "heading",
+            "text": "二、核对波长与螺纹接口"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "波长：光纤 1064nm / 紫外 355nm / CO₂ 10.6μm，三者场镜不可混用",
+              "入射螺纹：常见 M85×1、M79×1 等，须与振镜出口一致",
+              "工作距离：幅面越大工作距离越长，需确认护罩与夹具不干涉"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "三、常见选型组合"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "小件铭牌、五金件：20W/30W + 110×110 场镜，速度快、边缘清晰",
+              "面板、较大壳体：50W + 150×150 场镜，兼顾幅面与能量",
+              "整幅大幅面打标：分体机架 + 200mm 以上场镜，注意补偿功率"
+            ]
+          }
+        ]
+      },
+      "attachments": [
+        {
+          "name": "场镜选型对照表.pdf",
+          "kind": "PDF",
+          "size": "248KB",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "title": "设备日常保养：这五个检查不要漏",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-10-05",
+      "read": 642,
+      "image": "kit",
+      "tag": "PDF 手册",
+      "desc": "把镜片维护、接地和通风检查列入计划。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "kit",
+        "clean",
+        "glass"
+      ],
+      "body": {
+        "summary": "90% 的非故障停机来自积尘、散热与接触不良。每天 5 分钟、每月一次的例行检查，能显著降低返修率。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "每日五项检查"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "保护镜片：开机前目检有无飞溅点与雾化，污染及时清洁或更换",
+              "散热通风：进风口、风扇无遮挡，水冷机型确认水流与水温",
+              "接地与接线：接地端子紧固，电源、振镜线缆无松脱发烫",
+              "导轨与升降：立柱导轨、手摇/电动机构运行顺畅并少量润滑",
+              "排气除尘：抽尘管路通畅，集尘盒按需清理"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "每月深度保养"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>每月安排一次停机保养：用光学清洁套装处理场镜表面，检查 O 型圈与气路密封，备份打标参数，并按点检表逐项签字留档。可在积分商城兑换维护工具包、清洁套装与密封 O 型圈组合套装。</p>"
+          }
+        ]
+      },
+      "attachments": [
+        {
+          "name": "设备日常点检表.pdf",
+          "kind": "PDF",
+          "size": "186KB",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "title": "激光标识在精密制造中的应用",
+      "cat": "行业动态",
+      "type": "文章",
+      "date": "2026-10-02",
+      "read": 512,
+      "image": "head",
+      "tag": "行业观察",
+      "desc": "金属工件追溯与精密标识的场景分析。",
+      "author": "行业研究组",
+      "source": "行业资讯",
+      "relatedProducts": [],
+      "body": {
+        "mode": "html",
+        "summary": "激光标识凭借不可擦除、精度高、可在线赋码的特点，正在替代油墨喷码，成为金属件追溯的主流方案。",
+        "html": "<h2>为什么转向激光标识</h2><p>在轴承、五金、医疗器械与汽车零部件领域，二维码追溯已经从「可选项」变为出货硬性要求。激光打标<strong>不接触工件、无耗材</strong>，标识可耐受后续清洗、电镀与喷涂等工序，长期单件成本低于油墨喷码。</p><blockquote><p>标识要跟着工件走完整条工艺链，油墨码在清洗或电镀后往往失效，这正是激光码替代它的直接原因。</p><cite>某轴承产线追溯改造复盘</cite></blockquote><h2>三个典型落地场景</h2><ul><li><strong>单件追溯</strong>：金属件表面赋 Data Matrix 码，绑定批次、材质与工序数据，出货扫码可查全链路。</li><li><strong>防伪防窜货</strong>：铭牌可变序列号 + 二维码，渠道端扫码即可核验真伪与流向。</li><li><strong>外观件标识</strong>：阳极氧化铝打黑、不锈钢打白或打黑，在保证对比度的同时兼顾外观。</li></ul><h2>落地前要确认什么</h2><p>追溯项目要提前在产线上预留打标工位与上下料节拍，避免成为整线瓶颈；再按材料与标识内容选择光纤或紫外光源。</p><div class=\"ed-callout ed-callout-info\"><b>选型提示</b><p>金属件优先光纤光源；塑料、玻璃等对热敏感的材料建议选紫外，并先寄样打样确认对比度。</p></div>"
+      },
+      "attachments": []
+    },
+    {
+      "id": "A5",
+      "title": "鑫戩配件直销商城服务升级",
+      "cat": "公司新闻",
+      "type": "文章",
+      "date": "2026-10-01",
+      "read": 738,
+      "image": "laser",
+      "tag": "服务公告",
+      "desc": "一站式选型、技术资料下载与积分兑换现已开放。",
+      "author": "鑫戩运营部",
+      "source": "官方公告",
+      "relatedProducts": [],
+      "body": {
+        "mode": "html",
+        "summary": "配件直销商城完成服务升级：模块化选配、工程图纸下载、学习专区与积分商城同步上线，企业客户可在线完成选型、采购与售后资料获取。",
+        "html": "<h2>本次升级概览</h2><p>本次升级围绕「选型更快、资料更全、采购更省心」展开，四项能力同步上线：</p><ol><li><strong>模块化选配</strong>：按加工方向选择成套方案，或逐模块自定义配置，兼容性由业务统一确认。</li><li><strong>资料中心</strong>：商品详情可下载外形装配 3D、工程图 PDF 与包装工程图。</li><li><strong>学习专区</strong>：图文教程、技术文章、操作视频与系列专题持续更新。</li><li><strong>积分商城</strong>：采购所得积分可兑换维护工具、防护用品与耗材。</li></ol><h2>企业客户怎么开通</h2><p>完成企业认证后即可开通线上采购与账期评估，订单、发货与发票信息统一进入企业工作台管理。</p><div class=\"ed-callout ed-callout-warn\"><b>加盟与渠道合作</b><p>有意向的合作伙伴可拨打公告栏加盟合作热线 400-826-6699（工作日 8:30-17:30）咨询政策。</p></div>"
+      },
+      "attachments": []
+    },
+    {
+      "id": "A6",
+      "title": "一图看懂：立柱与旋转装置安装配合",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-10-11",
+      "read": 956,
+      "image": "column",
+      "tag": "图解 8 步",
+      "desc": "用标注图说明手摇立柱、旋转夹具与机架的孔位配合。",
+      "author": "鑫戩装配组",
+      "source": "原创",
+      "relatedProducts": [
+        "columnE"
+      ],
+      "body": {
+        "summary": "立柱是打标头与工件之间的高度基准，安装时先固定立柱再装旋转装置，最后统一校正同轴。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "核对孔位与行程",
+                "text": "对照装配图核对立柱底板孔距，确认立柱有效行程满足最高工件。",
+                "image": "column"
+              },
+              {
+                "title": "固定立柱底板",
+                "text": "将立柱吊装到机架台面，穿入紧固螺栓但先不完全锁死，留出微调量。",
+                "image": "column"
+              },
+              {
+                "title": "校正立柱垂直度",
+                "text": "用直角尺/百分表校正立柱与台面的垂直度，偏差合格后对角锁紧螺栓。",
+                "image": "column"
+              },
+              {
+                "title": "安装打标头连接板",
+                "text": "把打标头滑板装入立柱导轨，确认上下运动无卡滞，锁紧限位块。",
+                "image": "head"
+              },
+              {
+                "title": "安装旋转装置底座",
+                "text": "将旋转夹具底座放在打标头正下方，初步对齐主轴中心与场镜中心。",
+                "image": "rotary"
+              },
+              {
+                "title": "找正同轴度",
+                "text": "用校准靶或试样找正，使旋转轴线位于场镜幅面中心，紧固底座。",
+                "image": "rotary"
+              },
+              {
+                "title": "连接驱动与线缆",
+                "text": "接好旋转轴驱动线、急停与接地，线缆走线避开升降行程。",
+                "image": "power"
+              },
+              {
+                "title": "试打标验收",
+                "text": "在废料上做圆周打标试样，确认整圈字迹清晰、位置居中后交付使用。",
+                "image": "machine"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A7",
+      "title": "保护镜片更换图文教程",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-10-09",
+      "read": 1120,
+      "image": "lens",
+      "tag": "图解 6 步",
+      "desc": "拆封、清洁、装回的每一步都配实拍标注图。",
+      "author": "鑫戩光学组",
+      "source": "原创",
+      "relatedProducts": [
+        "glass",
+        "clean"
+      ],
+      "body": {
+        "summary": "保护镜片是最高频的更换件。全程遵守「断电、无尘、不接触光学面」三条原则，6 步即可完成更换。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "停机断电",
+                "text": "关闭激光与振镜电源，等待指示灯完全熄灭，避免带电操作。",
+                "image": "power"
+              },
+              {
+                "title": "拆下镜片压圈",
+                "text": "用专用工具旋开保护镜座压圈，动作轻缓，防止灰尘抖落污染镜腔。",
+                "image": "head"
+              },
+              {
+                "title": "取出旧镜片",
+                "text": "用无尘镊子夹住镜片边缘取出，观察烧蚀点位置以判断烟尘来源方向。",
+                "image": "lens"
+              },
+              {
+                "title": "清洁镜座内腔",
+                "text": "用吹尘球吹除浮尘，再以清洁套装棉签单向擦拭镜座与密封圈。",
+                "image": "kit"
+              },
+              {
+                "title": "装入新镜片",
+                "text": "新镜片分清镀膜朝向（一般朝场镜内侧），悬空放入、避免触碰光学面。",
+                "image": "lens"
+              },
+              {
+                "title": "复位并试机",
+                "text": "装回压圈与密封圈并适度拧紧，低功率试打标确认能量与光斑正常。",
+                "image": "machine"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>建议每次更换后记录日期与工况，并常备 2-3 片同规格保护镜片与一套光学清洁套装，二者均可在积分商城以积分兑换。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A8",
+      "title": "光纤打标机选型专题",
+      "cat": "系列专题",
+      "type": "专题",
+      "date": "2026-10-12",
+      "read": 1580,
+      "image": "machine",
+      "tag": "专题合集 · 4 篇",
+      "desc": "功率选择、场镜量程、立柱行程与套装方案一次讲清。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [],
+      "topics": [
+        {
+          "title": "激光器功率怎么选",
+          "summary": "20W/30W/50W 对应的材料与效率边界。",
+          "contentId": "A13"
+        },
+        {
+          "title": "场镜量程与加工范围",
+          "summary": "幅面、波长与接口螺纹的核对方法。",
+          "contentId": "A2"
+        },
+        {
+          "title": "立柱行程与安装方式",
+          "summary": "手摇/电动立柱与工件高度的匹配。",
+          "contentId": "A14"
+        },
+        {
+          "title": "一键套装方案对比",
+          "summary": "桌面、立式与旋转方案的差异与选择。",
+          "contentId": "A19"
+        }
+      ],
+      "body": {
+        "summary": "本专题把整机选型拆成四个可独立决策的模块，每一篇对应一个模块，读完即可按自身材料、幅面与预算完成配置。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>建议按「功率 → 场镜 → 立柱 → 成套方案」的顺序阅读。确定后可直接在「模块化选配」中按加工方向选择成套方案，或逐模块自定义下单。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A9",
+      "title": "旋转夹具装夹演示",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-10-13",
+      "read": 704,
+      "image": "rotary",
+      "tag": "08:42",
+      "desc": "圆柱形工件三爪装夹与同心校正实拍。",
+      "author": "鑫戩装配组",
+      "source": "原创",
+      "relatedProducts": [
+        "rotary"
+      ],
+      "body": {
+        "summary": "演示旋转轴三爪卡盘装夹轴承环、圆柱壳体的标准动作，重点讲解同心校正与防滑。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "rotary",
+            "duration": "08:42"
+          },
+          {
+            "type": "heading",
+            "text": "操作要点"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "三爪夹持长度不小于直径的 1/3，薄壁件使用软垫爪",
+              "用百分表打表校正外圆跳动后再锁紧",
+              "旋转打标参数中按直径计算线速度，避免两端字宽不均"
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A10",
+      "title": "振镜校准操作演示",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-10-10",
+      "read": 638,
+      "image": "head",
+      "tag": "10:05",
+      "desc": "振镜零位、幅面变形与中心偏移的校准流程。",
+      "author": "鑫戩光学组",
+      "source": "原创",
+      "relatedProducts": [
+        "head"
+      ],
+      "body": {
+        "summary": "当出现打标位置偏移、矩形变成桶形/枕形时，按本视频流程重新校准振镜即可，全程无需拆动光路。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "head",
+            "duration": "10:05"
+          },
+          {
+            "type": "heading",
+            "text": "校准流程"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "在控制软件中调出标准 9 点校准卡并打样",
+              "测量各点实际坐标，按软件引导修正比例与偏转系数",
+              "保存校准参数，复检矩形与圆形打标效果"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>校准须在低功率、固定焦点下进行；若修正后中心仍持续漂移，应检查振镜温漂与接线，必要时联系售后。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A11",
+      "title": "场镜安装与接线图解",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-10-13",
+      "read": 588,
+      "image": "lens",
+      "tag": "图解 5 步",
+      "desc": "从拆包到装回振镜的五步法。",
+      "author": "鑫戩装配组",
+      "source": "原创",
+      "relatedProducts": [
+        "lens110"
+      ],
+      "body": {
+        "summary": "场镜安装最怕螺纹错牙与粉尘进入振镜腔，按五步操作可一次装好。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "核对规格",
+                "text": "核对波长、幅面与螺纹规格（如 M85×1），确认与振镜一致。",
+                "image": "lens"
+              },
+              {
+                "title": "清洁与检查",
+                "text": "戴无尘手套，用吹尘球清洁场镜与振镜出口，检查镜片无霉点划痕。",
+                "image": "kit"
+              },
+              {
+                "title": "旋入场镜",
+                "text": "场镜垂直对正螺纹，逆时针找正牙口后顺时针旋入，切勿斜拧。",
+                "image": "head"
+              },
+              {
+                "title": "适度锁紧",
+                "text": "用专用扳手锁紧至密封到位即可，过度用力会造成镜筒变形。",
+                "image": "head"
+              },
+              {
+                "title": "装复与试机",
+                "text": "装回护罩，低功率打标准图案，确认四角清晰、中心对正。",
+                "image": "machine"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A12",
+      "title": "三合一电源接线顺序图解",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-10-07",
+      "read": 492,
+      "image": "power",
+      "tag": "图解 7 步",
+      "desc": "激光器、振镜与控制卡的上电顺序与端子标识。",
+      "author": "鑫戩电气组",
+      "source": "原创",
+      "relatedProducts": [
+        "power3"
+      ],
+      "body": {
+        "summary": "三合一电源把激光器、振镜与控制供电集成在同一模块，接线按「接地—强电—弱电—信号」顺序进行。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "断电挂牌",
+                "text": "断开总电源并挂「正在检修」牌，确认电容放电完毕。",
+                "image": "power"
+              },
+              {
+                "title": "接保护地",
+                "text": "首先连接机柜保护地与电源模块接地端子，接地电阻 ≤4Ω。",
+                "image": "power"
+              },
+              {
+                "title": "接入市电",
+                "text": "按端子标识接入火线、零线，核对输入电压与空开容量。",
+                "image": "power"
+              },
+              {
+                "title": "接激光器供电",
+                "text": "将激光器供电端子对色插入并锁死，高压端禁止带电插拔。",
+                "image": "laser"
+              },
+              {
+                "title": "接振镜电源",
+                "text": "连接 ± 双路振镜供电，注意正负极，插紧防松卡扣。",
+                "image": "head"
+              },
+              {
+                "title": "接控制信号",
+                "text": "最后连接控制卡使能与激光信号排线，走线与强电分开。",
+                "image": "power"
+              },
+              {
+                "title": "分段上电检查",
+                "text": "先上控制电、再上激光电，观察无报警后空载试运行。",
+                "image": "machine"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A13",
+      "title": "激光器功率怎么选",
+      "cat": "系列专题",
+      "type": "文章",
+      "date": "2026-10-12",
+      "read": 902,
+      "image": "laser",
+      "tag": "专题 · 第 1 篇",
+      "desc": "20W/30W/50W 对应的材料与效率边界。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [
+        "laser50"
+      ],
+      "body": {
+        "summary": "功率不是越大越好：选高了浪费成本、热影响更大；选低了打不深、节拍慢。按材料与工艺反推最经济。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "功率与典型工艺"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "20W：塑料、铭牌、不锈钢打黑，浅雕刻与高速赋码",
+              "30W：兼顾金属刻字与 0.2mm 内浅雕，通用性最强",
+              "50W 及以上：模具钢深雕、大幅面、高节拍产线"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "选型判断顺序"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>先确定材料与标识内容（二维码/文字/深度），再按目标节拍估算单脉冲能量需求，最后结合场镜幅面折算能量密度。拿不准时可寄样打样，以实测深度与对比度为准。</p>"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "只做标识与追溯：20W 足够，整机更省电",
+              "金属刻字兼顾偶尔雕刻：优先 30W",
+              "以雕刻/切割为主或上自动化产线：选 50W 以上"
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A14",
+      "title": "立柱行程与安装方式怎么选",
+      "cat": "系列专题",
+      "type": "文章",
+      "date": "2026-10-12",
+      "read": 674,
+      "image": "column",
+      "tag": "专题 · 第 3 篇",
+      "desc": "手摇/电动立柱与工件高度的匹配。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [
+        "columnE"
+      ],
+      "body": {
+        "summary": "立柱有效行程必须覆盖「最高工件 + 夹具 + 安全余量」，并结合是否频繁换型决定手摇还是电动。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "行程计算"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>有效行程 ≈ 场镜工作距离 + 最高工件高度 + 夹具/转盘高度 + 30~50mm 安全余量。常换工件高度差异大时，选大一号行程更稳妥。</p>"
+          },
+          {
+            "type": "heading",
+            "text": "手摇还是电动"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "手摇立柱：结构简单、成本低，适合高度固定、换型少的工位",
+              "电动立柱：一键升降、可记忆焦点高度，适合多品种频繁换型与自动对焦"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>若使用旋转装置或大幅面场镜，需把旋转直径和场镜工作距离一并计入行程。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A15",
+      "title": "打标参数速查：速度、功率与频率",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-10-04",
+      "read": 820,
+      "image": "machine",
+      "tag": "参数速查",
+      "desc": "常见材料的速度/功率/频率起始区间。",
+      "author": "鑫戩工艺组",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "给出常见材料的参数起始区间，现场以此为基准小幅微调，比凭感觉试错快得多。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>以下为 30W 光纤机型、110×110 场镜下的起始参考值，实际受镜片洁净度、焦点位置与材料批次影响，请先在废料上验证。</p>"
+          },
+          {
+            "type": "heading",
+            "text": "参考起始参数"
+          },
+          {
+            "type": "table",
+            "head": [
+              "工艺",
+              "速度 mm/s",
+              "功率",
+              "频率",
+              "要点"
+            ],
+            "rows": [
+              [
+                "不锈钢打黑",
+                "800-1500",
+                "40%-70%",
+                "50-80kHz",
+                "适当离焦，黑度优先"
+              ],
+              [
+                "阳极氧化铝打黑",
+                "1000-2000",
+                "30%-50%",
+                "高频",
+                "走速均匀，避免重影"
+              ],
+              [
+                "金属刻字 / 浅雕",
+                "300-800",
+                "60%-100%",
+                "20-40kHz",
+                "中低频能量集中"
+              ],
+              [
+                "塑料赋码",
+                "1500-2500",
+                "10%-30%",
+                "高频",
+                "先做小试样防烧伤"
+              ]
+            ],
+            "caption": "30W 光纤 / 110×110 场镜起始值，仅作基准，请以现场实测为准。"
+          },
+          {
+            "type": "heading",
+            "text": "调节口诀"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>颜色浅→先加功率或降速；边缘发虚→查焦点与场镜洁净度；二维码扫不出→降速、加宽静区并确认对比度。<strong>每次只改一个变量并记录</strong>，便于回溯最佳组合。</p>"
+          },
+          {
+            "type": "callout",
+            "kind": "warn",
+            "title": "安全与设备保护",
+            "text": "调参试机时务必佩戴对应波长防护眼镜，关好防护罩；长时间满功率前确认水冷温度与流量正常。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A16",
+      "title": "设备点检周期表：日 / 周 / 月做什么",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-10-03",
+      "read": 456,
+      "image": "kit",
+      "tag": "点检表",
+      "desc": "把保养动作按周期排进班组计划。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "kit",
+        "oring"
+      ],
+      "body": {
+        "summary": "保养不是坏了才修。把动作拆到日、周、月三个周期并指定责任人，设备稼动率最稳定。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "点检周期分工"
+          },
+          {
+            "type": "table",
+            "head": [
+              "周期",
+              "责任人",
+              "检查项目"
+            ],
+            "rows": [
+              [
+                "每日",
+                "操作员",
+                "镜片目检、通风散热、急停与接地、抽尘清理"
+              ],
+              [
+                "每周",
+                "班组长",
+                "场镜清洁、导轨润滑、气路压力与 O 型圈检查、参数备份"
+              ],
+              [
+                "每月",
+                "设备 / 售后",
+                "深度清洁光学件、紧固全部电气端子、校准振镜、点检留档"
+              ]
+            ],
+            "caption": "建议打印张贴在设备旁，完成后签字确认。"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>点检发现保护镜片频繁烧蚀时，应同时排查气辅方向与烟尘抽排；密封件老化可在积分商城兑换 O 型圈组合套装。</p>"
+          },
+          {
+            "type": "callout",
+            "kind": "danger",
+            "title": "出现这些情况立即停机",
+            "text": "接地异常、激光管或线缆发烫、冷却水中断、镜片击穿未处理时，禁止继续开机。"
+          }
+        ]
+      },
+      "attachments": [
+        {
+          "name": "设备点检周期表（模板）.xlsx",
+          "kind": "表格",
+          "size": "32KB",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "A17",
+      "title": "一键套装拆箱与组装演示",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-09-30",
+      "read": 1018,
+      "image": "machine",
+      "tag": "15:20",
+      "desc": "桌面套装从拆箱到首次打标的完整组装过程。",
+      "author": "鑫戩装配组",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "跟随视频把桌面套装从木箱取出，依次安装立柱、打标头、电源与控制盒，约 30 分钟可完成首次打标。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "machine",
+            "duration": "15:20"
+          },
+          {
+            "type": "heading",
+            "text": "章节"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "拆箱清单核对与外观检查",
+              "立柱与打标头机械安装",
+              "电源与控制接线（按接线顺序图）",
+              "软件连接、对焦与首件打标"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>套装内各部件已经过兼容性核对，按随箱装配图安装即可；若选择了旋转装置或电动立柱，可参考对应专题文章。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A18",
+      "title": "气辅喷嘴安装调节图解",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-09-28",
+      "read": 388,
+      "image": "head",
+      "tag": "图解 5 步",
+      "desc": "喷嘴口径选择、安装与气流方向调节。",
+      "author": "鑫戩工艺组",
+      "source": "原创",
+      "relatedProducts": [
+        "nozzle"
+      ],
+      "body": {
+        "summary": "气辅能明显减少镜片污染和重加工熔渣，关键是喷嘴对中、气压稳定、方向顺着烟尘抽排。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "选择喷嘴口径",
+                "text": "精细打标用小口径、深雕用大口径，按工艺选择并准备密封圈。",
+                "image": "head"
+              },
+              {
+                "title": "安装到打标头",
+                "text": "将喷嘴装入打标头前端接口，套好 O 型圈并旋紧，保证同轴。",
+                "image": "head"
+              },
+              {
+                "title": "连接气源",
+                "text": "接入经油水分离的干燥压缩空气，气管插到底并锁卡扣。",
+                "image": "power"
+              },
+              {
+                "title": "调节气压",
+                "text": "由低压起调，一般 0.2-0.5MPa，以吹走烟尘又不扰动工件为准。",
+                "image": "machine"
+              },
+              {
+                "title": "试打标复检",
+                "text": "打样检查飞溅与镜片状态，微调喷嘴高度与抽尘方向。",
+                "image": "lens"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A19",
+      "title": "一键套装方案对比",
+      "cat": "系列专题",
+      "type": "文章",
+      "date": "2026-10-12",
+      "read": 733,
+      "image": "kit",
+      "tag": "专题 · 第 4 篇",
+      "desc": "桌面、立式与旋转方案的差异与选择。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "三套主流方案对应三类典型工况，按工件尺寸、是否圆周打标与产线形态对号入座即可。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "三套方案对比"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "桌面便携套装：占地小、开箱即用，适合小件、门店与实验室",
+              "立式柜机套装：刚性好、行程大，适合较高工件与长时间连续生产",
+              "旋转/自动化套装：含旋转装置或输送带，适合圆周件与批量产线"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "如何决策"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>先用前三篇确定功率、场镜与立柱，再回到「模块化选配 → 真实组合选型」，系统会按加工方向推荐兼容套装；有特殊节拍或上下料需求时可自定义模块并提交业务确认。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A20",
+      "title": "对焦高度怎么找？快速定焦三种方法",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-09-26",
+      "read": 612,
+      "image": "head",
+      "tag": "对焦",
+      "desc": "试刻线、斜坡法与定焦块，三种方式快速找准焦点。",
+      "author": "鑫戩工艺组",
+      "source": "原创",
+      "relatedProducts": [
+        "head",
+        "finder"
+      ],
+      "body": {
+        "summary": "焦点高度直接决定线条粗细与能量密度。掌握三种定焦方法，换工件后十几秒就能重新找准焦点。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "三种定焦方法"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "试刻线法：立柱上下微调，线条最细、边缘最锐利处即焦点",
+              "斜坡法：在斜置试片上连续打标，最清晰点对应焦平面",
+              "定焦块法：用标准定焦块贴住工件表面，快速复现同一高度"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>平面工件建议优先使用<strong>定焦块</strong>，效率最高；弧面或高度不一时用试刻线法复核。定焦块可在积分商城兑换。</p>"
+          },
+          {
+            "type": "callout",
+            "kind": "info",
+            "title": "小提示",
+            "text": "焦平面一般在场镜下方焦距处，更换不同量程场镜后需重新定焦。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A21",
+      "title": "打标发黑不清晰？八个常见原因排查",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-09-24",
+      "read": 834,
+      "image": "laser",
+      "tag": "故障排查",
+      "desc": "从功率、速度、离焦到镜片污染，逐条对号排查。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "laser50",
+        "glass"
+      ],
+      "body": {
+        "summary": "打标发虚、不上色往往不是单一问题。按「光学—焦点—参数—材料」顺序排查，大多能快速定位。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "排查清单"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "保护镜片是否污染或烧蚀",
+              "焦点是否偏移、工件是否放平",
+              "功率百分比是否过低、速度是否过快",
+              "频率是否与材料匹配",
+              "填充间距是否过大",
+              "激光器输出是否衰减",
+              "工件表面是否有油污、氧化层",
+              "场镜与振镜是否需要清洁校准"
+            ]
+          },
+          {
+            "type": "table",
+            "head": [
+              "现象",
+              "优先排查"
+            ],
+            "rows": [
+              [
+                "线条发虚、粗细不均",
+                "焦点 / 镜片污染"
+              ],
+              [
+                "颜色浅、不上黑",
+                "功率 / 速度 / 频率"
+              ],
+              [
+                "局部光斑异常",
+                "场镜清洁 / 振镜校准"
+              ]
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "warn",
+            "title": "先易后难",
+            "text": "先查镜片与焦点这类零成本项，再怀疑激光器衰减，避免盲目更换部件。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A22",
+      "title": "金属铭牌打标工艺：不锈钢、阳极氧化铝怎么调",
+      "cat": "选型指南",
+      "type": "文章",
+      "date": "2026-09-22",
+      "read": 706,
+      "image": "machine",
+      "tag": "工艺参数",
+      "desc": "不同金属的发黑、打白与雕刻参数取向。",
+      "author": "鑫戩工艺组",
+      "source": "原创",
+      "relatedProducts": [
+        "laser50"
+      ],
+      "body": {
+        "summary": "同样一台光纤设备，不锈钢可以打出均匀黑底，阳极氧化铝适合打白，参数取向完全不同。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "常见材料参数取向"
+          },
+          {
+            "type": "table",
+            "head": [
+              "材料",
+              "效果",
+              "参数取向"
+            ],
+            "rows": [
+              [
+                "不锈钢（304/316）",
+                "发黑",
+                "低速、高频率、离焦微正"
+              ],
+              [
+                "阳极氧化铝",
+                "打白",
+                "中高速、中频率"
+              ],
+              [
+                "碳钢 / 模具钢",
+                "深雕",
+                "高功率、低速、多次重复"
+              ],
+              [
+                "镀铬 / 镀锌件",
+                "去镀层",
+                "小功率、高速，先打样"
+              ]
+            ],
+            "caption": "以上为取向参考，实际值请以现场小样为准。"
+          },
+          {
+            "type": "heading",
+            "text": "打样建议"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>铭牌批量生产前，先在同批次材料边角做 3-5 组梯度小样，固定<em>速度</em>调功率、再调频率，确定参数后存档复用。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A23",
+      "title": "首次开机前的安全确认清单",
+      "cat": "操作手册",
+      "type": "文章",
+      "date": "2026-09-20",
+      "read": 488,
+      "image": "power",
+      "tag": "安全",
+      "desc": "接地、急停、护目镜与排烟，开机前逐项确认。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "goggles"
+      ],
+      "body": {
+        "summary": "激光设备的安全风险集中在误出光、电气接地与烟尘三方面，首次开机前请逐项确认。",
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "安全确认项"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "设备可靠接地，电源插座带地线",
+              "急停按钮位置明确、动作有效",
+              "操作人员佩戴对应波长防护眼镜",
+              "光路封闭或设置警示，避免直视出光口",
+              "排烟 / 抽尘设备可正常工作",
+              "设备周边无可燃杂物"
+            ]
+          },
+          {
+            "type": "quote",
+            "text": "任何防护缺失时，宁可不开机。",
+            "cite": "鑫戩安全作业规范"
+          },
+          {
+            "type": "callout",
+            "kind": "danger",
+            "title": "严禁",
+            "text": "禁止在光路敞开、无防护眼镜的情况下试运行，禁止带电打开激光器壳体。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A24",
+      "title": "行业白皮书：2026 工业标识追溯趋势",
+      "cat": "行业动态",
+      "type": "文章",
+      "date": "2026-09-18",
+      "read": 521,
+      "image": "vision",
+      "tag": "行业观察",
+      "desc": "唯一码、产线赋码与视觉识别在制造业的普及。",
+      "author": "鑫戩市场部",
+      "source": "整理",
+      "relatedProducts": [
+        "vision"
+      ],
+      "body": {
+        "mode": "html",
+        "summary": "工业标识正从「批号」走向「单件唯一码」，与视觉识别、MES 系统打通，成为质量追溯的基础数据。",
+        "html": "<h2>三个明显趋势</h2><p>一是<strong>单件唯一码</strong>逐步替代批次号，满足汽车、3C 等行业的召回与追溯要求；二是赋码环节前移到产线，与加工工位合并；三是视觉识读与数据库联动，实现码、件、工艺参数的绑定。</p><h2>对设备的要求</h2><p>这要求打标设备具备更稳定的一致性、可联网的控制接口，并越来越多地与视觉定位模块配套。带视觉定位的套装方案因此成为产线改造的常见选择。</p><div class='ed-callout ed-callout-info'>完整白皮书 PDF 可在文章末尾「相关资料」中下载（资料陆续上传）。</div>"
+      },
+      "attachments": [
+        {
+          "name": "2026 工业标识追溯趋势白皮书.pdf",
+          "kind": "PDF",
+          "size": "2.4MB",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "A25",
+      "title": "公司新闻：鑫戩华南服务中心扩容",
+      "cat": "公司新闻",
+      "type": "文章",
+      "date": "2026-09-15",
+      "read": 366,
+      "image": "machine",
+      "tag": "公司新闻",
+      "desc": "服务团队与备件仓升级，售后响应再提速。",
+      "author": "鑫戩行政部",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "为满足华南地区客户增长，鑫戩华南服务中心完成扩容，备件仓与上门服务团队同步升级。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>扩容后，常用备件（保护镜片、电源、控制件等）库存翻倍，常规售后可实现<strong>次日响应</strong>；同时新增打样工艺支持，客户可预约现场打样与参数调试。</p>"
+          },
+          {
+            "type": "heading",
+            "text": "服务范围"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "设备安装与培训",
+              "上门维修与保养",
+              "打样工艺支持",
+              "备件供应与积分兑换"
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A26",
+      "title": "一张图看懂：整机由哪些模块组成",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-09-12",
+      "read": 942,
+      "image": "machine",
+      "tag": "图解",
+      "desc": "激光器、振镜场镜、立柱、电源与控制的关系一图理清。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [
+        "laser50",
+        "head",
+        "power3"
+      ],
+      "body": {
+        "summary": "理解整机不必从复杂参数开始，先记住五大模块各自的职责与协作顺序即可。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "激光器",
+                "text": "提供稳定光源，决定功率与波长。",
+                "image": "laser"
+              },
+              {
+                "title": "振镜 + 场镜",
+                "text": "控制光束偏转并聚焦到工作面，决定扫描与幅面。",
+                "image": "head"
+              },
+              {
+                "title": "立柱 / 治具",
+                "text": "支撑打标头并装夹工件，决定高度与行程。",
+                "image": "column"
+              },
+              {
+                "title": "电源",
+                "text": "为激光器与控制系统供电，保障稳定输出。",
+                "image": "power"
+              },
+              {
+                "title": "控制系统",
+                "text": "解析打标文件，统一调度光路与运动。",
+                "image": "machine"
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "kind": "info",
+            "title": "记忆方法",
+            "text": "光源 → 扫描聚焦 → 装夹 → 供电 → 调度，顺着光路与信号流记忆最清楚。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A27",
+      "title": "光纤与 CO₂、紫外怎么选？按材料对号入座",
+      "cat": "选型指南",
+      "type": "文章",
+      "date": "2026-09-10",
+      "read": 1088,
+      "image": "laser",
+      "tag": "选型",
+      "desc": "不同波长激光器适配的材料与典型场景。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [
+        "laser50"
+      ],
+      "body": {
+        "summary": "选型的第一步不是看功率，而是确认材料——不同波长在不同材料上的吸收差异决定了该用哪种光源。",
+        "blocks": [
+          {
+            "type": "table",
+            "head": [
+              "光源",
+              "波长",
+              "主要材料",
+              "典型场景"
+            ],
+            "rows": [
+              [
+                "光纤",
+                "1064nm",
+                "金属及部分非金属",
+                "金属打标、铭牌、深雕"
+              ],
+              [
+                "CO₂",
+                "10.6μm",
+                "非金属",
+                "木材、亚克力、皮革"
+              ],
+              [
+                "紫外",
+                "355nm",
+                "精密/敏感材料",
+                "玻璃、塑料、精细冷加工"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "选择建议"
+          },
+          {
+            "type": "paragraph",
+            "html": "<p>以金属加工为主的客户，<strong>光纤</strong>是性价比最高的选择；若同时有非金属需求，可考虑双光源方案。不确定时可寄样打样，用实际效果决策。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A28",
+      "title": "图文：工件装夹与定位的四个小技巧",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-09-08",
+      "read": 574,
+      "image": "rotary",
+      "tag": "图解",
+      "desc": "靠山定位、垫块找平与批量件快速复位。",
+      "author": "鑫戩装配组",
+      "source": "原创",
+      "relatedProducts": [
+        "rotary"
+      ],
+      "body": {
+        "summary": "装夹看似小事，却直接决定每件产品的标刻位置一致性。四个小技巧能显著减少对位时间。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "固定靠山",
+                "text": "用两个垂直靠山定位直角件，放到位即对齐。",
+                "image": "machine"
+              },
+              {
+                "title": "垫块找平",
+                "text": "异形件用等高垫块垫平，保证焦面一致。",
+                "image": "column"
+              },
+              {
+                "title": "快速复位",
+                "text": "批量件做简易限位治具，换件不重调。",
+                "image": "rotary"
+              },
+              {
+                "title": "轻压固定",
+                "text": "薄板用轻压条防止翘曲，避免离焦。",
+                "image": "head"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A29",
+      "title": "操作视频：软件基础操作与打标文件编辑",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-09-06",
+      "read": 905,
+      "image": "head",
+      "tag": "09:18",
+      "desc": "文字、二维码、序列号与填充参数怎么设。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [],
+      "body": {
+        "summary": "9 分钟掌握打标软件最常用操作：新建文字与图形、生成二维码与流水号、设置填充并下载打标。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "head",
+            "duration": "09:18"
+          },
+          {
+            "type": "heading",
+            "text": "本节内容"
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "文字字体与尺寸",
+              "二维码 / 条形码生成",
+              "序列号自动递增",
+              "填充间距与打标参数",
+              "文件下载与打标"
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A30",
+      "title": "操作视频：日常清洁与保养跟做",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-09-04",
+      "read": 660,
+      "image": "kit",
+      "tag": "07:55",
+      "desc": "跟着视频做一次完整的镜片与机身保养。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "clean",
+        "kit"
+      ],
+      "body": {
+        "summary": "跟着视频按顺序完成镜片清洁、机身除尘、导轨润滑和接线检查，把保养做成固定动作。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "kit",
+            "duration": "07:55"
+          },
+          {
+            "type": "callout",
+            "kind": "info",
+            "title": "准备工具",
+            "text": "光学清洁套装、无尘布、吹尘球、少量润滑脂。清洁用品可在积分商城兑换。"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A31",
+      "title": "操作视频：旋转打标参数设置",
+      "cat": "操作视频",
+      "type": "视频",
+      "date": "2026-09-02",
+      "read": 540,
+      "image": "rotary",
+      "tag": "10:12",
+      "desc": "直径、线速度与分段打标怎么设。",
+      "author": "鑫戩工艺组",
+      "source": "原创",
+      "relatedProducts": [
+        "rotary"
+      ],
+      "body": {
+        "summary": "圆周打标要把直径、周长和线速度算对，视频演示旋转轴参数设置与圆弧校正全过程。",
+        "blocks": [
+          {
+            "type": "video",
+            "url": null,
+            "poster": "rotary",
+            "duration": "10:12"
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "items": [
+              "准确输入工件直径",
+              "按直径计算旋转线速度",
+              "文字做圆弧/分段展开",
+              "首件慢速复核字宽"
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A32",
+      "title": "图文：新机验收要看的六个点",
+      "cat": "图文图解",
+      "type": "图文",
+      "date": "2026-08-30",
+      "read": 430,
+      "image": "machine",
+      "tag": "验收清单",
+      "desc": "外观、配置、参数与打样效果逐项验收。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "kit"
+      ],
+      "body": {
+        "summary": "设备到货不只是签收，按六个点验收，能在安装现场就发现并解决问题。",
+        "blocks": [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "外观包装",
+                "text": "检查外包装、机身有无磕碰变形。",
+                "image": "machine"
+              },
+              {
+                "title": "配置清单",
+                "text": "对照合同核对部件、赠品与备件数量。",
+                "image": "kit"
+              },
+              {
+                "title": "铭牌型号",
+                "text": "核对激光器功率、场镜量程等关键型号。",
+                "image": "laser"
+              },
+              {
+                "title": "通电自检",
+                "text": "通电后查看报警与风扇、指示灯状态。",
+                "image": "power"
+              },
+              {
+                "title": "打样效果",
+                "text": "现场打样，核对线条、黑度与一致性。",
+                "image": "head"
+              },
+              {
+                "title": "资料交接",
+                "text": "收好合格证、说明书与保修凭证。",
+                "image": "lens"
+              }
+            ]
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A33",
+      "title": "新手入门学习路径专题",
+      "cat": "系列专题",
+      "type": "专题",
+      "date": "2026-10-10",
+      "read": 1204,
+      "image": "machine",
+      "tag": "5 步入门",
+      "desc": "从整机认识到独立打标，按路径一步步来。",
+      "author": "鑫戩技术部",
+      "source": "原创",
+      "relatedProducts": [],
+      "topics": [
+        {
+          "title": "建立整机认识",
+          "summary": "先看入门视频，理解五大模块协作。",
+          "contentId": "A1"
+        },
+        {
+          "title": "看懂整机模块图",
+          "summary": "一图理清各模块职责与信号流。",
+          "contentId": "A26"
+        },
+        {
+          "title": "学会对焦",
+          "summary": "三种方法快速找准焦点高度。",
+          "contentId": "A20"
+        },
+        {
+          "title": "掌握软件操作",
+          "summary": "文字、二维码、序列号与填充设置。",
+          "contentId": "A29"
+        },
+        {
+          "title": "学会装夹定位",
+          "summary": "靠山、垫块与批量件复位技巧。",
+          "contentId": "A28"
+        }
+      ],
+      "body": {
+        "summary": "为第一次接触打标设备的客户设计，按「认识 → 对焦 → 软件 → 装夹」顺序，半天即可独立完成打标。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>建议<strong>按顺序</strong>学习，每完成一步就在设备上动手操作一次，效果最好。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    },
+    {
+      "id": "A34",
+      "title": "设备维护保养专题",
+      "cat": "系列专题",
+      "type": "专题",
+      "date": "2026-10-09",
+      "read": 870,
+      "image": "kit",
+      "tag": "保养合集",
+      "desc": "日常保养、点检表、跟做视频与易损件更换。",
+      "author": "鑫戩售后组",
+      "source": "原创",
+      "relatedProducts": [
+        "kit",
+        "clean",
+        "glass"
+      ],
+      "topics": [
+        {
+          "title": "日常保养五检查",
+          "summary": "把镜片、接地与通风检查列入计划。",
+          "contentId": "A3"
+        },
+        {
+          "title": "点检周期表",
+          "summary": "日 / 周 / 月保养动作与责任人。",
+          "contentId": "A16"
+        },
+        {
+          "title": "保养跟做视频",
+          "summary": "跟着视频做一次完整清洁保养。",
+          "contentId": "A30"
+        },
+        {
+          "title": "保护镜片更换",
+          "summary": "6 步图文完成最高频易损件更换。",
+          "contentId": "A7"
+        }
+      ],
+      "body": {
+        "summary": "保养是设备稳定运行的关键。本专题把日常检查、周期点检、跟做视频和易损件更换集中在一起。",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "html": "<p>保养用到的清洁套装、保护镜片、O 型圈等均可在<strong>积分商城</strong>兑换。</p>"
+          }
+        ]
+      },
+      "attachments": []
+    }
+  ],
+  "orders": [
+    {
+      "id": "XJ20261013006",
+      "status": "待付款",
+      "createdAt": "2026-10-13 14:22",
+      "payMethod": null,
+      "addressId": "a1",
+      "remark": "请随货附上产品出厂检验报告。",
+      "items": [
+        {
+          "productId": "lens110",
+          "model": null,
+          "skuCode": "XJ-LB-110",
+          "quantity": 1,
+          "unitPriceFen": 85000
+        },
+        {
+          "productId": "red",
+          "model": null,
+          "skuCode": "XJ-RED-01",
+          "quantity": 1,
+          "unitPriceFen": 46000
+        }
+      ],
+      "totalFen": 131000
+    },
+    {
+      "id": "XJ20261012005",
+      "status": "待核款",
+      "createdAt": "2026-10-12 10:08",
+      "payMethod": "对公转账",
+      "addressId": "a2",
+      "remark": "产线扩产急用，核款后请优先安排发货。",
+      "items": [
+        {
+          "productId": "belt",
+          "model": null,
+          "skuCode": "XJ-CV-01",
+          "quantity": 1,
+          "unitPriceFen": 460000
+        }
+      ],
+      "totalFen": 460000
+    },
+    {
+      "id": "XJ20261011004",
+      "status": "待发货",
+      "createdAt": "2026-10-11 16:40",
+      "payMethod": "线上支付",
+      "payTime": "2026-10-11 16:45",
+      "addressId": "a1",
+      "remark": "",
+      "items": [
+        {
+          "productId": "rotary",
+          "model": null,
+          "skuCode": "XJ-RT-80",
+          "quantity": 2,
+          "unitPriceFen": 128000
+        },
+        {
+          "productId": "clean",
+          "model": null,
+          "skuCode": "XJ-CL-01",
+          "quantity": 2,
+          "unitPriceFen": 18000
+        }
+      ],
+      "totalFen": 292000
+    },
+    {
+      "id": "XJ20261010003",
+      "status": "待收货",
+      "createdAt": "2026-10-10 09:15",
+      "payMethod": "对公转账",
+      "payTime": "2026-10-10 11:30",
+      "addressId": "a3",
+      "remark": "工作日 9:00-18:00 派送。",
+      "items": [
+        {
+          "productId": "columnE",
+          "model": null,
+          "skuCode": "XJ-LZ-AF",
+          "quantity": 1,
+          "unitPriceFen": 198000
+        }
+      ],
+      "totalFen": 198000
+    },
+    {
+      "id": "XJ20261008002",
+      "status": "运输中",
+      "createdAt": "2026-10-08 13:50",
+      "payMethod": "线上支付",
+      "payTime": "2026-10-08 14:02",
+      "addressId": "a1",
+      "remark": "",
+      "items": [
+        {
+          "productId": "head",
+          "model": null,
+          "skuCode": "XJ-ZJ-1064",
+          "quantity": 1,
+          "unitPriceFen": 260000
+        },
+        {
+          "productId": "power3",
+          "model": null,
+          "skuCode": "XJ-DY-3IN1",
+          "quantity": 2,
+          "unitPriceFen": 72000
+        }
+      ],
+      "totalFen": 404000
+    },
+    {
+      "id": "XJ20260925007",
+      "status": "售后中",
+      "createdAt": "2026-09-25 15:05",
+      "payMethod": "线上支付",
+      "payTime": "2026-09-25 15:10",
+      "addressId": "a1",
+      "remark": "",
+      "items": [
+        {
+          "productId": "clean",
+          "model": null,
+          "skuCode": "XJ-CL-01",
+          "quantity": 5,
+          "unitPriceFen": 18000
+        }
+      ],
+      "totalFen": 90000
+    },
+    {
+      "id": "XJ20260918001",
+      "status": "已完成",
+      "createdAt": "2026-09-18 10:30",
+      "payMethod": "对公转账",
+      "payTime": "2026-09-18 14:20",
+      "addressId": "a1",
+      "remark": "首次采购，请开通账期评估。",
+      "items": [
+        {
+          "productId": "laser50",
+          "model": null,
+          "skuCode": "XJ-GX-50W-CX",
+          "quantity": 1,
+          "unitPriceFen": 480000
+        },
+        {
+          "productId": "glass",
+          "model": null,
+          "skuCode": "XJ-GL-30",
+          "quantity": 2,
+          "unitPriceFen": 12000
+        }
+      ],
+      "totalFen": 504000
+    },
+    {
+      "id": "XJ20260820008",
+      "status": "已取消",
+      "createdAt": "2026-08-20 11:00",
+      "payMethod": null,
+      "addressId": "a1",
+      "remark": "",
+      "cancelReason": "客户项目暂缓，未在 24 小时内完成支付，系统自动取消。",
+      "items": [
+        {
+          "productId": "uv5",
+          "model": null,
+          "skuCode": "XJ-UV-5W-RFH",
+          "quantity": 1,
+          "unitPriceFen": 1280000
+        }
+      ],
+      "totalFen": 1280000
+    }
+  ],
+  "logistics": {
+    "XJ20260918001": {
+      "company": "顺丰速运",
+      "waybill": "SF1384421685297",
+      "nodes": [
+        {
+          "time": "2026-09-21 16:32",
+          "title": "已签收",
+          "desc": "快件已由本人签收，感谢使用鑫戩配件。",
+          "state": "done"
+        },
+        {
+          "time": "2026-09-21 08:45",
+          "title": "派送中",
+          "desc": "快件正在派送，派件员：陈师傅 138****6621。",
+          "state": "done"
+        },
+        {
+          "time": "2026-09-20 20:10",
+          "title": "到达深圳南山网点",
+          "desc": "快件已到达目的地城市网点。",
+          "state": "done"
+        },
+        {
+          "time": "2026-09-19 22:38",
+          "title": "到达深圳转运中心",
+          "desc": "快件已到达深圳转运中心。",
+          "state": "done"
+        },
+        {
+          "time": "2026-09-19 17:20",
+          "title": "已发货",
+          "desc": "商品已从鑫戩华东仓出库并交予顺丰速运。",
+          "state": "done"
+        },
+        {
+          "time": "2026-09-18 15:40",
+          "title": "订单已确认",
+          "desc": "财务核款完成，仓库开始备货。",
+          "state": "done"
+        }
+      ]
+    },
+    "XJ20261008002": {
+      "company": "顺丰速运",
+      "waybill": "SF1429908371055",
+      "nodes": [
+        {
+          "time": "2026-10-11 09:26",
+          "title": "到达深圳转运中心",
+          "desc": "快件已到达深圳转运中心，正在分拨。",
+          "state": "active"
+        },
+        {
+          "time": "2026-10-10 21:12",
+          "title": "到达广州航空枢纽",
+          "desc": "快件到达广州航空枢纽，准备发往深圳。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-09 19:40",
+          "title": "已揽收",
+          "desc": "顺丰已从鑫戩华东仓揽收快件。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-09 15:05",
+          "title": "已发货",
+          "desc": "振镜式打标头、三合一电源模块已打包出库。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-08 15:30",
+          "title": "订单已确认",
+          "desc": "支付成功，仓库开始备货。",
+          "state": "done"
+        }
+      ]
+    },
+    "XJ20261010003": {
+      "company": "京东物流",
+      "waybill": "JD0102663779820",
+      "nodes": [
+        {
+          "time": "2026-10-12 08:50",
+          "title": "派送中",
+          "desc": "快递员正在为您派送，请保持电话畅通。",
+          "state": "active"
+        },
+        {
+          "time": "2026-10-11 20:33",
+          "title": "到达广州番禺营业部",
+          "desc": "快件已到达收货地址所属营业部。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-11 14:18",
+          "title": "已揽收",
+          "desc": "京东物流已揽收电动立柱（含木架包装）。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-11 09:40",
+          "title": "已发货",
+          "desc": "商品已从鑫戩华南仓出库。",
+          "state": "done"
+        },
+        {
+          "time": "2026-10-10 13:00",
+          "title": "订单已确认",
+          "desc": "对公转账核款完成。",
+          "state": "done"
+        }
+      ]
+    }
+  },
+  "contracts": [
+    {
+      "id": "HT20260918001",
+      "orderId": "XJ20260918001",
+      "title": "工业激光配件采购合同",
+      "amountFen": 504000,
+      "buyer": "深圳市精刻自动化设备有限公司",
+      "buyerTaxId": "91440300MA5JK8811X",
+      "seller": "鑫戩智能装备（苏州）有限公司",
+      "status": "已生效",
+      "createdAt": "2026-09-18",
+      "signedAt": "2026-09-18 17:42",
+      "terms": "合同金额含 13% 增值税及运费；质保期 12 个月，自签收之日起算。"
+    },
+    {
+      "id": "HT20261010003",
+      "orderId": "XJ20261010003",
+      "title": "电动立柱采购合同",
+      "amountFen": 198000,
+      "buyer": "广州市精刻光电科技办事处",
+      "buyerTaxId": "91440101MA5GZ3333P",
+      "seller": "鑫戩智能装备（苏州）有限公司",
+      "status": "待买方签署",
+      "createdAt": "2026-10-11",
+      "signedAt": null,
+      "terms": "平台已根据订单生成电子合同，待买方企业盖章回传后生效。"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "INV20260922001",
+      "orderId": "XJ20260918001",
+      "type": "增值税专用发票",
+      "title": "深圳市精刻自动化设备有限公司",
+      "taxId": "91440300MA5JK8811X",
+      "amountFen": 504000,
+      "status": "已开具",
+      "email": "finance@jingke.com",
+      "appliedAt": "2026-09-20 10:12",
+      "issuedAt": "2026-09-22 09:30"
+    },
+    {
+      "id": "INV20261009002",
+      "orderId": "XJ20261008002",
+      "type": "增值税普通发票",
+      "title": "深圳市精刻自动化设备有限公司",
+      "taxId": "91440300MA5JK8811X",
+      "amountFen": 404000,
+      "status": "审核中",
+      "email": "finance@jingke.com",
+      "appliedAt": "2026-10-09 09:05",
+      "issuedAt": null
+    },
+    {
+      "id": "INV20261012003",
+      "orderId": "XJ20261011004",
+      "type": "增值税专用发票",
+      "title": "深圳市精刻自动化设备有限公司",
+      "taxId": "91440300MA5JK881X",
+      "amountFen": 292000,
+      "status": "已驳回",
+      "email": "finance@jingke.com",
+      "appliedAt": "2026-10-12 09:40",
+      "issuedAt": null,
+      "rejectReason": "统一社会信用代码校验不通过（位数不足），请核对后重新提交。"
+    }
+  ],
+  "aftersales": [
+    {
+      "id": "AS20261005001",
+      "orderId": "XJ20260925007",
+      "type": "维修换货",
+      "reason": "清洁套装中一瓶光学清洁液瓶盖渗漏，污染了外包装，申请换货一瓶。",
+      "status": "处理中",
+      "createdAt": "2026-10-05 14:10",
+      "steps": [
+        {
+          "title": "提交申请",
+          "desc": "客户在线提交换货申请及照片。",
+          "time": "2026-10-05 14:10",
+          "state": "done"
+        },
+        {
+          "title": "客服审核",
+          "desc": "售后客服已审核通过，请将问题商品寄回。",
+          "time": "2026-10-06 10:22",
+          "state": "done"
+        },
+        {
+          "title": "寄回检测",
+          "desc": "仓库正在对寄回商品进行检测。",
+          "time": "2026-10-09 16:00",
+          "state": "active"
+        },
+        {
+          "title": "换货发出",
+          "desc": "检测通过后将发出全新替换品。",
+          "time": null,
+          "state": "todo"
+        },
+        {
+          "title": "完成",
+          "desc": "换货签收后工单关闭。",
+          "time": null,
+          "state": "todo"
+        }
+      ]
+    },
+    {
+      "id": "AS20260828002",
+      "orderId": "XJ20260918001",
+      "type": "维修换货",
+      "reason": "设备到场后振镜排线接触不良，申请上门检修。",
+      "status": "已完成",
+      "createdAt": "2026-08-28 09:30",
+      "steps": [
+        {
+          "title": "提交申请",
+          "desc": "客户提交上门维修申请。",
+          "time": "2026-08-28 09:30",
+          "state": "done"
+        },
+        {
+          "title": "客服审核",
+          "desc": "审核通过并派单工程师。",
+          "time": "2026-08-28 11:00",
+          "state": "done"
+        },
+        {
+          "title": "上门处理",
+          "desc": "工程师上门重新压接排线并固定。",
+          "time": "2026-08-30 15:20",
+          "state": "done"
+        },
+        {
+          "title": "完成",
+          "desc": "试打标正常，客户确认关闭工单。",
+          "time": "2026-08-30 17:05",
+          "state": "done"
+        }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "M007",
+      "type": "contract",
+      "title": "合同待您签署",
+      "content": "订单 XJ20261010003 的电子合同已生成，请在 7 日内完成企业盖章回传。",
+      "time": "2026-10-11 10:02",
+      "read": false
+    },
+    {
+      "id": "M006",
+      "type": "order",
+      "title": "快件派送中",
+      "content": "您的电动立柱（京东物流 JD0102663779820）正在派送，请保持电话畅通。",
+      "time": "2026-10-12 08:50",
+      "read": false
+    },
+    {
+      "id": "M005",
+      "type": "order",
+      "title": "快件到达转运中心",
+      "content": "订单 XJ20261008002 的商品已到达深圳转运中心（顺丰 SF1429908371055）。",
+      "time": "2026-10-11 09:26",
+      "read": false
+    },
+    {
+      "id": "M004",
+      "type": "aftersale",
+      "title": "售后审核通过",
+      "content": "工单 AS20261005001 已通过审核，请按短信地址将问题商品寄回。",
+      "time": "2026-10-06 10:22",
+      "read": false
+    },
+    {
+      "id": "M003",
+      "type": "system",
+      "title": "积分兑换发货提醒",
+      "content": "您兑换的保护镜片 30mm 将于 3 个工作日内随普通包裹发出。",
+      "time": "2026-10-08 16:00",
+      "read": true
+    },
+    {
+      "id": "M002",
+      "type": "invoice",
+      "title": "发票已开具",
+      "content": "订单 XJ20260918001 的增值税专用发票已开具，电子发票已发送至您的邮箱。",
+      "time": "2026-09-22 09:30",
+      "read": true
+    },
+    {
+      "id": "M001",
+      "type": "system",
+      "title": "欢迎使用鑫戩配件商城",
+      "content": "企业采购、工程资料下载、订单履约与售后服务均可在线办理。",
+      "time": "2026-09-15 08:00",
+      "read": true
+    }
+  ],
+  "pointsLedger": [
+    {
+      "id": "P006",
+      "type": "exchange",
+      "title": "积分兑换 · 保护镜片 30mm",
+      "points": -1200,
+      "time": "2026-10-08 15:50",
+      "balance": 2300
+    },
+    {
+      "id": "P005",
+      "type": "earn",
+      "title": "订单 XJ20261008002 购物赠送",
+      "points": 404,
+      "time": "2026-10-08 14:02",
+      "balance": 3500
+    },
+    {
+      "id": "P004",
+      "type": "earn",
+      "title": "推荐企业首单签约奖励",
+      "points": 800,
+      "time": "2026-09-22 10:00",
+      "balance": 3096
+    },
+    {
+      "id": "P003",
+      "type": "earn",
+      "title": "订单 XJ20260918001 购物赠送",
+      "points": 504,
+      "time": "2026-09-18 14:20",
+      "balance": 2296
+    },
+    {
+      "id": "P002",
+      "type": "earn",
+      "title": "完善企业认证资料",
+      "points": 280,
+      "time": "2026-09-05 16:10",
+      "balance": 1792
+    },
+    {
+      "id": "P001",
+      "type": "earn",
+      "title": "每日签到",
+      "points": 12,
+      "time": "2026-09-04 08:30",
+      "balance": 1512
+    },
+    {
+      "id": "P000",
+      "type": "earn",
+      "title": "新会员注册礼",
+      "points": 1500,
+      "time": "2026-09-02 09:00",
+      "balance": 1500
+    }
+  ],
+  "referral": {
+    "code": "XJ8K86",
+    "rule": "被推荐企业完成首笔采购后，推荐方可获得 800 积分奖励，多推多得。",
+    "totalReward": 800,
+    "pendingReward": 500,
+    "invited": [
+      {
+        "company": "东莞市锐捷激光科技有限公司",
+        "time": "2026-09-22",
+        "status": "已签约",
+        "reward": 800,
+        "settled": true
+      },
+      {
+        "company": "惠州市恒达五金制品有限公司",
+        "time": "2026-10-06",
+        "status": "已注册",
+        "reward": 500,
+        "settled": false
+      },
+      {
+        "company": "佛山市南海区永信机械配件厂",
+        "time": "2026-10-12",
+        "status": "已浏览",
+        "reward": 0,
+        "settled": false
+      }
+    ]
+  },
+  "profile": {
+    "name": "张建国",
+    "mobile": "138****0000",
+    "role": "采购经理",
+    "companyId": "C1",
+    "companyName": "深圳市精刻自动化设备有限公司",
+    "authStatus": "已认证",
+    "points": 2300,
+    "email": "zhangjianguo@jingke.com"
+  },
+  "companies": [
+    {
+      "id": "C1",
+      "name": "深圳市精刻自动化设备有限公司",
+      "taxId": "91440300MA5JK8811X",
+      "contact": "张建国",
+      "phone": "13800000000",
+      "role": "主企业 · 采购经理",
+      "status": "已认证",
+      "current": true
+    },
+    {
+      "id": "C2",
+      "name": "东莞市精刻智能装备有限公司",
+      "taxId": "91441900MA5DG2222K",
+      "contact": "李工",
+      "phone": "13900001111",
+      "role": "分公司 · 采购员",
+      "status": "认证中",
+      "current": false
+    },
+    {
+      "id": "C3",
+      "name": "广州市精刻光电科技办事处",
+      "taxId": "91440101MA5GZ3333P",
+      "contact": "王主管",
+      "phone": "13700002222",
+      "role": "办事处 · 负责人",
+      "status": "已认证",
+      "current": false
+    }
+  ],
+  "authFlow": [
+    {
+      "title": "提交认证资料",
+      "desc": "企业名称、统一社会信用代码、联系人信息。",
+      "time": "2026-09-02 09:12",
+      "state": "done"
+    },
+    {
+      "title": "平台初审",
+      "desc": "核对工商登记信息与联系人身份。",
+      "time": "2026-09-03 14:40",
+      "state": "done"
+    },
+    {
+      "title": "企业实名复核",
+      "desc": "对公账户打款验证与法人授权复核。",
+      "time": "2026-09-05 11:05",
+      "state": "done"
+    },
+    {
+      "title": "认证通过",
+      "desc": "已开通企业采购、合同与账期申请权限。",
+      "time": "2026-09-05 16:10",
+      "state": "done"
+    }
+  ],
+  "support": {
+    "hotline": "400-880-1688",
+    "hours": "工作日 8:30 - 18:00",
+    "email": "service@xinjian.com",
+    "channels": [
+      {
+        "name": "报价咨询",
+        "desc": "客户资料商品核价、批量采购与账期申请。",
+        "to": "/quote"
+      },
+      {
+        "name": "技术支持",
+        "desc": "选型、装配尺寸与工程图纸问题。",
+        "to": "/learning"
+      },
+      {
+        "name": "订单与售后",
+        "desc": "发货、物流、退换修工单进度查询。",
+        "to": "/aftersales"
+      }
+    ]
+  },
+  "seedCart": [
+    {
+      "id": "red:XJ-RED-01",
+      "productId": "red",
+      "name": "红光预览光路模组",
+      "model": null,
+      "skuCode": "XJ-RED-01",
+      "unitPriceFen": 46000,
+      "quantity": 1,
+      "image": "head.svg"
+    },
+    {
+      "id": "glass:XJ-GL-30",
+      "productId": "glass",
+      "name": "保护镜片 30mm",
+      "model": null,
+      "skuCode": "XJ-GL-30",
+      "unitPriceFen": 12000,
+      "quantity": 2,
+      "image": "lens.svg"
+    }
+  ],
+  "seedFavorites": [
+    "columnStandard",
+    "laser50",
+    "vision"
+  ],
+  "seedAddresses": [
+    {
+      "id": "a1",
+      "name": "张经理",
+      "phone": "13800000000",
+      "full": "广东省深圳市南山区科技园",
+      "primary": true
+    },
+    {
+      "id": "a2",
+      "name": "李工",
+      "phone": "13900001111",
+      "full": "广东省东莞市长安镇振安工业园 B 区 7 号厂房",
+      "primary": false
+    },
+    {
+      "id": "a3",
+      "name": "王主管",
+      "phone": "13700002222",
+      "full": "广东省广州市番禺区市桥街工业园 12 栋",
+      "primary": false
+    }
+  ],
+  "schemes": [
+    {
+      "id": "C01",
+      "direction": "fiber-desktop",
+      "name": "台式光纤打标套装·普通款",
+      "model": "FG1355BP3700S1",
+      "tag": "标准",
+      "recommend": true,
+      "scene": "适配圆角机柜或其他光纤机柜的台式光纤打标",
+      "workpiece": "不锈钢、碳钢、铝合金等常见金属工件",
+      "features": [
+        "固定脖光纤光路",
+        "通用治具板",
+        "光路四色可选",
+        "立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "columnStandard",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optFP370",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateUniversal",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "direction": "fiber-desktop",
+      "name": "桌面式光纤打标套装·普通款",
+      "model": "FG1355BP3700S2",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配桌面式小机壳的桌面光纤打标",
+      "workpiece": "不锈钢、碳钢、铝合金等常见金属工件",
+      "features": [
+        "固定脖光纤光路",
+        "大底板",
+        "光路四色可选",
+        "立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "columnStandard",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optFP370",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateLarge",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "direction": "fiber-desktop",
+      "name": "分体式光纤打标套装·普通款",
+      "model": "FG1355BP3700S3",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配分体铝机箱的分体式光纤打标",
+      "workpiece": "不锈钢、碳钢、铝合金等常见金属工件",
+      "features": [
+        "固定脖光纤光路",
+        "分体大板",
+        "光纤铝机箱",
+        "光路四色可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "columnStandard",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optFP370",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSplit",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "caseAlu",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "direction": "fiber-flying",
+      "name": "飞行式光纤打标套装·普通款",
+      "model": "FF1312BR3750S1",
+      "tag": "飞行",
+      "recommend": false,
+      "scene": "产线飞行打标，13-12U 立柱配左右运动轴",
+      "workpiece": "批量流水线金属工件",
+      "features": [
+        "旋转脖光纤光路",
+        "左右运动轴 500mm",
+        "机架银白/深灰可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1312",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optFR370",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "caseAlu",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "direction": "fiber-flying",
+      "name": "飞行式光纤打标套装·PLUS",
+      "model": "FF1512BR3750P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "产线飞行打标，加强版 15-12U 立柱配左右运动轴",
+      "workpiece": "批量流水线金属工件",
+      "features": [
+        "加强版立柱",
+        "旋转脖光纤光路",
+        "左右运动轴 500mm",
+        "机架银白/深灰可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1512",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optFR370",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "caseAlu",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "direction": "uv-desktop",
+      "name": "台式紫外打标套装·普通款（固定脖）",
+      "model": "UG1555BP3200S1",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配紫外台式机柜，固定脖紫外光路",
+      "workpiece": "玻璃、塑胶、陶瓷等热敏 / 透明工件",
+      "features": [
+        "固定脖紫外光路",
+        "四方板",
+        "U 型立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550U",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUP320",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "direction": "uv-desktop",
+      "name": "台式紫外打标套装·普通款（旋转脖）",
+      "model": "UG1555BR3200S1",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配紫外台式机柜，旋转脖紫外光路",
+      "workpiece": "玻璃、塑胶、陶瓷等热敏 / 透明工件",
+      "features": [
+        "旋转脖紫外光路",
+        "四方板",
+        "U 型立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550U",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUR320",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "direction": "uv-desktop",
+      "name": "台式紫外打标套装·PLUS（固定脖）",
+      "model": "UG1555BP3200P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "适配紫外台式机柜，H 型立柱配固定脖紫外光路",
+      "workpiece": "玻璃、塑胶、陶瓷等热敏 / 透明工件",
+      "features": [
+        "H 型立柱",
+        "固定脖紫外光路",
+        "四方板"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550H",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUP320",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "direction": "uv-desktop",
+      "name": "台式紫外打标套装·PLUS（旋转脖）",
+      "model": "UG1555BR3200P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "适配紫外台式机柜，H 型立柱配旋转脖紫外光路",
+      "workpiece": "玻璃、塑胶、陶瓷等热敏 / 透明工件",
+      "features": [
+        "H 型立柱",
+        "旋转脖紫外光路",
+        "四方板"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550H",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUR320",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "direction": "uv-flying",
+      "name": "飞行式紫外打标套装·标准款",
+      "model": "UF1312BR3250S1",
+      "tag": "飞行",
+      "recommend": false,
+      "scene": "飞行式紫外打标，13-12U 立柱配左右运动轴，机架银白",
+      "workpiece": "批量流水线的热敏 / 透明工件",
+      "features": [
+        "旋转脖紫外光路",
+        "左右运动轴 500mm",
+        "机架银白"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1312",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUR320",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "direction": "uv-flying",
+      "name": "飞行式紫外打标套装·PLUS",
+      "model": "UF1512BR3250P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "飞行式紫外打标，加强版 15-12U 立柱配左右运动轴，机架银白",
+      "workpiece": "批量流水线的热敏 / 透明工件",
+      "features": [
+        "加强版立柱",
+        "旋转脖紫外光路",
+        "左右运动轴 500mm",
+        "机架银白"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1512",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optUR320",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "direction": "co2-desktop",
+      "name": "台式 CO₂ 打标套装·普通款（固定脖）",
+      "model": "CG1555BP4500S1",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配 CO₂ 台式机柜，固定脖 CO₂ 光路",
+      "workpiece": "CO₂ 激光适用工件",
+      "features": [
+        "固定脖 CO₂ 光路",
+        "四方板",
+        "U 型立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550U",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCP450",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "direction": "co2-desktop",
+      "name": "台式 CO₂ 打标套装·普通款（旋转脖）",
+      "model": "CG1555BR4500S1",
+      "tag": "标准",
+      "recommend": false,
+      "scene": "适配 CO₂ 台式机柜，旋转脖 CO₂ 光路",
+      "workpiece": "CO₂ 激光适用工件",
+      "features": [
+        "旋转脖 CO₂ 光路",
+        "四方板",
+        "U 型立柱 550/800 可选"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550U",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCR450",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "direction": "co2-desktop",
+      "name": "台式 CO₂ 打标套装·PLUS（固定脖）",
+      "model": "CG1555BP4500P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "适配 CO₂ 台式机柜，H 型立柱配固定脖 CO₂ 光路",
+      "workpiece": "CO₂ 激光适用工件",
+      "features": [
+        "H 型立柱",
+        "固定脖 CO₂ 光路",
+        "四方板"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550H",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCP450",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "direction": "co2-desktop",
+      "name": "台式 CO₂ 打标套装·PLUS（旋转脖）",
+      "model": "CG1555BR4500P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "适配 CO₂ 台式机柜，H 型立柱配旋转脖 CO₂ 光路",
+      "workpiece": "CO₂ 激光适用工件",
+      "features": [
+        "H 型立柱",
+        "旋转脖 CO₂ 光路",
+        "四方板"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "col155550H",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCR450",
+          "qty": 1
+        },
+        {
+          "module": "底板治具",
+          "id": "plateSquare",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accBellows",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C16",
+      "direction": "co2-flying",
+      "name": "飞行式 CO₂ 打标套装·普通款",
+      "model": "CF1312BR4550S1",
+      "tag": "飞行",
+      "recommend": false,
+      "scene": "飞行式 CO₂ 打标，13-12U 立柱配左右运动轴，机架银白",
+      "workpiece": "批量流水线的 CO₂ 适用工件",
+      "features": [
+        "旋转脖 CO₂ 光路",
+        "左右运动轴 500mm",
+        "机架银白"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1312",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCR450",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "C17",
+      "direction": "co2-flying",
+      "name": "飞行式 CO₂ 打标套装·PLUS",
+      "model": "CF1512BR4550P1",
+      "tag": "PLUS",
+      "recommend": false,
+      "scene": "飞行式 CO₂ 打标，加强版 15-12U 立柱配左右运动轴，机架银白",
+      "workpiece": "批量流水线的 CO₂ 适用工件",
+      "features": [
+        "加强版立柱",
+        "旋转脖 CO₂ 光路",
+        "左右运动轴 500mm",
+        "机架银白"
+      ],
+      "core": [
+        {
+          "module": "立柱",
+          "id": "colF1512",
+          "qty": 1
+        },
+        {
+          "module": "光路",
+          "id": "optCR450",
+          "qty": 1
+        },
+        {
+          "module": "运动轴",
+          "id": "axisZYZ130500",
+          "qty": 1
+        },
+        {
+          "module": "机箱 / 底座",
+          "id": "baseProfile",
+          "qty": 1
+        }
+      ],
+      "extras": [
+        {
+          "module": "附件",
+          "id": "accPcStand",
+          "qty": 1
+        },
+        {
+          "module": "附件",
+          "id": "accToolkit",
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "directions": [
+    {
+      "id": "fiber-desktop",
+      "name": "光纤 · 台式",
+      "desc": "台式 / 桌面式 / 分体式光纤打标组合，含普通款"
+    },
+    {
+      "id": "fiber-flying",
+      "name": "光纤 · 飞行式",
+      "desc": "配左右运动轴的产线飞行光纤组合，普通款与 PLUS"
+    },
+    {
+      "id": "uv-desktop",
+      "name": "紫外 · 台式",
+      "desc": "台式机柜的普通款与 PLUS 紫外组合，固定脖 / 旋转脖光路"
+    },
+    {
+      "id": "uv-flying",
+      "name": "紫外 · 飞行式",
+      "desc": "飞行式紫外标准款与 PLUS 组合"
+    },
+    {
+      "id": "co2-desktop",
+      "name": "CO₂ · 台式",
+      "desc": "台式机柜的普通款与 PLUS CO₂ 组合，固定脖 / 旋转脖光路"
+    },
+    {
+      "id": "co2-flying",
+      "name": "CO₂ · 飞行式",
+      "desc": "飞行式 CO₂ 普通款与 PLUS 组合"
+    }
+  ]
+}

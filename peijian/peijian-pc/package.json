@@ -1,0 +1,32 @@
+{
+  "name": "xinjian-parts-pc-vue",
+  "version": "3.3.1",
+  "private": true,
+  "description": "鑫戩配件商城 PC 独立 Vue 2 原型",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "serve:sit": "vue-cli-service serve --mode sit",
+    "build": "vue-cli-service build",
+    "build:mock": "vue-cli-service build --mode mock",
+    "build:sit": "vue-cli-service build --mode sit",
+    "build:prod": "vue-cli-service build --mode production"
+  },
+  "dependencies": {
+    "vue": "2.6.11",
+    "vue-router": "3.3.4",
+    "vuex": "3.5.1",
+    "axios": "0.19.2",
+    "element-ui": "2.13.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.4.6",
+    "@vue/cli-service": "4.4.6",
+    "core-js": "3.6.5",
+    "vue-template-compiler": "2.6.11",
+    "webpack": "4.43.0"
+  },
+  "engines": {
+    "node": ">=14.0.0 <15",
+    "npm": ">=6.14.0"
+  }
+}

@@ -1,0 +1,254 @@
+/**
+ * product-fields.css —— 客户产品资料组件样式
+ * 内容：型号行、待补充字段、五视图切换、资料占位块、下载卡、身份信息栅格
+ *      H5 端尺寸压缩适配（.h5 前缀）与打印样式（@media print 隐藏视图切换）
+ */
+/* 仅增加字段与资料组件；原style.css保持逐字不变。 */
+.catalog-model {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 5px 0;
+  line-height: 1.7;
+}
+.catalog-model b {
+  font-weight: 500;
+  color: var(--ink);
+}
+.field-section + .field-section {
+  margin-top: 23px;
+}
+.field-section .field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.field-heading h3 {
+  font-size: 15px;
+}
+.field-pending {
+  color: var(--light);
+  font-weight: 400 !important;
+}
+.view-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.view-choice {
+  width: 68px;
+  height: 78px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--muted);
+  padding: 5px;
+  cursor: pointer;
+}
+.view-choice img {
+  height: 43px;
+  width: 100%;
+  object-fit: contain;
+}
+.view-choice span {
+  font-size: 11px;
+}
+.view-choice small {
+  font-size: 9px;
+  color: var(--light);
+}
+.view-choice.on {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: #f5f9ff;
+}
+.view-choice:disabled {
+  background: #f4f6f9;
+  border-color: #e7ebf1;
+  color: var(--light);
+  cursor: not-allowed;
+}
+.view-choice:disabled small {
+  color: #b3bdcb;
+}
+.view-choice .icon {
+  height: 28px;
+  width: 28px;
+  color: #a5b5ca;
+}
+.field-placeholder {
+  border: 1px dashed #cfdae7;
+  background: #f8fafc;
+  border-radius: 5px;
+  padding: 22px 15px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+.field-placeholder .icon {
+  display: block;
+  margin: 0 auto 10px;
+  width: 27px;
+  height: 27px;
+  color: #90a7c3;
+}
+.field-placeholder p {
+  font-size: 11px;
+  color: var(--light);
+  margin-top: 7px;
+}
+.gallery-pending {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--muted);
+  gap: 12px;
+  font-size: 14px;
+}
+.gallery-pending .icon {
+  height: 45px;
+  width: 45px;
+  color: #9cafc7;
+}
+.field-assets {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.field-assets .asset {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field-assets .asset .icon {
+  margin-bottom: 4px;
+}
+.field-assets .asset .tiny {
+  line-height: 1.8;
+}
+.field-assets .asset .flex {
+  margin-top: auto;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.field-assets .btn {
+  min-height: 30px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  border-radius: 5px;
+  margin: 14px 0;
+}
+.identity-grid small {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+.identity-grid strong {
+  font-size: 13px;
+  font-weight: 500;
+  word-break: break-word;
+}
+.field-quote-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.product-pending-inline {
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--light);
+}
+.h5 .catalog-model {
+  font-size: 9px;
+  margin: 4px 0;
+  line-height: 1.6;
+}
+.h5 .identity-grid {
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 12px;
+  gap: 10px;
+  margin: 12px 0;
+}
+.h5 .identity-grid > div:last-child {
+  grid-column: 1/-1;
+}
+.h5 .identity-grid small {
+  font-size: 9px;
+}
+.h5 .identity-grid strong {
+  font-size: 11px;
+}
+.h5 .view-tabs {
+  gap: 6px;
+}
+.h5 .view-choice {
+  width: calc((100% - 12px) / 3);
+  height: 66px;
+}
+.h5 .view-choice img {
+  height: 32px;
+}
+.h5 .view-choice span {
+  font-size: 10px;
+}
+.h5 .view-choice small {
+  font-size: 8px;
+}
+.h5 .field-heading h3 {
+  font-size: 13px;
+}
+.h5 .field-heading .tiny {
+  font-size: 9px;
+}
+.h5 .field-assets {
+  grid-template-columns: 1fr;
+}
+.h5 .field-assets .asset {
+  padding: 14px;
+}
+.h5 .field-assets .asset .btn {
+  min-height: 30px;
+  font-size: 10px;
+}
+.h5 .field-placeholder {
+  font-size: 11px;
+  padding: 18px 12px;
+}
+.h5 .field-placeholder p {
+  font-size: 10px;
+}
+.h5 .field-section + .field-section {
+  margin-top: 20px;
+}
+.h5 .field-quote-note {
+  font-size: 9px;
+}
+.h5 .product-pending-inline {
+  font-size: 9px;
+}
+@media print {
+  .view-tabs,
+  .no-print {
+    display: none !important;
+  }
+  .field-quote-note {
+    font-size: 10px;
+  }
+}
