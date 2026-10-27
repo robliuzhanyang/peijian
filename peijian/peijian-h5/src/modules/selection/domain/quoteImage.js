@@ -271,7 +271,7 @@ export function exportQuoteImage(model) {
 
   // ===== 落款与盖章 =====
   const signY = signTop + 58
-  text(ctx, `报价人：${seller.sender || ""}`, LEFT, signY, {
+  text(ctx, `报价人：${seller.name || ""}`, LEFT, signY, {
     font: `20px ${FONT}`,
   })
   text(ctx, "客户确认（盖章）：", halfX, signY, { font: `20px ${FONT}` })

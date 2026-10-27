@@ -118,7 +118,7 @@
 
         <div class="qd-sign">
           <div class="qd-sign-col">
-            <p>报价人：{{ seller.sender }}</p>
+            <p>报价人：{{ seller.name }}</p>
           </div>
           <div class="qd-sign-col">
             <p>客户确认（盖章）：</p>
@@ -525,11 +525,11 @@ export default {
 .qd-sign-date {
   margin-top: 10px !important;
 }
-/* 电子章压在报价人落款上 */
+/* 电子章压在报价人落款上（压在公司名尾部，避免遮挡「报价人」字样） */
 .qd-seal {
   position: absolute;
   bottom: 4px;
-  left: 34px;
+  left: 170px;
 }
 
 /* 空态 */
@@ -672,7 +672,7 @@ export default {
   }
   .qd-seal {
     bottom: 0;
-    left: 22px;
+    left: 150px;
   }
 }
 </style>

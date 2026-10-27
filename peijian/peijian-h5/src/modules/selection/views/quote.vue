@@ -114,7 +114,7 @@
 
         <div class="mq-sign">
           <div class="mq-sign-col">
-            <p>报价人：{{ seller.sender }}</p>
+            <p>报价人：{{ seller.name }}</p>
           </div>
           <div class="mq-sign-col">
             <p>客户确认（盖章）：</p>
@@ -457,11 +457,11 @@ export default {
   color: #333;
   font-size: 8.5px;
 }
-/* 电子章压在报价人落款上 */
+/* 电子章压在报价人落款上（压在公司名尾部，避免遮挡「报价人」字样） */
 .mq-seal {
   position: absolute;
   bottom: 4px;
-  left: 16px;
+  left: 86px;
   opacity: 0.86;
 }
 
@@ -569,6 +569,7 @@ export default {
   .mq-seal {
     width: 104px;
     height: 104px;
+    left: 76px;
   }
 }
 </style>
