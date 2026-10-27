@@ -4,8 +4,9 @@
   作用：把所选配置生成正式报价单，版式对齐线下纸质报价单：
         居中的公司名与「报 价 单」标题、左右两栏抬头（客户 / 发件人、地址、单号）、
         八列带框明细表（序号 / 产品名称 / 规格型号 / 数量 / 单位 / 单价 / 总价 / 备注）、
-        合计大写、报价说明、报价人与客户确认盖章区；右侧提供业务员二维码与联系电话。
-        支持导出 PDF（浏览器打印）与导出 PNG 图片（Canvas 绘制，同版式含电子章）。
+        合计大写、报价说明、报价人与客户确认落款区（报价人下方为报价日期）；
+        右侧提供业务员二维码与联系电话。
+        支持导出 PDF（浏览器打印）与导出 PNG 图片（Canvas 绘制，同版式，不含印章）。
   数据：Vuex state.quoteItems（购物车勾选生成）或 state.selectedScheme + state.selected；
         客户名称 / 联系人 / 电话取当前企业（getters.currentCompany）
 -->
@@ -119,15 +120,13 @@
         <div class="qd-sign">
           <div class="qd-sign-col">
             <p>报价人：{{ seller.name }}</p>
+            <p class="qd-sign-date">日期：{{ quoteDateCn }}</p>
           </div>
           <div class="qd-sign-col">
             <p>客户确认（盖章）：</p>
             <p class="qd-sign-date">日期：　　　年　　月　　日</p>
           </div>
         </div>
-
-        <!-- 电子章压在报价人落款上 -->
-        <CompanySeal :size="132" class="qd-seal" />
       </div>
     </section>
 
@@ -155,7 +154,6 @@ import {
 } from "@/modules/selection/domain/quoteDoc";
 // 图片导出：Canvas 绘制同版式报价单
 import { exportQuoteImage } from "@/modules/selection/domain/quoteImage";
-import CompanySeal from "@/modules/selection/components/CompanySeal.vue";
 // 业务员二维码：右侧联系卡片
 import QrCode from "@/components/QrCode.vue";
 // 方案方向定义（用于把 direction id 转中文名）
@@ -165,7 +163,7 @@ import catalog from "@/mock/catalog.json";
 const MIN_ROWS = 8;
 
 export default {
-  components: { CompanySeal, QrCode },
+  components: { QrCode },
   data() {
     const now = new Date();
     return {
@@ -487,10 +485,10 @@ export default {
   font-weight: 700;
 }
 
-/* ===== 报价说明 + 落款：同一区块，底部留白供盖章 ===== */
+/* ===== 报价说明 + 落款：同一区块，底部留白供签署 ===== */
 .qd-extra {
   position: relative;
-  min-height: 300px;
+  min-height: 220px;
   padding: 12px 30px 26px;
 }
 .qd-extra-title {
@@ -509,6 +507,7 @@ export default {
   bottom: 40px;
   left: 30px;
   display: flex;
+  gap: 40px;
   align-items: flex-start;
   font-size: 14px;
 }
@@ -523,13 +522,7 @@ export default {
   margin: 0;
 }
 .qd-sign-date {
-  margin-top: 10px !important;
-}
-/* 电子章压在报价人落款上（压在公司名尾部，避免遮挡「报价人」字样） */
-.qd-seal {
-  position: absolute;
-  bottom: 4px;
-  left: 170px;
+  margin-top: 14px !important;
 }
 
 /* 空态 */
@@ -669,10 +662,6 @@ export default {
     right: 18px;
     bottom: 26px;
     left: 18px;
-  }
-  .qd-seal {
-    bottom: 0;
-    left: 150px;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 /**
  * 报价单图片导出：用 Canvas 2D 逐块绘制正式报价单
- * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与盖章区）
+ * 不依赖第三方截图库，导出结果与页面同版式（黑框、宋体、八列明细、报价说明与落款区）
  *
  * 入参 model 由 pages/quote.vue 的 exportModel() 组装，字段均为已格式化文本：
  *   seller / customerName / customerContact / customerPhone
@@ -71,59 +71,6 @@ function rect(ctx, x, y, w, h, color = "#111111", width = 1) {
   ctx.strokeRect(x, y, w, h)
 }
 
-// 五角星
-function drawStar(ctx, cx, cy, outer, inner) {
-  ctx.beginPath()
-  for (let i = 0; i < 10; i++) {
-    const radius = i % 2 === 0 ? outer : inner
-    const angle = -Math.PI / 2 + (Math.PI / 5) * i
-    const x = cx + Math.cos(angle) * radius
-    const y = cy + Math.sin(angle) * radius
-    if (i === 0) ctx.moveTo(x, y)
-    else ctx.lineTo(x, y)
-  }
-  ctx.closePath()
-  ctx.fill()
-}
-
-// 红色圆形印章：公司名环绕 + 五角星 + 章别
-function drawSeal(ctx, cx, cy, r, name) {
-  ctx.save()
-  ctx.globalAlpha = 0.9
-  ctx.strokeStyle = "#c8332b"
-  ctx.fillStyle = "#c8332b"
-  ctx.lineWidth = 3.2
-  ctx.beginPath()
-  ctx.arc(cx, cy, r, 0, Math.PI * 2)
-  ctx.stroke()
-  ctx.lineWidth = 1
-  ctx.beginPath()
-  ctx.arc(cx, cy, r - 6, 0, Math.PI * 2)
-  ctx.stroke()
-
-  drawStar(ctx, cx, cy - r * 0.18, r * 0.24, r * 0.1)
-
-  const chars = [...name]
-  const radius = r - 14
-  const span = Math.PI * 1.18
-  const start = -Math.PI / 2 - span / 2
-  ctx.font = `700 ${Math.round(r * 0.25)}px ${FONT}`
-  ctx.textAlign = "center"
-  ctx.textBaseline = "middle"
-  chars.forEach((ch, i) => {
-    const angle = start + (span * (i + 0.5)) / chars.length
-    ctx.save()
-    ctx.translate(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius)
-    ctx.rotate(angle + Math.PI / 2)
-    ctx.fillText(ch, 0, 0)
-    ctx.restore()
-  })
-
-  ctx.font = `700 ${Math.round(r * 0.26)}px ${FONT}`
-  ctx.fillText("报价专用章", cx, cy + r * 0.55)
-  ctx.restore()
-}
-
 // 按百分比计算各列左边界与最后一列右边界
 function buildCols() {
   const xs = []
@@ -157,7 +104,7 @@ export function exportQuoteImage(model) {
   const notesTop = tableTop + tableHeight
   const notesHeight = Math.max(150, 44 + notes.length * 28 + 46)
   const signTop = notesTop + notesHeight
-  const paperBottom = signTop + 236
+  const paperBottom = signTop + 152
   const height = paperBottom + MARGIN
 
   const scale = 2
@@ -269,16 +216,18 @@ export function exportQuoteImage(model) {
     })
   })
 
-  // ===== 落款与盖章 =====
+  // ===== 落款（不含印章） =====
   const signY = signTop + 58
   text(ctx, `报价人：${seller.name || ""}`, LEFT, signY, {
     font: `20px ${FONT}`,
+  })
+  text(ctx, `日期：${model.quoteDateCn || ""}`, LEFT, signY + 36, {
+    font: `17px ${FONT}`,
   })
   text(ctx, "客户确认（盖章）：", halfX, signY, { font: `20px ${FONT}` })
   text(ctx, "日期：　　　年　　月　　日", halfX, signY + 36, {
     font: `17px ${FONT}`,
   })
-  drawSeal(ctx, LEFT + 86, signY + 108, 58, seller.name || "")
 
   // ===== 下载 =====
   canvas.toBlob((blob) => {
